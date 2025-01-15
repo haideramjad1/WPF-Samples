@@ -1,0 +1,313 @@
+﻿<Window x:Class="WPFSample.AddCoupon1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="AddCoupon1" Height="590" Width="450"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Window.Resources>
+
+        <ImageBrush x:Key="CloseButtonImageBrush1" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
+
+        <ControlTemplate x:Key="ImageButtonTemplate" TargetType="Button">
+            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Tag}" CornerRadius="5">
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5" />
+                </Border.Effect>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BackgroundBorder" Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Direction="270" Opacity="0.7" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="BackgroundBorder" Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="7" ShadowDepth="7" Direction="270" Opacity="0.6" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                    CornerRadius="5"
+                    Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" 
+                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                 To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                 To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <Style x:Key="RightAlignedTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="CommonTextBoxStyle" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Margin" Value="10,0,10,0" />
+        </Style>
+        
+    </Window.Resources>
+
+    <Border CornerRadius="10">
+        <Border CornerRadius="5"
+            Background="White"
+            BorderThickness ="4">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5297E0 " Offset="0"/>
+                    <GradientStop Color="#273F6A " Offset="0.5"/>
+                    <GradientStop Color="#A3DFFF  " Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="250*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#9CACD5" Offset="0"/>
+                            <GradientStop Color="#E6EAF4" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <Grid.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                    </Grid.Effect>
+
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Add Customer.."
+                               FontSize="20" FontWeight="Medium"
+                               Padding="20,0,0,0">
+                    </TextBlock>
+
+                    <Button x:Name="Close_Button" 
+                            Margin="0,0,0,5"
+                            Grid.Column="1" 
+                            Template="{StaticResource ImageButtonTemplate}"
+                            Tag="{StaticResource CloseButtonImageBrush1}">
+                    </Button>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="145*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1">
+                        <TextBlock Text="Name * :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <TextBlock Text="Mobile No * :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <TextBlock Text="Email :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <TextBlock Text="Zip :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <TextBlock Text="DOB :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <TextBlock Text="CR Limits :"
+                                   Style="{StaticResource RightAlignedTextBlock}">
+                        </TextBlock>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+                        <TextBox Style="{StaticResource CommonTextBoxStyle}">
+                        </TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Row="2"
+                          Grid.Column="1">
+                        <TextBox Style="{StaticResource CommonTextBoxStyle}">
+                        </TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Row="3"
+                          Grid.Column="1">
+                        <TextBox Style="{StaticResource CommonTextBoxStyle}">
+                        </TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Row="4"
+                          Grid.Column="1">
+                        <TextBox Style="{StaticResource CommonTextBoxStyle}">
+                        </TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Row="6"
+                          Grid.Column="1">
+                        <TextBox Style="{StaticResource CommonTextBoxStyle}">
+                        </TextBox>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+
+                    <TextBlock Text="Where you Heard About us :"
+                               FontFamily="Tahoma"
+                               FontSize="20" 
+                               Padding="10,0,0,0"
+                               VerticalAlignment="Center"
+                               TextAlignment="Left">
+                    </TextBlock>
+
+                </Grid>
+                
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid  Grid.Column="0" Margin="10,0,0,20">
+                        <Button x:Name="NoBtn" 
+                                Content="Close"
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch"
+                                Style="{StaticResource ButtonStyle}"
+                                Tag="Red">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#810304" Offset="0"/>
+                                    <GradientStop Color="#D20404" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                    </Grid>
+
+                    <Grid  Grid.Column="2" Margin="0,0,10,20">
+                        <Button x:Name="OkBtn" 
+                                Content="Add"
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch"
+                                Style="{StaticResource ButtonStyle}"
+                                Tag="Green">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#275D28" Offset="0"/>
+                                    <GradientStop Color="#3E862F" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+    </Border>
+
+</Window>

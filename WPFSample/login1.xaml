@@ -1,0 +1,204 @@
+﻿<Window x:Class="WPFSample.login1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        mc:Ignorable="d"
+        Title="login1" Height="750" Width="900"
+        WindowStyle="None"
+        WindowState="Maximized">
+
+    <Window.Resources>
+        
+        <Style x:Key="NumericButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="50" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Background" Value="MidnightBlue"/>
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                CornerRadius="15"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder"
+                                        Property="Background"
+                                        Value="#3E218A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ImageBrush x:Key="CloseButtonImageBrush" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
+        
+        <ControlTemplate x:Key="CloseButtonTemplate" TargetType="Button">
+            <Grid>
+                <Border x:Name="BackgroundBorder"
+                    Background="Transparent"
+                    CornerRadius="5" />
+
+                <Border x:Name="ImageOverlay"
+                    Background="{StaticResource CloseButtonImageBrush}"
+                        Margin="2,2,2,2"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BackgroundBorder" Property="Background" Value="Red" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+            
+        </ControlTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Close_Button" 
+                    Grid.Column="1" 
+                    Template="{StaticResource CloseButtonTemplate}">
+                <!--Click="Close_Button_Click">      this is ok-->
+            </Button>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1">
+
+                <StackPanel Width="250"
+                            Orientation="Vertical"
+                            Margin="0,100,0,0">
+
+                    <Image Source="/Resources/2222crop 1.png"
+                            Margin="0,40,0,0"
+                            Height="250"/>
+
+                    <TextBlock x:Name="a1"
+                               Text="Grocery Store"
+                               Foreground="MidnightBlue"
+                               FontSize="30"
+                               FontWeight="Medium"
+                               FontFamily="Times New Roman"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"
+                               Margin="0,60,0,0 "/>
+
+                    <TextBlock x:Name="a2"
+                               Text="Grocery Store"
+                               Foreground="MidnightBlue"
+                               FontSize="30"
+                               FontWeight="Medium"
+                               FontFamily="Times New Roman"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"
+                               Margin="0,20,0,0 "/>
+
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Column="2"
+                  Margin="0,0,10,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <CheckBox Content="Login Through Pin" 
+                          Grid.Row="1"
+                          FontSize="20"
+                          FontWeight="Medium"
+                          FontFamily="Tahoma"
+                          Margin="5" />
+                
+                <TextBox x:Name="t1"
+                         Grid.Row="2"
+                         FontSize="20"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"
+                         Margin="5,10,5,0">
+                </TextBox>
+
+                <TextBox x:Name="t2"
+                         Grid.Row="3"
+                         FontSize="20"
+                         FontWeight="Medium"
+                         FontFamily="Tahoma"
+                         Margin="5,10,5,0">
+                </TextBox>
+
+                <Grid Grid.Row="4"
+                      Margin="0,20,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120" />
+                        <RowDefinition Height="120" />
+                        <RowDefinition Height="120" />
+                        <RowDefinition Height="120" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="Button_1" Style="{StaticResource NumericButtonStyle}" Content="1" Grid.Row="0" Grid.Column="0" />
+                    <Button x:Name="Button_2" Style="{StaticResource NumericButtonStyle}" Content="2" Grid.Row="0" Grid.Column="1" />
+                    <Button x:Name="Button_3" Style="{StaticResource NumericButtonStyle}" Content="3" Grid.Row="0" Grid.Column="2" />
+                    <Button x:Name="Button_4" Style="{StaticResource NumericButtonStyle}" Content="4" Grid.Row="1" Grid.Column="0" />
+                    <Button x:Name="Button_5" Style="{StaticResource NumericButtonStyle}" Content="5" Grid.Row="1" Grid.Column="1" />
+                    <Button x:Name="Button_6" Style="{StaticResource NumericButtonStyle}" Content="6" Grid.Row="1" Grid.Column="2" />
+                    <Button x:Name="Button_7" Style="{StaticResource NumericButtonStyle}" Content="7" Grid.Row="2" Grid.Column="0" />
+                    <Button x:Name="Button_8" Style="{StaticResource NumericButtonStyle}" Content="8" Grid.Row="2" Grid.Column="1" />
+                    <Button x:Name="Button_9" Style="{StaticResource NumericButtonStyle}" Content="9" Grid.Row="2" Grid.Column="2" />
+                    <Button x:Name="Button_X" Style="{StaticResource NumericButtonStyle}" Content="x" Grid.Row="3" Grid.Column="0" />
+                    <Button x:Name="Button_0" Style="{StaticResource NumericButtonStyle}" Content="0" Grid.Row="3" Grid.Column="1" />
+                    <Button x:Name="Button_Go" Style="{StaticResource NumericButtonStyle}" Content="Go" Grid.Row="3" Grid.Column="2" />
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

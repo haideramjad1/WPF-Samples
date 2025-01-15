@@ -1,0 +1,183 @@
+﻿<Window x:Class="WPFSample.ErrorMessageShow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="ErrorMessageShow1" Height="300" Width="400"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        SizeToContent="Height">
+
+    <Window.Resources>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                        CornerRadius="5"
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" 
+                                        Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                     To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                     To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Border CornerRadius="10">
+        <Border CornerRadius="15"
+                Background="White"
+                BorderThickness ="20">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5297E0 " Offset="0"/>
+                    <GradientStop Color="#273F6A " Offset="0.5"/>
+                    <GradientStop Color="#A3DFFF  " Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1">
+                        <Image Source="/Resources/2222crop 1.png"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="Header_Label" Text="Error"
+                               FontSize="30" FontFamily="Tahoma"
+                               FontWeight="Medium" TextWrapping="Wrap"
+                               TextAlignment="Center" Margin="20,0,20,0"
+                               Foreground="#0000C0"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock x:Name="Description_Label" 
+                               Text="Product Not Found..."
+                               FontSize="20" FontFamily="Tahoma"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center" Margin="20,0,20,10"/>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid  Grid.Column="1" Margin="6,5,6,18">
+                        <Button x:Name="YesBtn" Content="Yes"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Style="{StaticResource ButtonStyle}"
+                                Tag="Purple">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#590075" Offset="0"/>
+                                    <GradientStop Color="#820087" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+
+                        </Button>
+
+                    </Grid>
+
+                    <Grid  Grid.Column="2" Margin="6,5,6,10">
+                        <Button x:Name="NoBtn" Content="No" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Style="{StaticResource ButtonStyle}"
+                                Tag="Red">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#810304" Offset="0"/>
+                                    <GradientStop Color="#D20404" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                    </Grid>
+
+                    <Grid  Grid.Column="3" Margin="6,5,6,10">
+                        <Button x:Name="OkBtn" Content="Okay" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Style="{StaticResource ButtonStyle}"
+                                Tag="Green"
+                                Click="OkBtn_Click">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#275D28" Offset="0"/>
+                                    <GradientStop Color="#3E862F" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
