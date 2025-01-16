@@ -106,7 +106,7 @@
             <Setter Property="FontSize" Value="25" />
             <Setter Property="Margin" Value="10,0,10,0" />
         </Style>
-        
+
     </Window.Resources>
 
     <Border CornerRadius="10">
@@ -215,29 +215,52 @@
                                    Style="{StaticResource RightAlignedTextBlock}">
                         </TextBlock>
                     </Grid>
-                    
+
                     <Grid Grid.Row="1"
                           Grid.Column="1">
                         <TextBox Style="{StaticResource CommonTextBoxStyle}">
                         </TextBox>
                     </Grid>
-                    
+
                     <Grid Grid.Row="2"
                           Grid.Column="1">
                         <TextBox Style="{StaticResource CommonTextBoxStyle}">
                         </TextBox>
                     </Grid>
-                    
+
                     <Grid Grid.Row="3"
                           Grid.Column="1">
                         <TextBox Style="{StaticResource CommonTextBoxStyle}">
                         </TextBox>
                     </Grid>
-                    
+
                     <Grid Grid.Row="4"
                           Grid.Column="1">
                         <TextBox Style="{StaticResource CommonTextBoxStyle}">
                         </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="5"
+                          Grid.Column="1">
+                        <DatePicker FontSize="25"
+                                    Margin="10,0,10,0"
+                                    FontFamily="Tahoma"
+                                    VerticalAlignment="Center">
+                            
+                            <DatePicker.Resources>
+                                <!-- Style to make DatePicker text box read-only -->
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="IsReadOnly" Value="True" />
+                                </Style>
+                                <!-- Style to enlarge the calendar icon -->
+                                <Style TargetType="Button" x:Key="DatePickerToggleButtonStyle">
+                                    <Setter Property="Width" Value="100" />
+                                    <Setter Property="Height" Value="100" />
+                                    <Setter Property="Padding" Value="0" />
+                                </Style>
+                            </DatePicker.Resources>
+                            
+                        </DatePicker>
                     </Grid>
                     
                     <Grid Grid.Row="6"
@@ -245,11 +268,9 @@
                         <TextBox Style="{StaticResource CommonTextBoxStyle}">
                         </TextBox>
                     </Grid>
-
                 </Grid>
 
                 <Grid Grid.Row="2">
-
                     <TextBlock Text="Where you Heard About us :"
                                FontFamily="Tahoma"
                                FontSize="20" 
@@ -257,9 +278,20 @@
                                VerticalAlignment="Center"
                                TextAlignment="Left">
                     </TextBlock>
-
                 </Grid>
-                
+
+                <Grid Grid.Row="3">
+                    <ComboBox Margin="10,0,10,0" 
+                              VerticalAlignment="Top"
+                              FontSize="20" 
+                              FontFamily="Tahoma">
+
+                        <ComboBoxItem Content="Friends"/>
+                        <ComboBoxItem Content="Social Media"/>
+                        <ComboBoxItem Content="Promotions"/>
+                    </ComboBox>
+                </Grid>
+
                 <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
