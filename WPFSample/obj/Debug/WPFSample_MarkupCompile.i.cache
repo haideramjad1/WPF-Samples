@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\software development\WPFSample\WPFSample\obj\Debug\
+D:\software development\WPF-Samples\WPFSample\obj\Debug\
 WPFSample
 none
 false
 DEBUG;TRACE
-D:\software development\WPFSample\WPFSample\App.xaml
+D:\software development\WPF-Samples\WPFSample\App.xaml
 6-781680684
 
 121196915121
-16-1973305697
+16-1394891883
 AddCoupon1.xaml;ErrorMessageShow1.xaml;login1.xaml;MainWindow.xaml;ProductLookUp1.xaml;SarchCustomer1.xaml;
 
-True
+False
 

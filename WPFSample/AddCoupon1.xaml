@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSample"
         mc:Ignorable="d"
-        Title="AddCoupon1" Height="650" Width="650"
+        Title="AddCoupon1" Height="600" Width="650"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -93,7 +93,7 @@
 
         </Style>
 
-        <Style x:Key="RightAlignedTextBlock" TargetType="TextBlock">
+        <Style x:Key="LeftAlignedTextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontFamily" Value="Tahoma"/>
             <Setter Property="TextAlignment" Value="Right"/>
@@ -105,6 +105,32 @@
             <Setter Property="FontFamily" Value="Tahoma" />
             <Setter Property="FontSize" Value="25" />
             <Setter Property="Margin" Value="10,0,10,0" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="10"
+                Padding="5">
+                            <ScrollViewer Margin="0" 
+                      x:Name="PART_ContentHost" 
+                      VerticalScrollBarVisibility="Hidden" 
+                      HorizontalScrollBarVisibility="Hidden" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PlaceholderTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="Margin" Value="15,0,10,0" />
+            <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
 
     </Window.Resources>
@@ -124,35 +150,96 @@
                 </Border.BorderBrush>
 
                 <Border.Background>
-                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#A3DFFF" Offset="0.5"/>
-                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#A1D7FF" Offset="0.5"/>
+                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160*"/>
+                        <ColumnDefinition Width="330*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="155"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="2"
+                          Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                                Margin="0,0,3,8"
+                                Template="{StaticResource ImageButtonTemplate}"
+                                Tag="{StaticResource CloseButtonImageBrush1}">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="0"
+                          Grid.Row="2">
+                        <Image x:Name="FormPicture" 
+                               Source="/Resources/customer_icon.png"/>
+                    </Grid>
+
+                    <Grid Grid.Column="0"
+                          Grid.Row="3">
+                        <Border CornerRadius="10">
+
+                            <!--<Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#2E93F3" Offset="0"/>
+                                        <GradientStop Color="#A1D7FF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>-->
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock Text="Add Customer.."
+                                           FontSize="20" 
+                                           FontWeight="Medium"
+                                           Foreground="Black"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                </Grid>
             </Border>
 
             <Border CornerRadius="30"
-                    Margin="100,50,20,85">
+                    Margin="180,60,20,50">
 
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
 
                 </Border.Effect>
                 <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#A3DFFF" Offset="0.5"/>
-                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#A1D7FF" Offset="0.5"/>
+                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
                     </LinearGradientBrush>
                 </Border.Background>
-                
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
                         <RowDefinition Height="250*"/>
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="30*"/>
+                        <RowDefinition Height="20*"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1">
@@ -160,9 +247,9 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40*"/>
                             <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -174,7 +261,7 @@
 
                         <Grid Grid.Row="0">
                             <TextBlock Text="Name * :"
-                                       Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                       Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="0"
@@ -182,11 +269,16 @@
                             <TextBox 
                                     Style="{StaticResource CommonTextBoxStyle}" Height="33" Margin="10,0,10,0">
                             </TextBox>
+
+                            <TextBlock Name="NameTextBlock" 
+                                       Text=" Customer Name" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
                         </Grid>
 
                         <Grid Grid.Row="1">
                             <TextBlock Text="Mobile No * :"
-                                   Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                   Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="1"
@@ -194,11 +286,16 @@
                             <TextBox 
                                     Style="{StaticResource CommonTextBoxStyle}" Height="33" Margin="10,0,10,0">
                             </TextBox>
+
+                            <TextBlock Name="MobileTextBlock" 
+                                       Text=" Mobile No" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
                         </Grid>
 
                         <Grid Grid.Row="2">
                             <TextBlock Text="Email :"
-                                   Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                   Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="2"
@@ -206,11 +303,16 @@
                             <TextBox
                                     Style="{StaticResource CommonTextBoxStyle}" Height="33" Margin="10,0,10,0">
                             </TextBox>
+
+                            <TextBlock Name="EmailTextBlock" 
+                                       Text=" Email" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
                         </Grid>
 
                         <Grid Grid.Row="3">
                             <TextBlock Text="Zip :"
-                                   Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                   Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="3"
@@ -218,11 +320,16 @@
                             <TextBox  
                                     Style="{StaticResource CommonTextBoxStyle}" Height="33" Margin="10,0,10,0">
                             </TextBox>
+
+                            <TextBlock Name="ZipTextBlock" 
+                                       Text=" Zip Code" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
                         </Grid>
 
                         <Grid Grid.Row="4">
                             <TextBlock Text="DOB :"
-                                   Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                   Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="4"
@@ -234,6 +341,74 @@
                                         Grid.Column="1" 
                                         Height="39" >
 
+                                <DatePicker.Template>
+                                    <ControlTemplate TargetType="DatePicker">
+                                        <Border CornerRadius="10"
+                                                Background="Transparent"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Grid.Column="0"
+                                                        CornerRadius="10"
+                                                        Background="White"
+                                                        BorderThickness="1"
+                                                        Margin="0,0,5,0">
+                                                    <DatePickerTextBox x:Name="PART_TextBox"
+                                                                       IsReadOnly="True"
+                                                                       VerticalContentAlignment="Center"
+                                                                       FontSize="20"
+                                                                       FontFamily="{TemplateBinding FontFamily}"
+                                                                       Background="Transparent"
+                                                                       Foreground="Gray"
+                                                                       Margin="5,0,0,0"/>
+                                                </Border>
+
+                                                <Button x:Name="PART_Button"
+                                                        Grid.Column="1"
+                                                        Width="40"
+                                                        HorizontalAlignment="Center"
+                                                        BorderBrush="Transparent"
+                                                        Background="Transparent"
+                                                        FocusVisualStyle="{x:Null}">
+
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Border x:Name="CalenderBorder" 
+                                                                    CornerRadius="5"
+                                                                    Background="White">
+                                                                <ContentControl Content="📅" 
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="CalenderBorder" Property="Background" Value="LightGray" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+
+                                                </Button>
+
+                                                <Popup x:Name="PART_Popup"
+                                                       AllowsTransparency="True"
+                                                       Placement="Bottom"
+                                                       StaysOpen="False"
+                                                       IsOpen="{Binding IsDropDownOpen, 
+                                                       RelativeSource={RelativeSource TemplatedParent}}">
+
+                                                    <Calendar x:Name="PART_Calendar" />
+                                                </Popup>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </DatePicker.Template>
+
                                 <DatePicker.Resources>
                                     <Style TargetType="DatePickerTextBox">
                                         <Setter Property="IsReadOnly" Value="True" />
@@ -244,7 +419,7 @@
 
                         <Grid Grid.Row="5">
                             <TextBlock Text="CR Limits :"
-                                   Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                                   Style="{StaticResource LeftAlignedTextBlock}" Height="31">
                             </TextBlock>
                         </Grid>
                         <Grid Grid.Row="5"
@@ -252,6 +427,11 @@
                             <TextBox
                                     Style="{StaticResource CommonTextBoxStyle}" Height="33" Margin="10,0,10,0">
                             </TextBox>
+
+                            <TextBlock Name="CRLimitTextBlock" 
+                                       Text=" Credit Limit" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
                         </Grid>
 
                     </Grid>
@@ -268,14 +448,86 @@
 
                     <Grid Grid.Row="3">
                         <ComboBox Margin="110,0,110,0" 
-                                  VerticalAlignment="Top"
+                                  VerticalAlignment="Center"
                                   FontSize="25" 
-                                  FontFamily="Tahoma">
+                                  FontFamily="Tahoma"
+                                  Height="40">
+                            <ComboBox.Template>
+                                <ControlTemplate TargetType="ComboBox">
+                                    <Grid>
+                                        <Border Background="White"
+                                                BorderBrush="LightGray"
+                                                BorderThickness="1"
+                                                CornerRadius="10">
+                                            <Grid>
+                                                <ContentPresenter x:Name="ContentPresenter"
+                                                                  ContentTemplate="{TemplateBinding ItemTemplate}"
+                                                                  Content="{TemplateBinding SelectionBoxItem}"
+                                                                  HorizontalAlignment="Left"
+                                                                  VerticalAlignment="Center"
+                                                                  Margin="10,0,30,0" />
 
-                            <ComboBoxItem Content="Friends"/>
-                            <ComboBoxItem Content="Social Media"/>
-                            <ComboBoxItem Content="Promotions"/>
+                                                <ToggleButton x:Name="ToggleButton"
+                                                              IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                                              Focusable="False"
+                                                              ClickMode="Press"
+                                                              HorizontalAlignment="Right"
+                                                              VerticalAlignment="Center"
+                                                              Width="30"
+                                                              Height="30"
+                                                              Margin="0,0,5,0">
+                                                    <ToggleButton.Template>
+                                                        <ControlTemplate TargetType="ToggleButton">
+                                                            <Grid>
+                                                                <Border Background="White"
+                                                                        BorderBrush="Gray"
+                                                                        BorderThickness="2"
+                                                                        CornerRadius="5">
+                                                                    <Path x:Name="Arrow"
+                                                                          HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center"
+                                                                          Data="M0,0 L5,10 L10,0 Z"
+                                                                          Fill="Black" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </ToggleButton.Template>
+                                                </ToggleButton>
+                                            </Grid>
+                                        </Border>
+
+                                        <Popup x:Name="PART_Popup"
+                                               Placement="Bottom"
+                                               StaysOpen="False"
+                                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                               AllowsTransparency="True">
+                                            <Border Background="White"
+                                                    BorderBrush="LightGray"
+                                                    BorderThickness="1"
+                                                    CornerRadius="5"
+                                                    MinWidth="{TemplateBinding ActualWidth}">
+                                                
+                                                <ScrollViewer>
+                                                    <ItemsPresenter x:Name="PART_ItemsPresenter" />
+                                                </ScrollViewer>
+                                            </Border>
+                                        </Popup>
+                                    </Grid>
+                                </ControlTemplate>
+                            </ComboBox.Template>
+
+                            <ComboBoxItem Content="Friends" />
+                            <ComboBoxItem Content="Social Media" />
+                            <ComboBoxItem Content="Promotions" />
                         </ComboBox>
+
+
+                        <TextBlock Name="HearComboBoxTextBlock" 
+                                   Text=" SelectOption" 
+                                   Style="{StaticResource PlaceholderTextBlockStyle}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,5">
+                        </TextBlock>
                     </Grid>
 
                     <Grid Grid.Row="5">
@@ -308,52 +560,21 @@
 
             </Border>
 
-            <Border Margin="250,20,250,590"
-                    CornerRadius="15">
-
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#AC49FB" Offset="0"/>
-                        <GradientStop Color="Thistle" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
-                </Border.Effect>
-
-                <Grid >
-                    <TextBlock Text="Add Customer.."
-                               FontSize="20" 
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center">
-                    </TextBlock>
-                </Grid>
-            </Border>
-
-            <Button x:Name="Close_Button" 
-                    Margin="505,15,115,605"
-                    Template="{StaticResource ImageButtonTemplate}"
-                    Tag="{StaticResource CloseButtonImageBrush1}">
-            </Button>
-            
-            <Grid Margin="230,580,230,20">
-                <Button x:Name="OkBtn" 
+            <Grid Margin="330,530,170,20">
+                <Button x:Name="Save_Btn" 
                         Content="Add"
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Stretch"
                         Style="{StaticResource ButtonStyle}"
-                        Tag="Green">
+                        Tag="Green"
+                        Click="Save_Btn_Click">
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="30"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border CornerRadius="15"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
                                 <ContentPresenter HorizontalAlignment="Center" 
-                  VerticalAlignment="Center" />
+                                                VerticalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -366,7 +587,7 @@
                     </Button.Background>
                 </Button>
             </Grid>
-            
+
         </Grid>
     </Border>
 </Window>

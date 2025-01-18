@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background" +
-    "-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/customer_icon.png")]
 
 
