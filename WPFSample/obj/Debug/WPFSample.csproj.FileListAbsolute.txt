@@ -66,3 +66,7 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFSample.csproj.CoreCom
 D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFSample.csproj.Up2Date
 D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFSample.exe
 D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFSample.pdb
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Styles\ButtonStyle.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Card_Sample.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\App.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Card_Sample.baml

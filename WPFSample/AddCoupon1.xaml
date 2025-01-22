@@ -112,8 +112,7 @@
                         <Border Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
-            CornerRadius="10"
-                Padding="5">
+            CornerRadius="10">
                             <ScrollViewer Margin="0" 
                       x:Name="PART_ContentHost" 
                       VerticalScrollBarVisibility="Hidden" 
