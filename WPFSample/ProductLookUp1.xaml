@@ -13,9 +13,11 @@
     <Window.Resources>
 
         <ImageBrush x:Key="CloseButtonImageBrush1" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
-        <ImageBrush x:Key="CloseButtonImageBrush2" ImageSource="/Resources/2222crop 1.png" />
-        <ImageBrush x:Key="CloseButtonImageBrush3" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
-        <ImageBrush x:Key="CloseButtonImageBrush4" ImageSource="/Resources/2222crop 1.png" />
+        <ImageBrush x:Key="CloseButtonImageBrush2" ImageSource="/Resources/Magnifier.png" />
+
+        <ImageBrush x:Key="CloseButtonImageBrush3" ImageSource="/Resources/next.png" />
+        <ImageBrush x:Key="CloseButtonImageBrush4" ImageSource="/Resources/previous.png" />
+
 
         <ControlTemplate x:Key="ImageButtonTemplate" TargetType="Button">
             <Border x:Name="BackgroundBorder" Background="{TemplateBinding Tag}" CornerRadius="5">
@@ -44,109 +46,6 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
-        <Style x:Key="KeyboardButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontFamily" Value="Tahoma" />
-            <Setter Property="Margin" Value="5,5,5,5" />
-            <Setter Property="Background" Value="#eee"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border"
-                        CornerRadius="5"
-                        Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
-                </Setter.Value>
-            </Setter>
-
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <ScaleTransform ScaleX="1" ScaleY="1"/>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-
-        </Style>
-
-        <Style x:Key="CustomerButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontFamily" Value="Tahoma" />
-            <Setter Property="Margin" Value="5,5,5,5" />
-            <Setter Property="Background" Value="#EFF2F8"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border"
-                        CornerRadius="5"
-                        Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
-                </Setter.Value>
-            </Setter>
-
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <ScaleTransform ScaleX="1" ScaleY="1"/>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                     To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
-                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                     To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-
-        </Style>
 
         <Style x:Key="LeftTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
@@ -228,11 +127,11 @@
             </Grid>
 
             <Grid Grid.Column="1"
-              Margin="0,5,10,5">
+              Margin="0,10,10,10">
                 <Button x:Name="Search_Button" 
                     Grid.Column="1" 
                     Template="{StaticResource ImageButtonTemplate}"
-                    Tag="{StaticResource CloseButtonImageBrush4}">
+                    Tag="{StaticResource CloseButtonImageBrush2}">
                 </Button>
             </Grid>
         </Grid>

@@ -73,6 +73,7 @@
                 </Setter.Value>
             </Setter>
 
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
             <Setter Property="RenderTransform">
                 <Setter.Value>
                     <ScaleTransform ScaleX="1" ScaleY="1"/>

@@ -24,5 +24,11 @@
                     Style="{StaticResource AllButtonStyle}"/>
         </Grid>
         
+        <Grid Grid.Column="1"
+              Grid.Row="0">
+            <Button x:Name="butn2"
+                    Style="{StaticResource KeyboardButtonStyle}"/>
+        </Grid>
+        
     </Grid>
 </Window>
