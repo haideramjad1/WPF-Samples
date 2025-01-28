@@ -84,4 +84,223 @@
         </Style.Triggers>
 
     </Style>
+
+    <Style x:Key="LeftTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="-5,0,0,0"/>
+    </Style>
+
+    <Style x:Key="RightTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="#0A56C4"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,5,0,0"/>
+    </Style>
+
+
+    <ImageBrush x:Key="CloseButtonImageBrush" ImageSource="/Resources/Close_32x32.png"/>
+    <ImageBrush x:Key="MagnifyButtonImageBrush" ImageSource="/Resources/Magnifier.png"/>
+    <ImageBrush x:Key="NextButtonImageBrush" ImageSource="/Resources/next.png" />
+    <ImageBrush x:Key="PrevButtonImageBrush" ImageSource="/Resources/previous.png" />
+
+    <SolidColorBrush x:Key="DefaultBackground" Color="#eee"/>
+    <SolidColorBrush x:Key="DefaultHoverBackground" Color="LightGray" />
+
+    <SolidColorBrush x:Key="LightBlueBackground" Color="#EFF2F8"/>
+
+    <LinearGradientBrush x:Key="GreenGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#275D28" Offset="0"/>
+        <GradientStop Color="#3E862F" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="GreenHoverBackground" Color="Green" />
+
+    <LinearGradientBrush x:Key="RedGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#810304" Offset="0"/>
+        <GradientStop Color="#D20404" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="RedHoverBackground" Color="Red" />
+
+    <LinearGradientBrush x:Key="YellowGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFFF02" Offset="0"/>
+        <GradientStop Color="#FFFFD8" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="YellowHoverBackground" Color="Yellow" />
+
+    <Style x:Key="BaseKeyboardButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                        CornerRadius="5"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DefaultHoverBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GreyKeyboardButtonStyle" BasedOn="{StaticResource BaseKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
+    </Style>
+
+    <Style x:Key="CustomerOrProductButtonStyle" BasedOn="{StaticResource BaseKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LightBlueBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
+    </Style>
+
+
+
+    <Style x:Key="BaseAllButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                    CornerRadius="15"
+                    Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GreenButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource GreenGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
+    </Style>
+
+    <Style x:Key="RedButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource RedGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource RedHoverBackground}" />
+    </Style>
+
+    <Style x:Key="YellowButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource YellowGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource YellowHoverBackground}" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="LeftTextKeyBoardStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="-5,0,0,0"/>
+    </Style>
+
+    <Style x:Key="RightTextKeyBoardStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="#0A56C4"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,5,0,0"/>
+    </Style>
+
+    <ControlTemplate x:Key="ImageButtonTemplate" TargetType="Button">
+        <Border x:Name="BackgroundBorder" Background="{TemplateBinding Tag}" CornerRadius="5">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5" />
+            </Border.Effect>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BackgroundBorder" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10" Direction="270" Opacity="0.7" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="BackgroundBorder" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Direction="270" Opacity="0.6" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 </ResourceDictionary>

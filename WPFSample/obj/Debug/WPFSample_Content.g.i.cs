@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/previous.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/close_32x32.png")]
 
 

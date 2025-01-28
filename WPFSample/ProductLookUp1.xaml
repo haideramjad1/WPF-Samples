@@ -10,60 +10,6 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
 
-    <Window.Resources>
-
-        <ImageBrush x:Key="CloseButtonImageBrush1" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
-        <ImageBrush x:Key="CloseButtonImageBrush2" ImageSource="/Resources/Magnifier.png" />
-
-        <ImageBrush x:Key="CloseButtonImageBrush3" ImageSource="/Resources/next.png" />
-        <ImageBrush x:Key="CloseButtonImageBrush4" ImageSource="/Resources/previous.png" />
-
-
-        <ControlTemplate x:Key="ImageButtonTemplate" TargetType="Button">
-            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Tag}" CornerRadius="5">
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5" />
-                </Border.Effect>
-            </Border>
-
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="BackgroundBorder" Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Direction="270" Opacity="0.7" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter TargetName="BackgroundBorder" Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect BlurRadius="7" ShadowDepth="7" Direction="270" Opacity="0.6" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-
-        <Style x:Key="LeftTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="Margin" Value="-5,0,0,0"/>
-        </Style>
-
-        <Style x:Key="RightTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#0A56C4"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20,5,0,0"/>
-        </Style>
-
-    </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -84,8 +30,8 @@
             <Button x:Name="Close_Button" 
                 Grid.Column="1" 
                 Template="{StaticResource ImageButtonTemplate}"
-                Tag="{StaticResource CloseButtonImageBrush1}"
-                Click="Close_Button_Click">
+                Tag="{StaticResource CloseButtonImageBrush}"
+                Click="Close_Button_Click" Height="30" VerticalAlignment="Top">
 
             </Button>
 
@@ -94,8 +40,9 @@
         <Grid Grid.Row="1"
           Margin="0,5,0,0">
             <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="100*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="971*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="24*"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0"
@@ -126,16 +73,35 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1"
-              Margin="0,10,10,10">
+            <Grid
+              Margin="971,10,10,10" Grid.ColumnSpan="3">
                 <Button x:Name="Search_Button" 
-                    Grid.Column="1" 
                     Template="{StaticResource ImageButtonTemplate}"
-                    Tag="{StaticResource CloseButtonImageBrush2}">
-                </Button>
+                    Tag="{StaticResource MagnifyButtonImageBrush}" HorizontalAlignment="Left" Width="39"/>
             </Grid>
         </Grid>
 
+        <Grid Grid.Row="2" Margin="20,0,20,20">
+            <ScrollViewer Name="scrollViewer"
+                          IsManipulationEnabled="True" 
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Disabled" 
+                          PreviewMouseDown="scrollViewer_PreviewMouseDown"
+                          PreviewMouseMove="scrollViewer_PreviewMouseMove"
+                          PreviewMouseUp="scrollViewer_PreviewMouseUp">
+                <StackPanel Orientation="Horizontal" Name="buttonPanel">
+                    <Button Width="200" Height="50" Margin="5" Content="Button 1" Click="Button_Click" Tag="Task 1"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 2" Click="Button_Click" Tag="Task 2"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 3" Click="Button_Click" Tag="Task 3"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 4" Click="Button_Click" Tag="Task 4"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 5" Click="Button_Click" Tag="Task 5"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 6" Click="Button_Click" Tag="Task 5"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 7" Click="Button_Click" Tag="Task 5"/>
+                    <Button Width="200" Height="50" Margin="5" Content="Button 8" Click="Button_Click" Tag="Task 5"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        
         <Grid Grid.Row="3" Margin="20,0,20,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -505,14 +471,14 @@
                     <Button x:Name="Previous_Button" 
                     Grid.Column="0" 
                     Template="{StaticResource ImageButtonTemplate}"
-                    Tag="{StaticResource CloseButtonImageBrush4}"
+                    Tag="{StaticResource PrevButtonImageBrush}"
                     Click="Previous_Button_Click">
                     </Button>
 
                     <Button x:Name="Next_Button" 
                     Grid.Column="1" 
                     Template="{StaticResource ImageButtonTemplate}"
-                    Tag="{StaticResource CloseButtonImageBrush3}"
+                    Tag="{StaticResource NextButtonImageBrush}"
                     Click="Next_Button_Click">
                     </Button>
 
@@ -528,5 +494,5 @@
         </Grid>
 
     </Grid>
-    
+
 </Window>
