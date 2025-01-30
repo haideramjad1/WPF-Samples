@@ -3,7 +3,12 @@
 
     <ImageBrush x:Key="PrevAct" ImageSource="/Resources/2222crop 1.png"/>
     <ImageBrush x:Key="PrevPas" ImageSource="/Resources/customer_icon.png"/>
-
+    <ImageBrush x:Key="CloseButtonImageBrush" ImageSource="/Resources/Close_32x32.png"/>
+    <ImageBrush x:Key="MagnifyButtonImageBrush" ImageSource="/Resources/Magnifier.png"/>
+    <ImageBrush x:Key="NextButtonImageBrush" ImageSource="/Resources/next.png" />
+    <ImageBrush x:Key="PrevButtonImageBrush" ImageSource="/Resources/previous.png" />
+    
+    
     <Style x:Key="AllButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="50"/>
@@ -101,10 +106,7 @@
     </Style>
 
 
-    <ImageBrush x:Key="CloseButtonImageBrush" ImageSource="/Resources/Close_32x32.png"/>
-    <ImageBrush x:Key="MagnifyButtonImageBrush" ImageSource="/Resources/Magnifier.png"/>
-    <ImageBrush x:Key="NextButtonImageBrush" ImageSource="/Resources/next.png" />
-    <ImageBrush x:Key="PrevButtonImageBrush" ImageSource="/Resources/previous.png" />
+    
 
     <SolidColorBrush x:Key="DefaultBackground" Color="#eee"/>
     <SolidColorBrush x:Key="DefaultHoverBackground" Color="LightGray" />
