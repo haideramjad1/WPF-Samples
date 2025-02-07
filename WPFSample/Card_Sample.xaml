@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:WPFSample"
         mc:Ignorable="d"
         Title="Card_Sample" Height="800" Width="800">
+
     <Grid>
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="171*" />
-            <RowDefinition Height="167*" />
-            <RowDefinition Height="446*" />
+            <RowDefinition Height="18*" />
+            <RowDefinition Height="55*" />
+            <RowDefinition Height="39*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -24,6 +25,7 @@
 
             </Grid.ColumnDefinitions>
             <Button x:Name="butn1"
+                    Margin="80"
                     Grid.Column="0"
                     Template="{StaticResource ImageButtonTemplate}"
                     Tag="{StaticResource CloseButtonImageBrush}"/>
@@ -34,91 +36,460 @@
             Style="{StaticResource KeyboardButtonStyle}" Click="butn2_Click"/>
             </Grid>
             <Grid Grid.Column="2"/>
-
-            <DataGrid Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
         </Grid>
 
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,27,0,0" Grid.Row="1"/>
+        <Grid Grid.Row="1" Margin="10,10,10,10">
 
-        <Grid Grid.Row="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-            <ScrollViewer x:Name="ScrollViewer" 
-                          VerticalScrollBarVisibility="Auto"
-                          HorizontalScrollBarVisibility="Disabled"
-                          PanningMode="VerticalOnly"
-                          PreviewMouseDown="ScrollViewer_PreviewMouseDown"
-                          PreviewMouseMove="ScrollViewer_PreviewMouseMove"
-                          PreviewMouseUp="ScrollViewer_PreviewMouseUp">
 
-                <!-- DataGrid -->
-                <DataGrid Name="dataGrid" 
-                          AutoGenerateColumns="False" 
-                          ItemsSource="{Binding Items}" 
-                          CanUserAddRows="False" 
-                          HeadersVisibility="Column"
-                          CanUserResizeColumns="False"
-                          CanUserReorderColumns="False"
-                          IsHitTestVisible="True" 
-                          SelectionMode="Single"
-                          IsTabStop="False"
-                          SelectionChanged="dataGrid_SelectionChanged">
-                    <DataGrid.Columns>
+            <Border Background="#dae2ea"
+                    CornerRadius="10,10,0,0"
+                    Margin="0,0,0,8">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                </Border.Effect>
 
-                        <!-- Name Column -->
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150*"/>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <!-- Subtract Button -->
-                        <DataGridTemplateColumn Header="Sub" Width="50*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="-" Click="SubButton_Click" Width="30"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <TextBlock Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
+                    <TextBlock Text="QTY" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2"/>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                    <TextBlock Text="UPR" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4"/>
+                    <TextBlock Text="Subtotal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5"/>
+                    <TextBlock Text="ENTN" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6"/>
+                    <TextBlock Text="DEL" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="7"/>
+                </Grid>
+            </Border>
 
-                        <!-- Quantity Column -->
-                        <DataGridTextColumn Header="QTY" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80*"/>
+            <Grid Grid.Row="1">
 
-                        <!-- Add Button -->
-                        <DataGridTemplateColumn Header="Add" Width="50*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="+" Click="AddButton_Click" Width="30"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                <ScrollViewer x:Name="ScrollViewer" 
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              PanningMode="VerticalOnly"
+                              PreviewMouseDown="ScrollViewer_PreviewMouseDown"
+                              PreviewMouseMove="ScrollViewer_PreviewMouseMove"
+                              PreviewMouseUp="ScrollViewer_PreviewMouseUp">
+                    <ScrollViewer.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomVerticalScrollBarStyle}"/>
+                    </ScrollViewer.Resources>
 
-                        <!-- Unit Price Column -->
-                        <DataGridTextColumn Header="UPR" Binding="{Binding UnitPrice}" Width="60*"/>
+                    <!-- DataGrid -->
+                    <DataGrid RowStyle="{StaticResource GridRowStyle}"
+                              CellStyle="{StaticResource GridCellStyle}"
+                              Name="dataGrid" 
+                              AutoGenerateColumns="False" 
+                              ItemsSource="{Binding Items}" 
+                              CanUserAddRows="False" 
+                              HeadersVisibility="None"
+                              CanUserResizeColumns="False"
+                              CanUserReorderColumns="False"
+                              IsHitTestVisible="True" 
+                              SelectionMode="Single"
+                              IsTabStop="False"
+                              GridLinesVisibility="None"
+                              RowHeight="40"
+                              SelectionChanged="dataGrid_SelectionChanged">
+                        <DataGrid.Columns>
 
-                        <!-- Subtotal Column -->
-                        <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}" Width="100*" IsReadOnly="True"/>
+                            <!-- Name Column -->
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                        <Setter Property="Padding" Value="5,0,0,0"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
 
-                        <!-- ENTN Button -->
-                        <DataGridTemplateColumn Header="ENTN" Width="60*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="ENTN" Click="EntnButton_Click" Width="60"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                            <!-- Subtract Button -->
+                            <DataGridTemplateColumn Header="Sub" Width="50*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="SubButton_Click"
+                                                Width="30" Height="35"
+                                                Background="Transparent"
+                                                Template="{StaticResource GridRedImageButtonTemplate}"
+                                                Tag="{StaticResource SubtractButtonImageBrush}">
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <!-- Delete Button -->
-                        <DataGridTemplateColumn Header="DEL" Width="50*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="X" Click="DeleteButton_Click" Background="Red" Foreground="White" Width="30"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                            <!-- Quantity Column -->
+                            <DataGridTextColumn Header="QTY" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="30*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                            <!-- Add Button -->
+                            <DataGridTemplateColumn Header="Add" Width="50*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="AddButton_Click" 
+                                                Width="30" Height="35"
+                                                Background="Transparent"
+                                                Template="{StaticResource GridGreenImageButtonTemplate}"
+                                                Tag="{StaticResource AdditionButtonImageBrush}">
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-            </ScrollViewer>
+                            <!-- Unit Price Column -->
+                            <DataGridTextColumn Header="UPR" Binding="{Binding UnitPrice}" Width="60*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!-- Subtotal Column -->
+                            <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}" Width="100*" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!-- ENTN Column -->
+                            <DataGridTextColumn Header="ENTN" Binding="{Binding ENTN}" Width="50*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <!-- Delete Button -->
+                            <DataGridTemplateColumn Header="DEL" Width="60*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="DeleteButton_Click"
+                                                Width="30"    
+                                                Background="Transparent"
+                                                Template="{StaticResource GridDeleteImageButtonTemplate}"
+                                                Tag="{StaticResource CloseButtonImageBrush}">
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </ScrollViewer>
+
+            </Grid>
+
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid Background="{StaticResource cs_BackColor}">
+
+                <Border CornerRadius="20"
+            Margin="10">
+                    <Grid>
+                        <Slider x:Name="slider" 
+                    Minimum="0" 
+                    Maximum="2"
+                    TickPlacement="BottomRight"
+                    TickFrequency="1"
+                    ValueChanged="slider_ValueChanged"
+                    Visibility="Hidden">
+                        </Slider>
+
+                        <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                            <Button x:Name="PrevBtn"
+                        Content="Prev"
+                        Margin="0,60,0,60"
+                        Click="PrevBtn_Click"/>
+
+
+
+                            <StackPanel x:Name="stackPanel"
+                        Orientation="Horizontal">
+                                <Grid x:Name="grid0"
+                          Height="200"
+                          
+                      Visibility="Visible">
+
+                                    <Border x:Name="bord0" 
+                                Height="200"
+                            Width="200"
+                            BorderThickness="5"
+                            CornerRadius="10"
+                                Margin="5,0,5,0"
+                            BorderBrush="{StaticResource cs_BorderColor}"/>
+
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Image Source="/Resources/Add_48px1.png"
+                               Grid.Row="0"
+                               Width="120"
+                               Height="120"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+
+                                        <TextBlock Text="Plus"
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Tahoma"
+                                   FontWeight="SemiBold"
+                                   Margin="0,30,0,5"/>
+                                    </StackPanel>
+
+                                </Grid>
+
+                                <Grid x:Name="grid1"
+                      Visibility="Visible"
+                          Height="180">
+
+                                    <Border x:Name="bord1" 
+                                Height="180"
+                            Width="200"
+                            BorderThickness="5"
+                            CornerRadius="10"
+                                Margin="5,0,5,0"
+                            BorderBrush="{StaticResource cs_BorderColor}"/>
+
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Image Source="/Resources/minus_96px1.png"
+                               Grid.Row="0"
+                               Width="120"
+                               Height="120"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+
+                                        <TextBlock Text="Subtract"
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Tahoma"
+                                   FontWeight="SemiBold"
+                                   Margin="0,30,0,5"/>
+                                    </StackPanel>
+
+
+                                </Grid>
+
+                                <Grid x:Name="grid2"
+                      Visibility="Visible"
+                          Height="180">
+
+                                    <Border x:Name="bord2" 
+                                Height="180"
+                            Width="200"
+                            BorderThickness="5"
+                            CornerRadius="10"
+                                Margin="5,0,5,0"
+                            BorderBrush="{StaticResource cs_BorderColor}"/>
+
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Image Source="/Resources/customer_icon.png"
+                               Grid.Row="0"
+                               Width="120"
+                               Height="120"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+
+                                        <TextBlock Text="Customer"
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Tahoma"
+                                   FontWeight="SemiBold"
+                                   Margin="0,30,0,5"/>
+                                    </StackPanel>
+
+
+                                </Grid>
+                            </StackPanel>
+
+                            <Button x:Name="nextBtn"
+                    Content="Next"
+                    Margin="0,60,0,60"
+                    Click="nextBtn_Click"/>
+
+                        </StackPanel>
+
+                        <StackPanel x:Name="elips0" Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,220,0,0">
+
+                            <Ellipse Height="10"
+                        Width="10"
+                        Fill="Black"
+                        Opacity="1"
+                        Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="0.25"
+                         Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="0.25"
+                         Margin="1"/>
+
+                        </StackPanel>
+
+                        <StackPanel x:Name="elips1" Orientation="Horizontal"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Margin="0,220,0,0"
+                        Visibility="Collapsed">
+
+                            <Ellipse Height="10"
+                        Width="10"
+                        Fill="Black"
+                        Opacity="0.25"
+                        Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="1"
+                         Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="0.25"
+                         Margin="1"/>
+
+                        </StackPanel>
+
+                        <StackPanel x:Name="elips2" Orientation="Horizontal"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Margin="0,220,0,0"
+                        Visibility="Collapsed">
+
+                            <Ellipse Height="10"
+                        Width="10"
+                        Fill="Black"
+                        Opacity="0.25"
+                        Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="0.25"
+                         Margin="1"/>
+
+                            <Ellipse Height="10"
+                         Width="10"
+                         Fill="Black"
+                         Opacity="1"
+                         Margin="1"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+            </Grid>
 
         </Grid>
 
+        <!-- 
+        
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        -->
+        <!--<Grid Grid.Row="2">
+
+            <dxg:GridControl Name="gridControl" ItemsSource="{Binding Items}">
+                <dxg:GridControl.View>
+                    <dxg:TableView AutoWidth="True" ShowGroupPanel="False" />
+                </dxg:GridControl.View>
+
+                <dxg:GridControl.Columns>
+
+                    --><!--Name Column--><!--
+                    <dxg:GridColumn FieldName="Name" Header="Name" Width="180"/>
+
+                    --><!--Subtract Button (-)--><!--
+                    <dxg:GridColumn Header="Sub" Width="50">
+                        <dxg:GridColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="SubButton_Click" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/Resources/minus_96px1.png" Width="20" Height="20"/>
+                                </Button>
+                            </DataTemplate>
+                        </dxg:GridColumn.CellTemplate>
+                    </dxg:GridColumn>
+
+                    --><!--Quantity Column--><!--
+                    <dxg:GridColumn FieldName="Quantity" Header="QTY" Width="50"/>
+
+                    --><!--Add Button (+)--><!--
+                    <dxg:GridColumn Header="Add" Width="50">
+                        <dxg:GridColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="AddButton_Click" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/Resources/Add_48px1.png" Width="20" Height="20"/>
+                                </Button>
+                            </DataTemplate>
+                        </dxg:GridColumn.CellTemplate>
+                    </dxg:GridColumn>
+
+                    --><!--Unit Price Column--><!--
+                    <dxg:GridColumn FieldName="UnitPrice" Header="UPR" Width="60"/>
+
+                    --><!--Subtotal Column--><!--
+                    <dxg:GridColumn FieldName="Subtotal" Header="Subtotal" Width="100" />
+
+                    --><!--ENTN Column--><!--
+                    <dxg:GridColumn FieldName="ENTN" Header="ENTN" Width="50"/>
+
+                    --><!--Delete Button (X)--><!--
+                    <dxg:GridColumn Header="DEL" Width="60">
+                        <dxg:GridColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="DeleteButton_Click" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/Resources/Close_32x32.png" Width="20" Height="20"/>
+                                </Button>
+                            </DataTemplate>
+                        </dxg:GridColumn.CellTemplate>
+                    </dxg:GridColumn>
+
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+
+        </Grid>-->
 
     </Grid>
 </Window>

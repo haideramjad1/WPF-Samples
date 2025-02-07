@@ -11,7 +11,391 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
 
-    <Window.Resources>
+    <Border>
+        <Grid>
+            <Border CornerRadius="10"
+            BorderThickness ="10"
+            Margin="0,0,0,450">
+
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightGray" Offset="0"/>
+                        <!--<GradientStop Color="#273F6A" Offset="0.5"/>-->
+                        <!--<GradientStop Color="#A3DFFF" Offset="1"/>-->
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <!--<GradientStop Color="White" Offset="0"/>-->
+                        <GradientStop Color="#003187" Offset="0.5"/>
+                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="155"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="3"
+                  Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                            Margin="0,3,3,8"
+                            Template="{StaticResource ImageButtonTemplate}"
+                            Tag="{StaticResource CloseButtonImageBrush}"
+                            Click="Close_Button_Click">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="0"
+                      Width="35"
+                  Grid.Row="0">
+                        <Image x:Name="FormPicture" 
+                       Source="pack://application:,,,/Resources/customer_icon.png"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1"
+                  Grid.Row="0">
+                        <Border CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock x:Name="FormTitle" 
+                                       Text="Add Customer"
+                                       FontSize="30" 
+                                       FontWeight="Medium"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+
+
+            <Border CornerRadius="30"
+            Margin="40,80,40,10">
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+
+                </Border.Effect>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <!--<GradientStop Color="#1A59C8" Offset="0.5"/>-->
+                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="250*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="Name *       :"
+                               Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="0"
+                      Grid.Column="1" >
+                            <TextBox x:Name="Name_TextEdit"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                 TextChanged="ForPlaceHolder_TextChanged">
+                            </TextBox>
+
+                            <TextBlock Name="NameTextBlock" 
+                               Text=" Customer Name" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+
+                            <!--<TextBlock Name="ContactNameError_Label" 
+                                   Text="Contact Name not Provided!!!"
+                                   Style="{StaticResource ErrorLabelStyle}">
+                        </TextBlock>-->
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <TextBlock Text="Mobile No * :"
+                           Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1"
+                      Grid.Column="1">
+                            <TextBox x:Name="MobileNo_TextEdit"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                 TextChanged="ForPlaceHolder_TextChanged">
+                            </TextBox>
+
+                            <TextBlock Name="MobileTextBlock" 
+                               Text=" Mobile No" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+
+                            <!--<TextBlock Name="MobileNumber_ErrorLabel" 
+                                   Text="Mobile Number not Provided!!!"
+                                   Style="{StaticResource ErrorLabelStyle}">
+                        </TextBlock>-->
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <TextBlock Text="Email          :"
+                           Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="2"
+                      Grid.Column="1" >
+                            <TextBox x:Name="Email_TextEdit"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                 TextChanged="ForPlaceHolder_TextChanged">
+                            </TextBox>
+
+                            <TextBlock Name="EmailTextBlock" 
+                               Text=" Email" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="3">
+                            <TextBlock Text="Zip             :"
+                           Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="3"
+                      Grid.Column="1">
+                            <TextBox x:Name="Zip_TextEdit"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                 TextChanged="ForPlaceHolder_TextChanged">
+                            </TextBox>
+
+                            <TextBlock Name="ZipTextBlock" 
+                               Text=" Zip Code" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="4">
+                            <TextBlock Text="DOB           :"
+                           Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="4"
+                      Grid.Column="1">
+                            <DatePicker Style="{StaticResource CustomDatePickerStyle}"                               x:Name="DOB_DateEdit" 
+                                    FontSize="25"
+                                    Margin="10,0,10,0"
+                                    FontFamily="Tahoma"
+                                    VerticalAlignment="Center"
+                                    Grid.Column="1" 
+                                    Height="39">
+                            </DatePicker>
+                        </Grid>
+
+                        <Grid Grid.Row="5">
+                            <TextBlock Text="CR Limits    :"
+                           Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="5"
+                      Grid.Column="1">
+                            <TextBox x:Name="CreditLimit_TextEdit"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                 TextChanged="ForPlaceHolder_TextChanged">
+                            </TextBox>
+
+                            <TextBlock Name="CRLimitTextBlock" 
+                               Text=" Credit Limit" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <TextBlock Text="Where you Heard About us :"
+                           FontFamily="Tahoma"
+                           FontSize="25" 
+                           Padding="10,0,0,0"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <ComboBox x:Name="HearAboutUs_ComboEdit" 
+                              Margin="110,0,110,0" 
+                              VerticalAlignment="Center"
+                              FontSize="25" 
+                              FontFamily="Tahoma"
+                              Height="38"
+                              SelectionChanged="HearAboutUs_ComboEdit_SelectionChanged">
+                            <ComboBox.Template>
+                                <ControlTemplate TargetType="ComboBox">
+                                    <Grid>
+                                        <Border Background="White"
+                                            BorderBrush="LightGray"
+                                            BorderThickness="1"
+                                            CornerRadius="10">
+                                            <Grid>
+                                                <ContentPresenter x:Name="ContentPresenter"
+                                                              ContentTemplate="{TemplateBinding ItemTemplate}"
+                                                              Content="{TemplateBinding SelectionBoxItem}"
+                                                              HorizontalAlignment="Left"
+                                                              VerticalAlignment="Center"
+                                                              Margin="10,0,30,0" />
+
+                                                <ToggleButton x:Name="ToggleButton"
+                                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Focusable="False"
+                                                          ClickMode="Press"
+                                                          HorizontalAlignment="Right"
+                                                          VerticalAlignment="Center"
+                                                          Width="30"
+                                                          Height="30"
+                                                          Margin="0,0,5,0">
+                                                    <ToggleButton.Template>
+                                                        <ControlTemplate TargetType="ToggleButton">
+                                                            <Grid>
+                                                                <Border Background="White"
+                                                                    BorderBrush="Gray"
+                                                                    BorderThickness="2"
+                                                                    CornerRadius="5">
+                                                                    <Path x:Name="Arrow"
+                                                                      HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"
+                                                                      Data="M0,0 L5,10 L10,0 Z"
+                                                                      Fill="Black" />
+                                                                </Border>
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </ToggleButton.Template>
+                                                </ToggleButton>
+                                            </Grid>
+                                        </Border>
+
+                                        <Popup x:Name="PART_Popup"
+                                           Placement="Bottom"
+                                           StaysOpen="False"
+                                           IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                           AllowsTransparency="True">
+                                            <Border Background="White"
+                                                BorderBrush="LightGray"
+                                                BorderThickness="1"
+                                                CornerRadius="5"
+                                                MinWidth="{TemplateBinding ActualWidth}">
+
+                                                <ScrollViewer>
+                                                    <ItemsPresenter x:Name="PART_ItemsPresenter" />
+                                                </ScrollViewer>
+                                            </Border>
+                                        </Popup>
+                                    </Grid>
+                                </ControlTemplate>
+                            </ComboBox.Template>
+
+                            <ComboBoxItem Content="Friends" />
+                            <ComboBoxItem Content="Social Media" />
+                            <ComboBoxItem Content="Promotions" />
+                        </ComboBox>
+
+                        <TextBlock Name="HearComboBoxTextBlock" 
+                               Text=" SelectOption" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,5">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="162*"/>
+                            <ColumnDefinition Width="auto" MinWidth="105"/>
+                            <ColumnDefinition Width="auto" MinWidth="130"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="18*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1">
+                            <Button x:Name="Save_Btn" 
+                                Content="Add"
+                                Style="{StaticResource GreenButtonStyle}"
+                                Click="Save_Btn_Click"
+                                Margin="3,20,3,22">
+                            </Button>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Button x:Name="AddAndGo_Btn" 
+                                Content="Add &amp; Go"
+                                Style="{StaticResource YellowButtonStyle}"
+                                Click="AddAndGo_Btn_Click"
+                                Margin="3,20,3,22">
+                            </Button>
+                        </Grid>
+
+                        <Grid  Grid.Column="3">
+                            <Button x:Name="NoBtn" 
+                                Content="Close"
+                                Style="{StaticResource RedButtonStyle}"
+                                Click="Close_Button_Click"
+                                Margin="3,20,3,22">
+                            </Button>
+                        </Grid>
+
+                        <Grid Grid.Column="3">
+
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+        </Grid>
+    </Border>
+
+    <!--<Window.Resources>
 
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White" />
@@ -123,7 +507,7 @@
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="White" Offset="0"/>
                         <GradientStop Color="#A1D7FF" Offset="0.5"/>
-                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
+                        --><!--<GradientStop Color="#2E93F3" Offset="1"/>--><!--
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -163,12 +547,12 @@
                           Grid.Row="3">
                         <Border CornerRadius="10">
 
-                            <!--<Border.Background>
+                            --><!--<Border.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                         <GradientStop Color="#2E93F3" Offset="0"/>
                                         <GradientStop Color="#A1D7FF" Offset="1"/>
                                     </LinearGradientBrush>
-                                </Border.Background>-->
+                                </Border.Background>--><!--
 
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
@@ -199,7 +583,7 @@
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="White" Offset="0"/>
                         <GradientStop Color="#A1D7FF" Offset="0.5"/>
-                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
+                        --><!--<GradientStop Color="#2E93F3" Offset="1"/>--><!--
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -507,7 +891,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!--<Grid  Grid.Column="0" Margin="10,0,0,20">
+                        --><!--<Grid  Grid.Column="0" Margin="10,0,0,20">
                         <Button x:Name="NoBtn" 
                                     Content="Close"
                                     HorizontalAlignment="Stretch" 
@@ -522,7 +906,7 @@
                                 </LinearGradientBrush>
                             </Button.Background>
                         </Button>
-                    </Grid>-->
+                    </Grid>--><!--
 
                     </Grid>
 
@@ -559,5 +943,5 @@
             </Grid>
 
         </Grid>
-    </Border>
+    </Border>-->
 </Window>

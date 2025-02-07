@@ -1,0 +1,331 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ImageBrush x:Key="SubtractButtonImageBrush" ImageSource="/Resources/minus_96px1.png" />
+    <ImageBrush x:Key="AdditionButtonImageBrush" ImageSource="/Resources/Add_48px1.png" />
+    
+    <!-- Style for DataGrid -->
+    <Style x:Key="GridRowStyle" TargetType="DataGridRow">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="0,3,0,0"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+        <Setter Property="ValidationErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock Foreground="Red" Margin="2,0,0,0" Text="!" VerticalAlignment="Center"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridRow}">
+                    <Border x:Name="DGR_Border" 
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="0"
+                            SnapsToDevicePixels="True"
+                            Padding="0,8"
+                            CornerRadius="10">
+
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </SelectiveScrollingGrid.RowDefinitions>
+
+                            <DataGridCellsPresenter Grid.Column="1" 
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}" 
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <DataGridDetailsPresenter Grid.Column="1" 
+                                                      Grid.Row="1" 
+                                                      SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource= {RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                      Visibility="{TemplateBinding DetailsVisibility}"/>
+                            <DataGridRowHeader Grid.RowSpan="2"
+                                               SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                               Visibility="{Binding HeaderVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+
+                        </SelectiveScrollingGrid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="True"/>
+                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="GridCellStyle" TargetType="DataGridCell">
+        <!-- Default Background and Foreground -->
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+        <!-- When Selected -->
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="LightBlue"/>
+                <!-- Same as hover color -->
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+
+    <ControlTemplate x:Key="GridRedImageButtonTemplate" TargetType="Button">
+        <Grid RenderTransformOrigin="0.5,0.5">
+            <!-- Scaling Transform -->
+            <Grid.RenderTransform>
+                <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+            </Grid.RenderTransform>
+
+            <!-- Background Border -->
+            <Border x:Name="BackgroundBorder"
+                Background="{TemplateBinding Background}" 
+                CornerRadius="18"/>
+
+            <!-- Image Rectangle using ImageBrush -->
+            <Rectangle Width="30" Height="35"
+                   Fill="{TemplateBinding Tag}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <!-- Hover Effect -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#F44336"/>
+            </Trigger>
+
+            <!-- Pressed Effect (Click) with Scaling Animation -->
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#F44336"/>
+            </Trigger>
+
+            <!-- Reset Scale when released -->
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="GridGreenImageButtonTemplate" TargetType="Button">
+        <Grid RenderTransformOrigin="0.5,0.5">
+            <!-- Scaling Transform -->
+            <Grid.RenderTransform>
+                <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+            </Grid.RenderTransform>
+
+            <!-- Background Border -->
+            <Border x:Name="BackgroundBorder"
+                Background="{TemplateBinding Background}" 
+                CornerRadius="18"/>
+
+            <!-- Image Rectangle using ImageBrush -->
+            <Rectangle Width="30" Height="35"
+                   Fill="{TemplateBinding Tag}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <!-- Hover Effect -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#4CAF50"/>
+            </Trigger>
+
+            <!-- Pressed Effect (Click) with Scaling Animation -->
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#4CAF50"/>
+            </Trigger>
+
+            <!-- Reset Scale when released -->
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="GridDeleteImageButtonTemplate" TargetType="Button">
+        <Grid RenderTransformOrigin="0.5,0.5">
+            <!-- Scaling Transform -->
+            <Grid.RenderTransform>
+                <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+            </Grid.RenderTransform>
+
+            <!-- Background Border -->
+            <Border x:Name="BackgroundBorder"
+                Background="{TemplateBinding Background}" 
+                CornerRadius="5"/>
+
+            <!-- Image Rectangle using ImageBrush -->
+            <Rectangle Width="30" Height="40"
+                   Fill="{TemplateBinding Tag}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <!-- Hover Effect -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#C4382A"/>
+            </Trigger>
+
+            <!-- Pressed Effect (Click) with Scaling Animation -->
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="BackgroundBorder" Property="Background" Value="#C4382A"/>
+            </Trigger>
+
+            <!-- Reset Scale when released -->
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="CustomVerticalScrollBarStyle" TargetType="ScrollBar">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Width" Value="30"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseAllButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid RenderTransformOrigin="0.5,0.5">
+                        <!-- Scaling Transform -->
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+                        </Grid.RenderTransform>
+
+                        <!-- Background Border -->
+                        <Border x:Name="Border"
+                        Background="{TemplateBinding Background}" 
+                        CornerRadius="{TemplateBinding Tag}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Effect -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+
+                        <!-- Pressed Effect (Click) with Scaling Animation -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+
+                        <!-- Reset Scale when released -->
+                        <Trigger Property="IsPressed" Value="False">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

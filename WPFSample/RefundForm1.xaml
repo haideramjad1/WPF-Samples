@@ -5,8 +5,251 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSample"
         mc:Ignorable="d"
-        Title="RefundForm1" Height="515" Width="985">
-    <Grid>
-        
-    </Grid>
+        Title="RefundForm1" Height="515" Width="985"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Border CornerRadius="30" 
+            Background="White"
+            Margin="15">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+        </Border.Effect>
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Border CornerRadius="30"
+                            Margin="15"
+                            Background="White">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="51*"/>
+                            <RowDefinition Height="62*"/>
+                            <RowDefinition Height="59*"/>
+                            <RowDefinition Height="61*"/>
+                            <RowDefinition Height="222*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Border Background="#dae2ea"
+                                    CornerRadius="20,20,0,0">
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90*"/>
+                                        <ColumnDefinition Width="90*"/>
+                                        <ColumnDefinition Width="111*"/>
+                                        <ColumnDefinition Width="90*"/>
+                                        <ColumnDefinition Width="67*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                                    <TextBlock Text="QTY Left" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="20"/>
+                                    <TextBlock Text="Refund QTY" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="20"/>
+                                    <TextBlock Text="Return" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontSize="20"/>
+                                    <TextBlock Text="DEL" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontSize="20"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="115*"/>
+                                    <ColumnDefinition Width="91*"/>
+                                    <ColumnDefinition Width="62*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Milk" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
+                                <TextBlock Text="0" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}"/>
+                                <TextBlock Text="- 5 +" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+                                <CheckBox Name="MyCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                                
+                                <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
+                                
+                                <Button Content="DEL" Grid.Column="4" Style="{StaticResource RedButtonStyle}" Margin="10" FontSize="20"/>
+                            </Grid>
+                        </Grid>
+                        
+                        <Grid Grid.Row="2">
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="115*"/>
+                                    <ColumnDefinition Width="91*"/>
+                                    <ColumnDefinition Width="62*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Tea" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
+                                <TextBlock Text="4" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}"/>
+                                <TextBlock Text="- 1 +" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+
+                                <CheckBox Name="MyCheckBox1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                                
+                                <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
+                                <Button Content="DEL" Grid.Column="4" Style="{StaticResource RedButtonStyle}" Margin="10" FontSize="20"/>
+                            </Grid>
+                        </Grid>
+
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="353*"/>
+                    <RowDefinition Height="72*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="272*"/>
+                        <ColumnDefinition Width="105*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+
+                        <TextBox x:Name="Name_TextEdit"
+                             Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0">
+                        </TextBox>
+
+                        <TextBlock Name="NameTextBlock" 
+                                   Text=" Name / SKU / Scan Bar Code" 
+                                   Style="{StaticResource PlaceholderTextBlockStyle}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button x:Name="Clear" Content="CE"
+                                Style="{StaticResource KeyboardButtonStyle}"
+                                Click="Clear_Click"
+                                Margin="20,15,20,20"/>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <Border CornerRadius="30"
+                            Margin="5,0,15,0"
+                            Background="White">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+                        </Border.Effect>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Column="0"
+                                  Grid.Row="0">
+
+                                <Button x:Name="btn1" Content="milk"
+                                        Style="{StaticResource KeyboardButtonStyle}"
+                                        Margin="10"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1"
+                                  Grid.Row="0">
+
+                                <Button x:Name="btn2" Content="tea"
+                                        Style="{StaticResource KeyboardButtonStyle}"
+                                        Margin="10"/>
+                            </Grid>
+
+                            <Grid Grid.Column="2"
+                                  Grid.Row="0">
+
+                                <Button x:Name="btn3" Content="mobile"
+                                        Style="{StaticResource KeyboardButtonStyle}"
+                                        Margin="10"/>
+                            </Grid>
+
+                            <Grid Grid.Column="3"
+                                  Grid.Row="0">
+
+                                <Button x:Name="btn4" Content="tissue"
+                                        Style="{StaticResource KeyboardButtonStyle}"
+                                        Margin="10"/>
+                            </Grid>
+
+                            <Grid Grid.Column="0"
+                                  Grid.Row="1">
+
+                                <Button x:Name="btn5" Content="bottle"
+                                        Style="{StaticResource KeyboardButtonStyle}"
+                                        Margin="10"/>
+                            </Grid>
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="272*"/>
+                        <ColumnDefinition Width="105*"/>
+                        <ColumnDefinition Width="105*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1">
+                        <Button x:Name="DoneBtn" 
+                                Content="Done"
+                                Style="{StaticResource GreenButtonStyle}"
+                                Click="DoneBtn_Click"
+                                Margin="5,10,5,10">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Button x:Name="CloseBtn" 
+                                Content="Close"
+                                Style="{StaticResource RedButtonStyle}"
+                                Click="CloseBtn_Click"
+                                Margin="5,10,5,10">
+                        </Button>
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
 </Window>

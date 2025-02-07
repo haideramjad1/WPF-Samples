@@ -7,8 +7,8 @@
     <ImageBrush x:Key="MagnifyButtonImageBrush" ImageSource="/Resources/Magnifier.png"/>
     <ImageBrush x:Key="NextButtonImageBrush" ImageSource="/Resources/next.png" />
     <ImageBrush x:Key="PrevButtonImageBrush" ImageSource="/Resources/previous.png" />
-    
-    
+
+
     <Style x:Key="AllButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="50"/>
@@ -305,4 +305,233 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <!--this is the style for text which will be used for the names-->
+    <Style x:Key="LeftAlignedTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+
+    </Style>
+
+    <!--this is the style for combobox to have curve corners-->
+    <Style x:Key="CommonTextBoxStyle" TargetType="TextBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Height" Value="40" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10"
+                    Padding="10,3,0,0">
+                        <ScrollViewer Margin="0" 
+                      x:Name="PART_ContentHost" 
+                      VerticalScrollBarVisibility="Hidden" 
+                      HorizontalScrollBarVisibility="Hidden" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--this is the code style used for PlaceHolder-->
+    <Style x:Key="PlaceholderTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="Margin" Value="15,0,10,0" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+
+    <!--this is the style for Date Picker-->
+    <Style x:Key="CustomDatePickerStyle" TargetType="DatePicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DatePicker">
+                    <Border CornerRadius="10"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0"
+                            CornerRadius="10"
+                            Background="White"
+                            BorderThickness="1"
+                            Margin="0,0,10,0">
+                                <DatePickerTextBox x:Name="PART_TextBox"
+                                           IsReadOnly="True"
+                                           VerticalContentAlignment="Center"
+                                           FontSize="20"
+                                           Margin="5,0,0,0"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           Background="Transparent"
+                                           Foreground="Gray"/>
+                            </Border>
+
+                            <Button x:Name="PART_Button"
+                            Grid.Column="1"
+                            Margin="0,0,5,0"
+                            Width="40"
+                            HorizontalAlignment="Center"
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            FocusVisualStyle="{x:Null}">
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="CalenderBorder" 
+                                        CornerRadius="5"
+                                        Background="White">
+                                            <ContentControl Content="📅" 
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="CalenderBorder" Property="Background" Value="LightGray" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                            </Button>
+
+                            <Popup x:Name="PART_Popup"
+                           AllowsTransparency="True"
+                           Placement="Bottom"
+                           StaysOpen="False"
+                           IsOpen="{Binding IsDropDownOpen, 
+                           RelativeSource={RelativeSource TemplatedParent}}">
+                                <Calendar x:Name="PART_Calendar" />
+                            </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="BasesKeyboardButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,2" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+            CornerRadius="80"
+            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DefaultHoverBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+         To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+         To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="LightGreyKeyboardButtonStyle" BasedOn="{StaticResource BasesKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
+    </Style>
+
+    <SolidColorBrush x:Key="greyBackground" Color="#2D2825"/>
+    <SolidColorBrush x:Key="greyshadeBackground" Color="#868382"/>
+
+    <Style x:Key="BaseShiftKeyboardButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                CornerRadius="25"
+                Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="KeyboardBlackButtonStyle" BasedOn="{StaticResource BaseShiftKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource greyBackground}" />
+        <Setter Property="Tag" Value="{StaticResource greyshadeBackground}" />
+    </Style>
+    
+    <Style x:Key="KeyboardwhiteButtonStyle" BasedOn="{StaticResource BaseShiftKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
+    </Style>
 </ResourceDictionary>
