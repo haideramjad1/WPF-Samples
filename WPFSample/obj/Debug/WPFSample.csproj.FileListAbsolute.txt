@@ -130,3 +130,5 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\GeneratedInternalTypeHel
 D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFUserControls\RefundGridUserControl.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\NumericKeyboard1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\NumericKeyboard1.baml
