@@ -119,5 +119,10 @@ namespace WPFSample
         {
 
         }
+
+        private void Enter_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

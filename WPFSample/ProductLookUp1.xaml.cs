@@ -10,8 +10,7 @@ namespace WPFSample
     public partial class ProductLookUp1 : Window
     {
         private Point _startPoint;
-        private Point _lastTouchPoint;
-        private bool _isDragging = false;  // Flag to track if we're dragging
+        private bool _isDragging = false;
 
         public ProductLookUp1()
         {

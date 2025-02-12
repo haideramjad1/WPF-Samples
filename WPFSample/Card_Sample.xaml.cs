@@ -69,7 +69,7 @@ namespace WPFSample
 
         private void butn2_Click(object sender, RoutedEventArgs e)
         {
-            Items.Add(new Item { Name = "New Item long text for testing purpose to show what will happen", Quantity = 1, UnitPrice = 10, ENTN = 1 });
+            Items.Add(new Item { Name = "New Item long text for testing purpose to show what will happen to the long text if it is provided", Quantity = 1, UnitPrice = 10, ENTN = 1 });
         }
 
         private void ScrollViewer_PreviewMouseDown(object sender, MouseButtonEventArgs e)

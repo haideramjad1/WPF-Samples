@@ -150,6 +150,9 @@
     <Compile Include="AddCoupon1.xaml.cs">
       <DependentUpon>AddCoupon1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ButtonForSaleScreen.xaml.cs">
+      <DependentUpon>ButtonForSaleScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Card_Sample.xaml.cs">
       <DependentUpon>Card_Sample.xaml</DependentUpon>
     </Compile>
@@ -169,7 +172,14 @@
     <Compile Include="SarchCustomer1.xaml.cs">
       <DependentUpon>SarchCustomer1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFUserControls\RefundGridUserControl.xaml.cs">
+      <DependentUpon>RefundGridUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCoupon1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ButtonForSaleScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUserControls\RefundGridUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -287,6 +301,30 @@
     <Resource Include="Resources\Add_48px1.png" />
     <Resource Include="Resources\minus_32px.png" />
     <Resource Include="Resources\minus_96px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BackSpace_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shift_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shift_Image2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Enter_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\InnerRing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PressButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OuterRing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\InnerRing2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets')" />

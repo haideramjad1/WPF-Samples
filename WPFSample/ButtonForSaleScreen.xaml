@@ -1,0 +1,82 @@
+﻿<Window x:Class="WPFSample.ButtonForSaleScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="ButtonForSaleScreen" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Button Background="Transparent" BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Outer Ring (Static) -->
+                            <Image Source="/Resources/OuterRing.png"/>
+
+                            <!-- Inner Image (Shrinks to Center on Press) -->
+                            <Image Source="/Resources/InnerRing2.png" x:Name="InnerImage"
+                           RenderTransformOrigin="0.5,0.5">
+                                <!-- This ensures it scales from the center -->
+                                <Image.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+
+                        <!-- Press Animation -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Shrink Effect (Evenly from All Sides) -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                     Storyboard.TargetProperty="ScaleX"
+                                                     To="0.9" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                     Storyboard.TargetProperty="ScaleY"
+                                                     To="0.9" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Reset Shrink Effect -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                     Storyboard.TargetProperty="ScaleX"
+                                                     To="1" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                     Storyboard.TargetProperty="ScaleY"
+                                                     To="1" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+
+
+    </Grid>
+    
+</Window>

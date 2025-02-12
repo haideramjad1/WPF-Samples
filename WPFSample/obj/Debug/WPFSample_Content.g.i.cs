@@ -8,9 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/add_32px.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/add_48px1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/minus_32px.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/minus_96px1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/innerring2.png")]
 
 

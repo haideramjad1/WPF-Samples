@@ -125,3 +125,8 @@ D:\software development\WPF-Samples\WPFSample\bin\Debug\DevExpress.Xpo.v22.2.xml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\Styles\CardsStyle.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\Keyboard1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\Keyboard1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFUserControls\RefundGridUserControl.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFUserControls\RefundGridUserControl.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.baml

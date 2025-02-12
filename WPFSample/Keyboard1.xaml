@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSample"
         mc:Ignorable="d"
-        Title="Keyboard1" Height="350" Width="650"
+        Title="Keyboard1" Height="410" Width="800"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
@@ -42,20 +42,38 @@
                 <Grid Grid.Column="1" 
                       Grid.Row="1">
 
-                    <TextBox x:Name="SearchTextBox"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBox x:Name="SearchTextBox"
                              Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
                              TextChanged="SearchTextBox_TextChanged"
-                             Height="50">
-                    </TextBox>
+                             Height="50"
+                             FontSize="30" >
+                        </TextBox>
 
-                    <TextBlock Name="SearchTextBlock" 
+                        <TextBlock Name="SearchTextBlock" 
                                Text=" Type Here..." 
                                FontSize="30" 
                                Style="{StaticResource PlaceholderTextBlockStyle}">
-                    </TextBlock>
-                    
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button x:Name="Back_Button"
+                                Style="{StaticResource KeyboardBlackButtonStyle}"
+                                Click="Back_Button_Click"
+                                Margin="0,15,0,15">
+                            <Image Source="/Resources/BackSpace_Image.png"
+                                   Margin="0,2,0,0"/>
+                        </Button>
+                    </Grid>
+
                 </Grid>
-                
+
                 <Grid Grid.Column="1"
                       Grid.Row="3">
                     <Grid.RowDefinitions>
@@ -140,8 +158,7 @@
 
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="13*"/>
                             <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="8*"/>
@@ -149,34 +166,51 @@
                             <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="8*"/>
                             <ColumnDefinition Width="8*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="13*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="Shift_Button" 
-                                Content="Shift" Grid.Column="0" 
+                        <Grid Grid.Column="0">
+                            <Button x:Name="Shift_Button"
                                 Style="{StaticResource KeyboardBlackButtonStyle}"
                                 Click="Shift_Button_Click"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Shift" VerticalAlignment="Center" Margin="15,0,0,0"
+                                           FontSize="30" Foreground="White"/>
+                                <Image Source="/Resources/Shift_Image2.png" Width="46" Height="53"/>
+                            </StackPanel>
+                            
+                        </Grid>
                         
-                        <Button x:Name="Z_Button" Content="z" Grid.Column="2" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="Z_Button" Content="z" Grid.Column="1" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="X_Button" Content="x" Grid.Column="3" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="X_Button" Content="x" Grid.Column="2" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="C_Button" Content="c" Grid.Column="4" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="C_Button" Content="c" Grid.Column="3" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="V_Button" Content="v" Grid.Column="5" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="V_Button" Content="v" Grid.Column="4" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="B_Button" Content="b" Grid.Column="6" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="B_Button" Content="b" Grid.Column="5" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="N_Button" Content="n" Grid.Column="7" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="N_Button" Content="n" Grid.Column="6" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
-                        <Button x:Name="M_Button" Content="m" Grid.Column="8" Style="{StaticResource LightGreyKeyboardButtonStyle}"
+                        <Button x:Name="M_Button" Content="m" Grid.Column="7" Style="{StaticResource LightGreyKeyboardButtonStyle}"
     Click="KeyboardButton_Click"/>
 
-                        <Button x:Name="Back_Button"  
-                                Content="Back" Grid.Column="10" 
+                        <Button x:Name="Enter_Button" Grid.Column="8" 
                                 Style="{StaticResource KeyboardBlackButtonStyle}"
-                                Click="Back_Button_Click"/>
+                                Click="Enter_Button_Click">
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/Enter_Image.png" Width="46" Height="53"
+                                       Margin="-10,0,0,0"/>
+                                
+                                <TextBlock Text="Enter" VerticalAlignment="Center" Margin="-1,0,0,0"
+                                    FontSize="25" Foreground="White"/>
+                                
+                            </StackPanel>
+                            
+                        </Button>
                     </Grid>
 
                     <Grid Grid.Row="3" Margin="0,1,0,1">

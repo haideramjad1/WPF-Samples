@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\software development\WPF-Samples\WPFSample\App.xaml
-12533366077
+14560938501
 
-1518585673
+17-1463968023
 43-2071863777
-AddCoupon1.xaml;Card_Sample.xaml;ErrorMessageShow1.xaml;Keyboard1.xaml;login1.xaml;MainWindow.xaml;ProductLookUp1.xaml;RefundForm1.xaml;SarchCustomer1.xaml;Styles\ButtonStyle.xaml;Styles\CardsStyle.xaml;Styles\DataGridStyles.xaml;
+AddCoupon1.xaml;ButtonForSaleScreen.xaml;Card_Sample.xaml;ErrorMessageShow1.xaml;Keyboard1.xaml;login1.xaml;MainWindow.xaml;ProductLookUp1.xaml;RefundForm1.xaml;SarchCustomer1.xaml;Styles\ButtonStyle.xaml;Styles\CardsStyle.xaml;Styles\DataGridStyles.xaml;WPFUserControls\RefundGridUserControl.xaml;
 
-True
+False
 
