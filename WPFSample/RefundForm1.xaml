@@ -112,17 +112,17 @@
 
                                         <Grid Grid.Row="0">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="103*"/>
-                                                <ColumnDefinition Width="78*"/>
-                                                <ColumnDefinition Width="100*"/>
-                                                <ColumnDefinition Width="75*"/>
+                                                <ColumnDefinition Width="200*"/>
+                                                <ColumnDefinition Width="80*"/>
+                                                <!--<ColumnDefinition Width="100*"/>
+                                                <ColumnDefinition Width="75*"/>-->
                                                 <ColumnDefinition Width="63*"/>
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="27" Width="52"/>
                                             <TextBlock Text="QTY" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="20" Height="27" Width="36"/>
-                                            <TextBlock Text="Refund" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="20" Height="27" Width="62"/>
-                                            <TextBlock Text="All" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontSize="20" Height="27" Width="22"/>
+                                            <!--<TextBlock Text="Refund" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="20" Height="27" Width="62"/>
+                                            <TextBlock Text="All" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontSize="20" Height="27" Width="22"/>-->
                                             <TextBlock Text="DEL" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontSize="20" Height="27" Width="34"/>
                                         </Grid>
                                     </Border>
@@ -131,27 +131,27 @@
                                 <Grid Grid.Row="1">
                                     <Grid Grid.Row="0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="90*"/>
-                                            <ColumnDefinition Width="90*"/>
-                                            <ColumnDefinition Width="115*"/>
-                                            <ColumnDefinition Width="91*"/>
-                                            <ColumnDefinition Width="62*"/>
+                                            <ColumnDefinition Width="200*"/>
+                                            <ColumnDefinition Width="70*"/>
+                                            <!--<ColumnDefinition Width="115*"/>
+                                            <ColumnDefinition Width="91*"/>-->
+                                            <ColumnDefinition Width="60*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Text="Milk" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
-                                        <TextBlock Text="0" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}"/>
-                                        <TextBlock Text="5" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+                                        <TextBlock Text="0" HorizontalAlignment="Left" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}" Margin="40,0,0,0"/>
+                                        <!--<TextBlock Text="5" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
                                         <CheckBox Name="MyCheckBox" 
                                                   IsChecked="True"
                                                   VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"
-                                                  Grid.Column="3"/>
+                                                  Grid.Column="3"/>-->
 
                                         <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
 
                                         <Button x:Name="C1_Button"
                                                 Grid.Column="4" 
-                                                Margin="5"
+                                                Margin="25,5,5,5"
                                                 Template="{StaticResource ImageButtonTemplate}"
                                                 Tag="{StaticResource CloseButtonImageBrush}"
                                                 Click="CloseBtn_Click">
@@ -163,23 +163,23 @@
                                 <Grid Grid.Row="2">
                                     <Grid Grid.Row="0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="90*"/>
-                                            <ColumnDefinition Width="90*"/>
-                                            <ColumnDefinition Width="115*"/>
-                                            <ColumnDefinition Width="91*"/>
-                                            <ColumnDefinition Width="62*"/>
+                                            <ColumnDefinition Width="200*"/>
+                                            <ColumnDefinition Width="70*"/>
+                                            <!--<ColumnDefinition Width="115*"/>
+                                            <ColumnDefinition Width="91*"/>-->
+                                            <ColumnDefinition Width="60*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Text="Tea" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
-                                        <TextBlock Text="4" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}"/>
-                                        <TextBlock Text="1" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+                                        <TextBlock Text="4" HorizontalAlignment="Left" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}" Margin="40,0,0,0"/>
+                                        <!--<TextBlock Text="1" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
 
-                                        <CheckBox Name="MyCheckBox1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                                        <CheckBox Name="MyCheckBox1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>-->
 
                                         <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
                                         <Button x:Name="C2_Button"
                                                 Grid.Column="4" 
-                                                Margin="5"
+                                                Margin="25,5,5,5"
                                                 Template="{StaticResource ImageButtonTemplate}"
                                                 Tag="{StaticResource CloseButtonImageBrush}"
                                                 Click="CloseBtn_Click">
@@ -249,8 +249,6 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
