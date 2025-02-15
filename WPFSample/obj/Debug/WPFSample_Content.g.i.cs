@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/innerring2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/innerring5.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/outerring5.png")]
 
 

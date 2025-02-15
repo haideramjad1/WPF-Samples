@@ -7,6 +7,76 @@
         mc:Ignorable="d"
         Title="ButtonForSaleScreen" Height="450" Width="800">
 
+    <Window.Resources>
+
+        <LinearGradientBrush x:Key="GreyGradientBackground" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="White" Offset="0.3"/>
+            <GradientStop Color="#AFAEAF" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="GreyHoverBackground" Color="#AFAEAF" />
+        
+        <Style x:Key="SampleButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                                BorderBrush="Black"
+                                BorderThickness="2"
+                CornerRadius="50"
+                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+             To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GreyButtonStyle" BasedOn="{StaticResource SampleButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource GreyGradientBackground}" />
+            <Setter Property="Tag" Value="{StaticResource GreyHoverBackground}" />
+        </Style>
+        
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,10 +96,10 @@
                     <ControlTemplate TargetType="Button">
                         <Grid>
                             <!-- Outer Ring (Static) -->
-                            <Image Source="/Resources/OuterRing.png"/>
+                            <Image Source="/Resources/OutterRing1.png"/>
 
                             <!-- Inner Image (Shrinks to Center on Press) -->
-                            <Image Source="/Resources/InnerRing2.png" x:Name="InnerImage"
+                            <Image Source="/Resources/InnerRing1.png" x:Name="InnerImage"
                            RenderTransformOrigin="0.5,0.5">
                                 <!-- This ensures it scales from the center -->
                                 <Image.RenderTransform>
@@ -75,8 +145,179 @@
             </Button>
         </Grid>
 
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Button x:Name="Add_Btn" 
+        Style="{StaticResource GreyButtonStyle}"
+        Margin="3,20,3,22">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Button Background="Transparent" BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Outer Ring (Static) -->
+                            <Image Source="/Resources/OuterRing33.png"/>
+
+                            <!-- Inner Image (Shrinks to Center on Press) -->
+                            <Image Source="/Resources/Button2.png" x:Name="InnerImage"
+                   RenderTransformOrigin="0.5,0.5">
+                                <!-- This ensures it scales from the center -->
+                                <Image.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+
+                        <!-- Press Animation -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Shrink Effect (Evenly from All Sides) -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                             Storyboard.TargetProperty="ScaleX"
+                                             To="0.9" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                             Storyboard.TargetProperty="ScaleY"
+                                             To="0.9" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Reset Shrink Effect -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                             Storyboard.TargetProperty="ScaleX"
+                                             To="1" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                             Storyboard.TargetProperty="ScaleY"
+                                             To="1" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
 
 
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Button Background="Transparent" BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Outer Ring (Static) -->
+                            <Image Source="/Resources/OuterRing4.png"/>
+
+                            <!-- Inner Image (Shrinks to Center on Press) -->
+                            <Image Source="/Resources/InnerRing4.png" x:Name="InnerImage"
+           RenderTransformOrigin="0.5,0.5">
+                                <!-- This ensures it scales from the center -->
+                                <Image.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+
+                        <!-- Press Animation -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Shrink Effect (Evenly from All Sides) -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     To="0.9" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     To="0.9" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Reset Shrink Effect -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     To="1" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     To="1" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Button Background="Transparent" BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Outer Ring (Static) -->
+                            <Image Source="/Resources/OuterRing5.png"/>
+
+                            <!-- Inner Image (Shrinks to Center on Press) -->
+                            <Image Source="/Resources/InnerRing5.png" x:Name="InnerImage"
+           RenderTransformOrigin="0.5,0.5">
+                                <!-- This ensures it scales from the center -->
+                                <Image.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+
+                        <!-- Press Animation -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Shrink Effect (Evenly from All Sides) -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     To="0.9" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     To="0.9" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Reset Shrink Effect -->
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     To="1" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     To="1" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        
     </Grid>
     
 </Window>
