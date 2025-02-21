@@ -410,6 +410,8 @@
                             </Button>
 
                             <Popup x:Name="PART_Popup"
+                                   Height="500"
+                                   Width="450"
                            AllowsTransparency="True"
                            Placement="Bottom"
                            StaysOpen="False"
@@ -417,6 +419,70 @@
                            RelativeSource={RelativeSource TemplatedParent}}">
                                 <Calendar x:Name="PART_Calendar" />
                             </Popup>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+        <!-- Custom DatePicker Style -->
+    <Style x:Key="CustomDatePickerStyle1" TargetType="DatePicker">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DatePicker">
+                    <Border CornerRadius="10"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0"
+                                    CornerRadius="10"
+                                    Background="White"
+                                    BorderThickness="1"
+                                    Margin="0,0,10,0">
+                                <DatePickerTextBox x:Name="PART_TextBox"
+                                                   IsReadOnly="True"
+                                                   VerticalContentAlignment="Center"
+                                                   FontSize="20"
+                                                   Margin="5,0,0,0"
+                                                   FontFamily="{TemplateBinding FontFamily}"
+                                                   Background="Transparent"
+                                                   Foreground="Gray"/>
+                            </Border>
+
+                            <Button x:Name="PART_Button"
+                                    Grid.Column="1"
+                                    Margin="0,0,5,0"
+                                    Width="40"
+                                    HorizontalAlignment="Center"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"
+                                    FocusVisualStyle="{x:Null}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="CalenderBorder" 
+                                                CornerRadius="5"
+                                                Background="White">
+                                            <ContentControl Content="📅" 
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="CalenderBorder" Property="Background" Value="LightGray" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
                         </Grid>
                     </Border>
                 </ControlTemplate>

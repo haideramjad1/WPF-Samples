@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFSample"
+        xmlns:local="clr-namespace:WPFSample.WPFUserControls"
         mc:Ignorable="d"
         Title="AddCoupon1" Height="600" Width="650"
         Background="Transparent"
@@ -222,7 +222,9 @@
                         </Grid>
                         <Grid Grid.Row="4"
                       Grid.Column="1">
-                            <DatePicker Style="{StaticResource CustomDatePickerStyle}"                               x:Name="DOB_DateEdit" 
+                            <DatePicker Style="{StaticResource CustomDatePickerStyle1}"
+                                        x:Name="DOB_DateEdit" 
+                                        Loaded="DOB_DateEdit_Loaded"
                                     FontSize="25"
                                     Margin="10,0,10,0"
                                     FontFamily="Tahoma"
@@ -230,6 +232,19 @@
                                     Grid.Column="1" 
                                     Height="39">
                             </DatePicker>
+
+                            <!-- Popup for Calendar -->
+                            <Popup x:Name="CalendarPopup" 
+                                     PlacementTarget="{Binding ElementName=DOB_DateEdit}" 
+                                     Placement="Bottom" 
+                                     StaysOpen="False"
+                                   AllowsTransparency="True">
+                                <local:CustomCalendar1 x:Name="CustomCalendarPopup"
+                                                       Width="350"
+                                                       Height="330"/>
+                                
+                            </Popup>
+
                         </Grid>
 
                         <Grid Grid.Row="5">

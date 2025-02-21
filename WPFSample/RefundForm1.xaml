@@ -3,13 +3,99 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFSample"
+        xmlns:local="clr-namespace:WPFSample.WPFUserControls"
         mc:Ignorable="d"
         Title="RefundForm1" Height="515" Width="985"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
+
+    <Window.Resources>
+
+        <Style x:Key="RefundButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="White"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                    CornerRadius="5"
+                    Background="{TemplateBinding Background}">
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <!-- Product Name -->
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                   FontSize="20"
+                                   Foreground="Black"
+                                           TextWrapping="Wrap"
+                                   HorizontalAlignment="Center"
+                                           MaxHeight="60" 
+                                           Padding="4,0,4,0"
+                                           TextTrimming="CharacterEllipsis"/>
+
+                                <!-- Line Separator -->
+                                <Rectangle Height="1" Width="Auto"
+                                   Fill="Gray" Margin="5,2"/>
+
+                                <!-- Quantity, Refunded, Price -->
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock Text="Price: $100.00" FontSize="13" Foreground="Black" Margin="5,0" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Qty: 100.00" FontSize="13" Foreground="Black" Margin="5,0" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Refunded: 100.00" FontSize="13" Foreground="Red" Margin="5,0" HorizontalAlignment="Center"/>
+                                    
+                                </StackPanel>
+                            </StackPanel>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DefaultHoverBackground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CustomerOrProductButtonStyle" BasedOn="{StaticResource AllButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource LightBlueBackground}" />
+            <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
+        </Style>
+
+    </Window.Resources>
 
     <Border>
         <Grid>
@@ -77,11 +163,11 @@
                 <Grid>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid>
+                    <!--<Grid>
                         <Border CornerRadius="30"
                             Margin="15"
                             Background="White">
@@ -114,15 +200,15 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="200*"/>
                                                 <ColumnDefinition Width="80*"/>
-                                                <!--<ColumnDefinition Width="100*"/>
-                                                <ColumnDefinition Width="75*"/>-->
+                                                --><!--<ColumnDefinition Width="100*"/>
+                                                <ColumnDefinition Width="75*"/>--><!--
                                                 <ColumnDefinition Width="63*"/>
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="27" Width="52"/>
                                             <TextBlock Text="QTY" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="20" Height="27" Width="36"/>
-                                            <!--<TextBlock Text="Refund" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="20" Height="27" Width="62"/>
-                                            <TextBlock Text="All" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontSize="20" Height="27" Width="22"/>-->
+                                            --><!--<TextBlock Text="Refund" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="20" Height="27" Width="62"/>
+                                            <TextBlock Text="All" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontSize="20" Height="27" Width="22"/>--><!--
                                             <TextBlock Text="DEL" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontSize="20" Height="27" Width="34"/>
                                         </Grid>
                                     </Border>
@@ -133,21 +219,21 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="200*"/>
                                             <ColumnDefinition Width="70*"/>
-                                            <!--<ColumnDefinition Width="115*"/>
-                                            <ColumnDefinition Width="91*"/>-->
+                                            --><!--<ColumnDefinition Width="115*"/>
+                                            <ColumnDefinition Width="91*"/>--><!--
                                             <ColumnDefinition Width="60*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Text="Milk" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
                                         <TextBlock Text="0" HorizontalAlignment="Left" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}" Margin="40,0,0,0"/>
-                                        <!--<TextBlock Text="5" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+                                        --><!--<TextBlock Text="5" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
                                         <CheckBox Name="MyCheckBox" 
                                                   IsChecked="True"
                                                   VerticalAlignment="Center"
                                                   HorizontalAlignment="Center"
                                                   Grid.Column="3"/>-->
 
-                                        <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
+                                        <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>--><!--
 
                                         <Button x:Name="C1_Button"
                                                 Grid.Column="4" 
@@ -165,18 +251,18 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="200*"/>
                                             <ColumnDefinition Width="70*"/>
-                                            <!--<ColumnDefinition Width="115*"/>
-                                            <ColumnDefinition Width="91*"/>-->
+                                            --><!--<ColumnDefinition Width="115*"/>
+                                            <ColumnDefinition Width="91*"/>--><!--
                                             <ColumnDefinition Width="60*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Text="Tea" HorizontalAlignment="Left" Grid.Column="0" Style="{StaticResource LeftAlignedTextBlock}"/>
                                         <TextBlock Text="4" HorizontalAlignment="Left" Grid.Column="1" Style="{StaticResource LeftAlignedTextBlock}" Margin="40,0,0,0"/>
-                                        <!--<TextBlock Text="1" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
+                                        --><!--<TextBlock Text="1" HorizontalAlignment="Center" Grid.Column="2" Style="{StaticResource LeftAlignedTextBlock}" />
 
                                         <CheckBox Name="MyCheckBox1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>-->
 
-                                        <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>-->
+                                        <!--<Button Content="Return" Grid.Column="3" Style="{StaticResource KeyboardButtonStyle}" Margin="10" FontSize="20"/>--><!--
                                         <Button x:Name="C2_Button"
                                                 Grid.Column="4" 
                                                 Margin="25,5,5,5"
@@ -192,24 +278,117 @@
 
                         </Border>
 
+                    </Grid>-->
+
+                    <Grid Grid.Column="0" Margin="10">
+                        <Border CornerRadius="30"
+                                BorderBrush="Black"
+                                BorderThickness="2">
+
+                            <Grid>
+
+                                <Grid.Clip>
+                                    <RectangleGeometry RadiusX="30" RadiusY="30" Rect="0,0,386,401"/>
+                                </Grid.Clip>
+
+                            <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                                      RowStyle="{StaticResource GridRowStyle}"
+                                      CellStyle="{StaticResource GridCellStyle}"
+                                      Name="dataGrid" 
+                                      AutoGenerateColumns="False" 
+                                      ItemsSource="{Binding Items}" 
+                                      CanUserAddRows="False" 
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False"
+                                      IsHitTestVisible="True" 
+                                      SelectionMode="Single"
+                                      IsTabStop="False"
+                                      GridLinesVisibility="None"
+                                      Background="#eeee"
+                                      BorderBrush="Transparent"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+
+                                        <!-- Quantity Name -->
+                                        <DataGridTemplateColumn Header="    Name" Width="200*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <local:RefundGridUserControl Text="{Binding Name}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <!-- Quantity Column -->
+                                    <DataGridTextColumn Header="QTY" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60*">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+
+                                    <!-- Unit Price Column -->
+                                    <DataGridTextColumn Header="Price" Binding="{Binding UnitPrice}" Width="60*"
+                                                        IsReadOnly="True">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+
+                                    <!-- Delete Button -->
+                                    <DataGridTemplateColumn Header="DEL" Width="60*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="DeleteButton" Click="DeleteButton_Click"
+                                Width="30"
+                                                        Height="40"
+                                Background="Transparent"
+                                Template="{StaticResource GridDeleteImageButtonTemplate}"
+                                Tag="{StaticResource CloseButtonImageBrush}">
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            </Grid>
+                        </Border>
+
                     </Grid>
+
+
 
                     <Grid Grid.Column="1">
 
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
                             <RowDefinition Height="90*"/>
                             <RowDefinition Height="353*"/>
-                            <RowDefinition Height="72*"/>
+                            <RowDefinition Height="80*"/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
+                            <TextBlock Name="LabelTextBlock" 
+                                   Text=" Name / SKU / Scan Bar Code :" 
+                                   Style="{StaticResource PlaceholderTextBlockStyle}"
+                                       Foreground="Black">
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="0,-20,0,0">
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272*"/>
-                                <ColumnDefinition Width="105*"/>
+                                <ColumnDefinition Width="143*"/>
+                                <ColumnDefinition Width="35*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0">
+                            <Grid Grid.Column="0" Margin="0,0,3,0">
 
                                 <TextBox x:Name="Name_TextEdit"
                              Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0">
@@ -221,19 +400,20 @@
                                 </TextBlock>
                             </Grid>
 
-                            <Grid Grid.Column="1">
+                            <Grid Grid.Column="2">
                                 <Button x:Name="Clear" Content="CE"
                                 Style="{StaticResource KeyboardButtonStyle}"
                                 Click="Clear_Click"
-                                Margin="20,15,20,20"/>
+                                Margin="0,23,20,27"/>
                             </Grid>
 
                         </Grid>
 
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="2">
 
                             <Border CornerRadius="15"
-                            Margin="5,0,15,0">
+                            Margin="5,-15,15,0"
+                                    Background="#F5F5F5">
                                 <!--Background="#F5F5F5">-->
 
                                 <!--<Border.Effect>
@@ -257,40 +437,38 @@
                                   Grid.Row="0">
 
                                         <Button x:Name="btn1" Content="milk"
-                                        Style="{StaticResource CustomerOrProductButtonStyle}"
-                                        Margin="10"/>
+                                                Background="LightPink"
+                                        Style="{StaticResource RefundButtonStyle}"/>
                                     </Grid>
 
                                     <Grid Grid.Column="1"
                                   Grid.Row="0">
 
-                                        <Button x:Name="btn2" Content="tea"
-                                        Style="{StaticResource CustomerOrProductButtonStyle}"
-                                        Margin="10"/>
+                                        <Button x:Name="btn2" Content="tea box style vertical"
+                                        Style="{StaticResource RefundButtonStyle}"
+                                                Click="btn1_Click"/>
                                     </Grid>
 
                                     <Grid Grid.Column="2"
                                   Grid.Row="0">
 
-                                        <Button x:Name="btn3" Content="mobile"
-                                        Style="{StaticResource CustomerOrProductButtonStyle}"
-                                        Margin="10"/>
+                                        <Button x:Name="btn3" Content="mobile" 
+                                        Style="{StaticResource RefundButtonStyle}"/>
                                     </Grid>
 
                                     <Grid Grid.Column="3"
                                   Grid.Row="0">
 
-                                        <Button x:Name="btn4" Content="tissue"
-                                        Style="{StaticResource CustomerOrProductButtonStyle}"
-                                        Margin="10"/>
+                                        <Button x:Name="btn4" Content="tissue roll full pack round shape"
+                                        Style="{StaticResource RefundButtonStyle}"/>
                                     </Grid>
 
                                     <Grid Grid.Column="0"
                                   Grid.Row="1">
 
                                         <Button x:Name="btn5" Content="bottle"
-                                        Style="{StaticResource CustomerOrProductButtonStyle}"
-                                        Margin="10"/>
+                                        Style="{StaticResource RefundButtonStyle}"
+                                        />
                                     </Grid>
                                 </Grid>
 
@@ -298,12 +476,12 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="3">
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="272*"/>
-                                <ColumnDefinition Width="105*"/>
-                                <ColumnDefinition Width="105*"/>
+                                <ColumnDefinition Width="243*"/>
+                                <ColumnDefinition Width="110*"/>
+                                <ColumnDefinition Width="110*"/>
                                 <ColumnDefinition Width="10*"/>
                             </Grid.ColumnDefinitions>
 

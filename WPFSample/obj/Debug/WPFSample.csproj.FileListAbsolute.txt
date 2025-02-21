@@ -132,3 +132,5 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\ButtonForSaleScreen.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\NumericKeyboard1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\NumericKeyboard1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFUserControls\CustomCalendar1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\WPFUserControls\CustomCalendar1.baml
