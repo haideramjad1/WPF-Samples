@@ -49,7 +49,7 @@
                                     <TextBlock Text="Price: $100.00" FontSize="13" Foreground="Black" Margin="5,0" HorizontalAlignment="Center"/>
                                     <TextBlock Text="Qty: 100.00" FontSize="13" Foreground="Black" Margin="5,0" HorizontalAlignment="Center"/>
                                     <TextBlock Text="Refunded: 100.00" FontSize="13" Foreground="Red" Margin="5,0" HorizontalAlignment="Center"/>
-                                    
+
                                 </StackPanel>
                             </StackPanel>
 
@@ -88,11 +88,6 @@
                     </BeginStoryboard>
                 </EventTrigger>
             </Style.Triggers>
-        </Style>
-
-        <Style x:Key="CustomerOrProductButtonStyle" BasedOn="{StaticResource AllButtonStyle}" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource LightBlueBackground}" />
-            <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
         </Style>
 
     </Window.Resources>
@@ -313,8 +308,12 @@
                                         <DataGridTemplateColumn Header="    Name" Width="200*">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <local:RefundGridUserControl Text="{Binding Name}" />
-                                            </DataTemplate>
+                                                <!--<local:RefundGridUserControl Text="{Binding Name}" />-->
+                                                    <TextBlock Text="{Binding Name}" 
+                                                            Padding="6,5,7,5"
+                                                           TextWrapping="Wrap"
+                                                           VerticalAlignment="Center"/>
+                                                </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
 
@@ -402,7 +401,7 @@
 
                             <Grid Grid.Column="2">
                                 <Button x:Name="Clear" Content="CE"
-                                Style="{StaticResource KeyboardButtonStyle}"
+                                Style="{StaticResource GreyKeyboardButtonStyle}"
                                 Click="Clear_Click"
                                 Margin="0,23,20,27"/>
                             </Grid>

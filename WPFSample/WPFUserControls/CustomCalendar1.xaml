@@ -9,12 +9,6 @@
     <UserControl.Resources>
         <Style x:Key="CalendarStyle1" TargetType="{x:Type Calendar}">
             <Setter Property="Background" Value="#4F4B49"/>
-            <!--<Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#4F4B49" Offset="0"/>
-                    <GradientStop Color="#696664" Offset="0.75"/>
-                </LinearGradientBrush>
-            </Border.Background>-->
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
@@ -36,7 +30,7 @@
                     <ControlTemplate TargetType="{x:Type CalendarItem}">
                         <ControlTemplate.Resources>
                             <DataTemplate x:Key="{x:Static CalendarItem.DayTitleTemplateResourceKey}">
-                                <TextBlock Foreground="#FFFFFF" FontFamily="Verdana" FontWeight="Bold" FontSize="9.5" HorizontalAlignment="Center" Margin="0,6,0,6" Text="{Binding}" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="#FFFFFF" FontFamily="Verdana" FontWeight="Bold" FontSize="13" HorizontalAlignment="Center" Margin="0,6,0,6" Text="{Binding}" VerticalAlignment="Center"/>
                             </DataTemplate>
                         </ControlTemplate.Resources>
                         <Grid x:Name="PART_Root">
@@ -216,7 +210,7 @@
         <Style x:Key="CalendarDayButtonStyle1" TargetType="{x:Type CalendarDayButton}">
             <Setter Property="Width" Value="25"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -337,7 +331,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Style x:Key="CalendarButtonStyle1" TargetType="{x:Type CalendarButton}">
             <Setter Property="Background" Value="#FD413C"/>
             <Setter Property="MinWidth" Value="60"/>
@@ -431,7 +425,6 @@
             </Setter>
         </Style>
 
-        
     </UserControl.Resources>
     <Grid Background="Transparent">
             <Viewbox Stretch="Uniform">

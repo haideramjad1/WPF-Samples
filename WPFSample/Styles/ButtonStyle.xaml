@@ -124,12 +124,36 @@
         <GradientStop Color="#D20404" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="RedHoverBackground" Color="Red" />
+    
+    <LinearGradientBrush x:Key="BlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#1476FB" Offset="0"/>
+        <GradientStop Color="#1D8EFF" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BlueHoverBackground" Color="Blue" />
+    
+    <LinearGradientBrush x:Key="DarkBlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#265187" Offset="0"/>
+        <GradientStop Color="#386B9A" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="DarkBlueHoverBackground" Color="#265187" />
+    
+    <LinearGradientBrush x:Key="OrangeGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#875000" Offset="0"/>
+        <GradientStop Color="#E58000" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="OrangeHoverBackground" Color="Orange" />
 
     <LinearGradientBrush x:Key="YellowGradientBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#FFFF02" Offset="0"/>
         <GradientStop Color="#FFFFD8" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="YellowHoverBackground" Color="Yellow" />
+
+    <LinearGradientBrush x:Key="ManagerBlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#0052B4" Offset="0"/>
+        <GradientStop Color="#0071D1" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ManagerBlueHoverBackground" Color="Blue" />
 
     <Style x:Key="BaseKeyboardButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="Black" />
@@ -197,7 +221,7 @@
 
     <Style x:Key="BaseAllButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="FontFamily" Value="Tahoma" />
         <Setter Property="Margin" Value="5,5,5,5" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -208,6 +232,58 @@
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="Border"
                     CornerRadius="15"
+                    Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                 To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="UserMangerButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource DefaultBackground}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                    CornerRadius="10"
                     Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
@@ -257,10 +333,42 @@
         <Setter Property="Tag" Value="{StaticResource RedHoverBackground}" />
     </Style>
 
+    <Style x:Key="BlueButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BlueGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource BlueHoverBackground}" />
+    </Style>
+
     <Style x:Key="YellowButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource YellowGradientBackground}" />
         <Setter Property="Tag" Value="{StaticResource YellowHoverBackground}" />
         <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="DarkBlueButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource DarkBlueGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DarkBlueHoverBackground}" />
+        <Setter Property="Margin" Value="5,6,5,6"/>
+    </Style>
+    
+    <Style x:Key="OrangeButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource OrangeGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource OrangeHoverBackground}" />
+        <Setter Property="Margin" Value="5,6,5,6"/>
+    </Style>
+
+    <Style x:Key="ManagerBlueButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ManagerBlueGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource BlueHoverBackground}" />
+    </Style>
+
+    <Style x:Key="ManagerGreenButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource GreenGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
+    </Style>
+
+    <Style x:Key="ManagerRedButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource RedGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource RedHoverBackground}" />
     </Style>
 
     <Style x:Key="LeftTextKeyBoardStyle" TargetType="TextBlock">

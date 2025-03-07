@@ -149,11 +149,6 @@
                                Text=" Customer Name" 
                                Style="{StaticResource PlaceholderTextBlockStyle}">
                             </TextBlock>
-
-                            <!--<TextBlock Name="ContactNameError_Label" 
-                                   Text="Contact Name not Provided!!!"
-                                   Style="{StaticResource ErrorLabelStyle}">
-                        </TextBlock>-->
                         </Grid>
 
                         <Grid Grid.Row="1">
