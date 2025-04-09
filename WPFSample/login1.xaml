@@ -10,60 +10,6 @@
         WindowStyle="None"
         WindowState="Maximized">
 
-    <Window.Resources>
-        
-        <Style x:Key="NumericButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="50" />
-            <Setter Property="FontFamily" Value="Tahoma" />
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Background" Value="MidnightBlue"/>
-
-            <Setter Property ="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="ButtonBorder"
-                                CornerRadius="15"
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBorder"
-                                        Property="Background"
-                                        Value="#3E218A"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <ImageBrush x:Key="CloseButtonImageBrush" ImageSource="/Resources/flat-square-mark-red-icon-button-cross-symbol-isolated-white-background-vector-eps-flat-square-mark-red-icon-button-cross-143476708.jpg" />
-        
-        <ControlTemplate x:Key="CloseButtonTemplate" TargetType="Button">
-            <Grid>
-                <Border x:Name="BackgroundBorder"
-                    Background="Transparent"
-                    CornerRadius="5" />
-
-                <Border x:Name="ImageOverlay"
-                    Background="{StaticResource CloseButtonImageBrush}"
-                        Margin="2,2,2,2"/>
-            </Grid>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="BackgroundBorder" Property="Background" Value="Red" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-            
-        </ControlTemplate>
-
-    </Window.Resources>
-
     <Grid>
 
         <Grid.RowDefinitions>
@@ -75,16 +21,30 @@
         <Grid Grid.Row="1">
 
             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Close_Button" 
-                    Grid.Column="1" 
-                    Template="{StaticResource CloseButtonTemplate}">
-                <!--Click="Close_Button_Click">      this is ok-->
-            </Button>
+            <Grid Grid.Column="1">
+                <Button x:Name="Attendance_Btn" 
+                        Content="Attendance Screen"
+                        Style="{StaticResource NumericButtonStyle}"
+                        FontSize="25"
+                        Margin="0,0,0,-20"
+                        Click="Attendance_Btn_Click">
+                </Button>
+            </Grid>
+            
+            <Grid Grid.Column="3">
+                <Button x:Name="Close_Btn" 
+                    Template="{StaticResource ImageButtonTemplate}"
+                    Tag="{StaticResource CloseButtonImageBrush}"
+                    Click="Close_Button_Click">
+                </Button>
+            </Grid>
 
         </Grid>
 
@@ -93,41 +53,42 @@
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="430"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="1">
+                <Grid VerticalAlignment="Center">
+                    <StackPanel Width="400"
+                                Margin="0,80,0,0"
+                            Orientation="Vertical">
 
-                <StackPanel Width="250"
-                            Orientation="Vertical"
-                            Margin="0,100,0,0">
+                        <Image x:Name="pictureEdit" 
+                               Source="/Resources/2222crop 1.png"
+                            Height="400"/>
 
-                    <Image Source="/Resources/2222crop 1.png"
-                            Margin="0,40,0,0"
-                            Height="250"/>
-
-                    <TextBlock x:Name="a1"
+                        <TextBlock x:Name="LocationName_Label"
                                Text="Grocery Store"
                                Foreground="MidnightBlue"
-                               FontSize="30"
+                               FontSize="40"
                                FontWeight="Medium"
                                FontFamily="Times New Roman"
                                TextWrapping="Wrap"
                                TextAlignment="Left"
-                               Margin="0,60,0,0 "/>
+                               Margin="50,20,0,0 "/>
 
-                    <TextBlock x:Name="a2"
+                        <TextBlock x:Name="Version_Label"
                                Text="Grocery Store"
                                Foreground="MidnightBlue"
-                               FontSize="30"
+                               FontSize="40"
                                FontWeight="Medium"
                                FontFamily="Times New Roman"
                                TextWrapping="Wrap"
                                TextAlignment="Left"
-                               Margin="0,20,0,0 "/>
+                               Margin="50,20,0,0 "/>
 
-                </StackPanel>
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <Grid Grid.Column="2"
@@ -141,37 +102,64 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <CheckBox Content="Login Through Pin" 
-                          Grid.Row="1"
-                          FontSize="20"
-                          FontWeight="Medium"
-                          FontFamily="Tahoma"
-                          Margin="5" />
-                
-                <TextBox x:Name="t1"
-                         Grid.Row="2"
-                         FontSize="20"
-                         FontWeight="Medium"
-                         FontFamily="Tahoma"
-                         Margin="5,10,5,0">
-                </TextBox>
+                <Grid Grid.Row="1">
+                    <CheckBox x:Name="PinLogin_CheckEdit" 
+                              Content="Login Through Pin" 
+                              Checked="PinLogin_CheckEdit_Checked"
+                              Unchecked="PinLogin_CheckEdit_Unchecked"
+                              Style="{StaticResource BigCheckBoxStyle}"
+                              FontWeight="Medium"
+                              Margin="5,0,0,0"/>
+                </Grid>
 
-                <TextBox x:Name="t2"
-                         Grid.Row="3"
-                         FontSize="20"
-                         FontWeight="Medium"
-                         FontFamily="Tahoma"
-                         Margin="5,10,5,0">
-                </TextBox>
+                <Grid Grid.Row="2">
+                    <TextBox x:Name="UserID_TextEdit"
+                                Style="{StaticResource CommonTextBoxStyle}" Margin="5,0,5,0"
+                                TextChanged="ForPlaceHolder_TextChanged"
+                                MouseDoubleClick="Alphabetic_Keyboard_Click">
+                    </TextBox>
+
+                    <TextBlock x:Name="UserID_Label" 
+                               Text="User ID :"
+                               Style="{StaticResource RightAlignedTextBlock}" 
+                               Height="31"
+                               Margin="-400,0,430,0">
+                    </TextBlock>
+
+                </Grid>
+                
+                <Grid Grid.Row="3">
+                    <TextBox x:Name="Pin_TextEdit"
+                                Style="{StaticResource CommonTextBoxStyle}" Margin="5,0,5,0"
+                                TextChanged="ForPlaceHolder_TextChanged"
+                                MouseDoubleClick="Alphabetic_Keyboard_Click">
+                    </TextBox>
+
+                    <TextBlock x:Name="UserPin_Label" 
+                               Text="Pin :"
+                               Style="{StaticResource RightAlignedTextBlock}" 
+                               Height="31"
+                               Margin="-400,0,430,0">
+                    </TextBlock>
+                    
+                    <Button x:Name="EyeButton" 
+                            Style="{StaticResource LogInImageButtonStyle}"
+                            Tag="{StaticResource ClosedEyeImageBrush}"
+                            Margin="360,0,0,0"
+                            Height="40" Width="45"
+                            Click="EyeButton_Click">
+                    </Button>
+
+                </Grid>
 
                 <Grid Grid.Row="4"
-                      Margin="0,20,0,0">
+                      Margin="0,10,0,0">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120" />
-                        <RowDefinition Height="120" />
-                        <RowDefinition Height="120" />
-                        <RowDefinition Height="120" />
+                        <RowDefinition Height="110" />
+                        <RowDefinition Height="110" />
+                        <RowDefinition Height="110" />
+                        <RowDefinition Height="110" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
@@ -190,7 +178,7 @@
                     <Button x:Name="Button_7" Style="{StaticResource NumericButtonStyle}" Content="7" Grid.Row="2" Grid.Column="0" />
                     <Button x:Name="Button_8" Style="{StaticResource NumericButtonStyle}" Content="8" Grid.Row="2" Grid.Column="1" />
                     <Button x:Name="Button_9" Style="{StaticResource NumericButtonStyle}" Content="9" Grid.Row="2" Grid.Column="2" />
-                    <Button x:Name="Button_X" Style="{StaticResource NumericButtonStyle}" Content="x" Grid.Row="3" Grid.Column="0" />
+                    <Button x:Name="Button_Clear" Style="{StaticResource NumericButtonStyle}" Content="x" Grid.Row="3" Grid.Column="0" />
                     <Button x:Name="Button_0" Style="{StaticResource NumericButtonStyle}" Content="0" Grid.Row="3" Grid.Column="1" />
                     <Button x:Name="Button_Go" Style="{StaticResource NumericButtonStyle}" Content="Go" Grid.Row="3" Grid.Column="2" />
 

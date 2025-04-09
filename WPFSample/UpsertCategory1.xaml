@@ -1,0 +1,510 @@
+﻿<Window x:Class="WPFSample.UpsertCategory1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="UpsertCategory1" Height="720" Width="700"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Border>
+        <Grid>
+            <Border CornerRadius="10"
+            BorderThickness ="10"
+            Height="150"
+            VerticalAlignment="Top"
+            BorderBrush="LightGray"
+            Background="#003187">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0"
+                  Width="45"
+                  Margin="0,4,0,0"
+                  Grid.Row="0">
+                        <!--<Image x:Name="FormPicture" 
+           Source="pack://application:,,,/Resources/Search_Product_Image.png"/>-->
+
+                    </Grid>
+
+                    <Grid Grid.Column="2" Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                        Margin="0,3,3,8"
+                        Template="{StaticResource ImageButtonTemplate}"
+                        Tag="{StaticResource CloseButtonImageBrush}"
+                        Click="Close_Button_Click">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="0">
+                        <Border CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock x:Name="FormTitle" 
+                                   Text="Add Categories"
+                                   FontSize="30" 
+                                   Padding="5,0,0,0"
+                                   FontWeight="Medium"
+                                   Foreground="White"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border CornerRadius="30" 
+                Background="White"
+                Margin="25,70,25,20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <TextBlock Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                                        <Run Text="Category Name"/>
+                                        <Run Text="*" Foreground="Red"/>
+                            </TextBlock>
+                            <TextBlock Text=": "
+                                        Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                            </TextBlock>
+
+                        </Grid>
+                        <Grid Grid.Row="0"
+                                Grid.Column="1" >
+                            <TextBox x:Name="Name_TextEdit"
+                                     Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                     TextChanged="ForPlaceHolder_TextChanged"
+                                     MouseDoubleClick="Alphabetic_Keyboard_Click">
+                            </TextBox>
+
+                            <TextBlock Name="NameTextBlock" 
+                                       Text=" Category Name" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+
+                            <Button x:Name="MessageInfo1"
+                                    Click="MessageInformation_Click"
+                                    Visibility="Hidden"
+                                    Style="{StaticResource RoundedTransparentButtonStyle}">
+                                <Image Source="pack://application:,,,/Resources/InformationAlert.png"/>
+
+                            </Button>
+
+                            <Popup x:Name="InfoPopup1" 
+                                    Style="{StaticResource RoundedPopupStyle}">
+                                <Border Style="{StaticResource RoundedPopupBorderStyle}">
+
+                                    <TextBlock x:Name="PopupTextBlock1" Text="Default Message"
+                                                Style="{StaticResource PopupTextBlockStyle}"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <TextBlock Style="{StaticResource LeftAlignedTextBlock}" Height="31">
+                                        <Run Text="Category Code"/>
+                                        <Run Text="*" Foreground="Red"/>
+                            </TextBlock>
+                            <TextBlock Text=": "
+                                        Style="{StaticResource RightAlignedTextBlock}" Height="31">
+                            </TextBlock>
+
+                        </Grid>
+                        <Grid Grid.Row="1"
+                                Grid.Column="1">
+                            <TextBox x:Name="Code_TextEdit"
+                                     Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                                     TextChanged="ForPlaceHolder_TextChanged"
+                                     PreviewTextInput="TextEdit_PreviewTextInput"
+                                     PreviewKeyDown="TextEdit_PreviewKeyDown"
+                                     MouseDoubleClick="Numeric_Keyboard_Click">
+                            </TextBox>
+
+                            <TextBlock Name="CodeTextBlock" 
+                                       Text=" Category Code" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+
+                            <Button x:Name="MessageInfo"
+                                    Click="MessageInformation_Click"
+                                    Visibility="Hidden"
+                                    Style="{StaticResource RoundedTransparentButtonStyle}">
+                                <Image Source="pack://application:,,,/Resources/InformationAlert.png"/>
+                            </Button>
+
+                            <Popup x:Name="InfoPopup" 
+                                    Style="{StaticResource RoundedPopupStyle}">
+                                <Border Style="{StaticResource RoundedPopupBorderStyle}">
+
+                                    <TextBlock x:Name="PopupTextBlock" Text="Default Message"
+                                                Style="{StaticResource PopupTextBlockStyle}"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <TextBlock Text="Description"
+                                       Style="{StaticResource LeftAlignedTextBlock}" Height="31"
+                                       Margin="20,15,0,0"
+                                       VerticalAlignment="Top">
+                            </TextBlock>
+                            <TextBlock Text=": "
+                                        Style="{StaticResource RightAlignedTextBlock}" Height="31"
+                                       Margin="20,15,0,0"
+                                       VerticalAlignment="Top">
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="2"  
+                              Grid.Column="1">
+                            <RichTextBox Name="ReasonForPriceChange" 
+                                         Style="{StaticResource NormalRoundedRichTextBoxStyle}" Margin="10"
+                                         TextChanged="ForPlaceHolder_TextChanged"
+                                         MouseDoubleClick="Alphabetic_Keyboard_Click">
+                            </RichTextBox>
+
+                            <TextBlock Name="ReasonTextBlock" 
+                                       Text=" Type Description Here.." 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}"
+                                       FontSize="25" VerticalAlignment="Top" Margin="15,15,0,0">
+                            </TextBlock>
+                        </Grid>
+                        
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition x:Name="Row5" Height="Auto" MaxHeight="50"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition x:Name="Row7" Height="Auto" MaxHeight="50"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <CheckBox x:Name="Reconciled_CheckEdit" Content="Reconciled" 
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="1">
+                                <CheckBox x:Name="OpenPrice_CheckEdit" Content="Open Price" 
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="2">
+                                <CheckBox x:Name="IsActive_CheckEdit" Content="Is Active" 
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="3">
+                                <CheckBox x:Name="ReportCategories_CheckEdit" Content="Report Categories" 
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="4">
+                                <CheckBox x:Name="IsAgeRestricted_CheckEdit" Content="Is Age Restricted" 
+                                          Checked="IsAgeRestricted_CheckEdit_Checked"
+                                          Unchecked="IsAgeRestricted_CheckEdit_Unchecked"
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="5" x:Name="Row5Container" Visibility="Visible">
+                                <TextBox x:Name="Age_TextEdit"
+                                         Style="{StaticResource CommonTextBoxStyle}" Margin="0,5,20,0"
+                                         VerticalAlignment="Top"
+                                         TextChanged="ForPlaceHolder_TextChanged"
+                                         MouseDoubleClick="Alphabetic_Keyboard_Click">
+                                </TextBox>
+
+                                <TextBlock Name="AgeTextBlock" 
+                                           Text=" Age" 
+                                           Style="{StaticResource PlaceholderTextBlockStyle}"
+                                           VerticalAlignment="Top"
+                                           Margin="5,12,10,0">
+                                </TextBlock>
+
+                                <Button x:Name="MessageInfo2"
+                                        Click="MessageInformation_Click"
+                                        Visibility="Hidden"
+                                        Style="{StaticResource RoundedTransparentButtonStyle}">
+                                    <Image Source="pack://application:,,,/Resources/InformationAlert.png"/>
+
+                                </Button>
+
+                                <Popup x:Name="InfoPopup2" 
+                                       Style="{StaticResource RoundedPopupStyle}">
+                                    <Border Style="{StaticResource RoundedPopupBorderStyle}">
+
+                                        <TextBlock x:Name="PopupTextBlock2" Text="Default Message"
+                                                   Style="{StaticResource PopupTextBlockStyle}"/>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+
+                            <Grid Grid.Row="6">
+                                <CheckBox x:Name="AddAsSubCategory_CheckEdit" Content="Add As SubCategory" 
+                                          Checked="AddAsSubCategory_CheckEdit_Checked"
+                                          Unchecked="AddAsSubCategory_CheckEdit_Unchecked"
+                                          Style="{StaticResource BigCheckBoxStyle}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="7" x:Name="Row7Container" Visibility="Visible">
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}"
+                                          x:Name="AddAsSubCategory_ComboEdit" 
+                                          Margin="0,0,20,0" 
+                                          VerticalAlignment="Center"
+                                          FontSize="25" 
+                                          FontFamily="Tahoma"
+                                          Height="40"
+                                          SelectionChanged="AddAsSubCategory_ComboEdit_SelectionChanged">
+
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style TargetType="ComboBoxItem">
+                                            <Setter Property="Padding" Value="10,8,10,8" />
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>
+
+                                    <!-- values will come in dynamically -->
+                                    
+                                    <!--<ComboBoxItem Content="Friends" />
+                                    <ComboBoxItem Content="Social Media" />
+                                    <ComboBoxItem Content="Promotions" />-->
+                                </ComboBox>
+
+                                <TextBlock Name="AddAsSubCategoryComboBox" 
+                                           Text=" Select Categpry" 
+                                           Style="{StaticResource PlaceholderTextBlockStyle}"
+                                           HorizontalAlignment="Left"
+                                           Margin="5,5,0,5">
+                                </TextBlock>
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="4.5*"/>
+                                <RowDefinition Height=".5*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="1" Margin="10,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1.2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <ComboBox Style="{StaticResource CustomComboBoxStyle}"
+                                              x:Name="Tax_ComboEdit" 
+                                              Margin="0,0,10,0" 
+                                              VerticalAlignment="Center"
+                                              FontSize="25" 
+                                              FontFamily="Tahoma"
+                                              Height="40"
+                                              SelectionChanged="Tax_ComboEdit_SelectionChanged">
+
+                                        <ComboBox.ItemContainerStyle>
+                                            <Style TargetType="ComboBoxItem">
+                                                <Setter Property="Padding" Value="10,8,10,8" />
+                                            </Style>
+                                        </ComboBox.ItemContainerStyle>
+
+                                        <!-- values will come in dynamically -->
+
+                                        <!--<ComboBoxItem Content="Friends" />
+                                        <ComboBoxItem Content="Social Media" />
+                                        <ComboBoxItem Content="Promotions" />-->
+                                    </ComboBox>
+
+                                    <TextBlock Name="TaxComboBox" 
+                                               Text=" Select Tax" 
+                                               Style="{StaticResource PlaceholderTextBlockStyle}"
+                                               HorizontalAlignment="Left"
+                                               Margin="5,5,0,5">
+                                    </TextBlock>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <Button x:Name="Add_Btn" 
+                                            Content="Add"
+                                            Style="{StaticResource ParrotButtonStyle}"
+                                            FontSize="20"
+                                            Click="Save_Btn_Click" 
+                                            Margin="5,6,5,10">
+                                    </Button>
+                                </Grid>
+
+                            </Grid>
+                            
+                            <Grid Grid.Row="2" Margin="10,5,0,5">
+                                <Border CornerRadius="30"
+                                    BorderBrush="Black"
+                                    BorderThickness="2">
+
+                                    <Grid>
+
+                                        <Grid.Clip>
+                                            <RectangleGeometry RadiusX="30" RadiusY="30" Rect="0,0,279,226"/>
+                                        </Grid.Clip>
+
+                                        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" 
+                                              RowStyle="{StaticResource GridRowStyle}"
+                                              CellStyle="{StaticResource GridCellStyle}"
+                                              Name="dataGrid" 
+                                              AutoGenerateColumns="False" 
+                                              ItemsSource="{Binding _SelectedProducts}" 
+                                              CanUserAddRows="False" 
+                                              CanUserResizeColumns="False"
+                                              CanUserReorderColumns="False"
+                                              IsHitTestVisible="True" 
+                                              SelectionMode="Single"
+                                              IsTabStop="False"
+                                              GridLinesVisibility="None"
+                                              Background="#eeee"
+                                              BorderBrush="Transparent"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                            <DataGrid.Columns>
+
+                                                <!-- Name -->
+                                                <DataGridTemplateColumn Header="   Tax Name" Width="130*">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding ProductName}" 
+                                           Padding="6,5,7,5"
+                                           TextWrapping="Wrap"
+                                           VerticalAlignment="Center"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <!-- Unit Price Column -->
+                                                <DataGridTextColumn Header="Rate" Binding="{Binding UnitPrice, StringFormat={}{0:0.00}}" Width="60*"
+                                IsReadOnly="True">
+                                                    <DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                                        </Style>
+                                                    </DataGridTextColumn.ElementStyle>
+                                                </DataGridTextColumn>
+
+                                                <!-- Delete Button -->
+                                                <DataGridTemplateColumn Header="Action" Width="60*">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button x:Name="DeleteGridButton"
+                                                                    Click="DeleteGridButton_Click"
+                                                                    Width="30"
+                                                                    Height="40"
+                                                                    Background="Transparent"
+                                                                    Template="{StaticResource GridDeleteImageButtonTemplate}"
+                                                                    Tag="{StaticResource CloseButtonImageBrush}">
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </Grid>
+                        
+
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300*"/>
+                            <ColumnDefinition Width="auto" MinWidth="130"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="18*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1">
+                            <Button x:Name="Save_Btn" 
+                                    Content="Save"
+                                    Style="{StaticResource GreenButtonStyle}"
+                                    Click="Save_Btn_Click" 
+                                    Margin="5,10,5,15">
+                            </Button>
+                        </Grid>
+
+                        <Grid  Grid.Column="2">
+                            <Button x:Name="CloseBtn" 
+                                    Content="Close"
+                                    Style="{StaticResource RedButtonStyle}"
+                                    Click="Close_Button_Click"
+                                    Margin="5,10,5,15">
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    </Border>
+
+</Window>

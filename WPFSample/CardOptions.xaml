@@ -1,0 +1,150 @@
+﻿<Window x:Class="WPFSample.CardOptions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="CardOptions" Height="290" Width="550"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Border>
+        <Grid>
+
+            <Border CornerRadius="10"
+        BorderThickness ="10"
+        Height="130"
+        VerticalAlignment="Top">
+
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightGray" Offset="0"/>
+                        <!--<GradientStop Color="#273F6A" Offset="0.5"/>-->
+                        <!--<GradientStop Color="#A3DFFF" Offset="1"/>-->
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <!--<GradientStop Color="White" Offset="0"/>-->
+                        <GradientStop Color="#003187" Offset="0.5"/>
+                        <!--<GradientStop Color="#2E93F3" Offset="1"/>-->
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="3"
+          Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                    Margin="0,3,3,8"
+                    Template="{StaticResource ImageButtonTemplate}"
+                    Tag="{StaticResource CloseButtonImageBrush}"
+                    Click="Close_Button_Click">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="0"
+              Width="50"
+              Margin="0,4,0,0"
+              Grid.Row="0">
+                        <Image x:Name="FormPicture"
+                        Source="/Resources/StockAdjustment_Image.png"/>
+                    </Grid>
+
+                    <Grid Grid.Column="1"
+          Grid.Row="0">
+                        <Border CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock x:Name="FormTitle" 
+                               Text="Stock Adjustment"
+                               FontSize="30" 
+                               Padding="5,0,0,0"
+                               FontWeight="Medium"
+                               Foreground="White"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border CornerRadius="10" Margin="40,70,40,10">
+                <Border CornerRadius="15"
+                    Background="White"
+                    BorderThickness ="20">
+
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#5297E0 " Offset="0"/>
+                            <GradientStop Color="#273F6A " Offset="0.5"/>
+                            <GradientStop Color="#A3DFFF  " Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1"
+                              Grid.Row="1">
+
+                            <Button x:Name="EBT_btn" 
+                                    Content="EBT"
+                                    Style="{StaticResource GreenButtonStyle}"
+                                    FontSize="25"
+                                    Click="No_btn_Click">
+                            </Button>
+                        </Grid>
+                
+                        <Grid Grid.Column="3"
+                              Grid.Row="1">
+
+                            <Button x:Name="debit_credit_btn" 
+                                    Content="Debit / Credit"
+                                    Style="{StaticResource RedButtonStyle}"
+                                    FontSize="25"
+                                    Click="Okay_btn_Click">
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+            </Border>
+            
+        </Grid>
+    </Border>
+    
+
+</Window>

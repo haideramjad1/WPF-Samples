@@ -1,0 +1,128 @@
+﻿<Window x:Class="WPFSample.CustomerOptions1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="CustomerOptions1" Height="340" Width="300"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+
+    <Border CornerRadius="10">
+        <Border CornerRadius="15"
+            Background="White"
+            BorderThickness ="20">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5297E0 " Offset="0"/>
+                    <GradientStop Color="#A3DFFF  " Offset="0.5"/>
+                    <GradientStop Color="#5297E0 " Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="280*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                  Background="#003187">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                        Width="35"
+                        Margin="0,4,0,0">
+                        <!--<Image x:Name="FormPicture" 
+                        Source="pack://application:,,,/Resources/customer_Icon.png"/>-->
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Border CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock x:Name="FormTitle" 
+                       Text="Customer Info"
+                       FontSize="20" 
+                       Padding="5,0,0,0"
+                       FontWeight="Medium"
+                       Foreground="White"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="3"
+                      Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                            Content="Close"
+                            Margin="0,3,3,8"
+                            Template="{StaticResource ImageButtonTemplate}"
+                            Tag="{StaticResource CloseButtonImageBrush}"
+                            Click="Close_Button_Click">
+                        </Button>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.3*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Button x:Name="Recall_Btn" 
+                            Style="{StaticResource ManagerGreenButtonStyle}"
+                            Click="Buttons_Click" 
+                            FontSize="22"
+                            Margin="5,8,5,8">
+
+                            <TextBlock Text="Customer Balance Receieve Payment"
+                                       TextWrapping="Wrap"/>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Button x:Name="CustomerDue_Btn" 
+                            Content="Customer Due"
+                            Style="{StaticResource ManagerBlueButtonStyle}"
+                            Click="Buttons_Click" 
+                            FontSize="25"
+                            Margin="5,5,5,8">
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Button x:Name="Close_Btn" 
+                            Content="Close"
+                            Style="{StaticResource ManagerRedButtonStyle}"
+                            Click="Buttons_Click" 
+                            FontSize="25"
+                            Margin="5,5,5,10">
+                        </Button>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+    </Border>
+
+</Window>

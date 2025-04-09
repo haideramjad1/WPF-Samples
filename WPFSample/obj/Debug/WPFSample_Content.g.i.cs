@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/innerring5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/outerring5.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/closedeye_image.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/openeye_image.png")]
 
 

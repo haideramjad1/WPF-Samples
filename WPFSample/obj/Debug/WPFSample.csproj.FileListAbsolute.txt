@@ -138,3 +138,14 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailQtyPopup1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailQtyPopup1.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\UserManager1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\UserManager1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\UpsertCategory1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\UpsertCategory1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Styles\TextBoxStyle.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CardOptions.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CardOptions.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Pos_Popup_WPF.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Pos_Popup_WPF.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CustomerOptions1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CustomerOptions1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\PaymentReceived1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\PaymentReceived1.baml

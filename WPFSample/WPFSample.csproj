@@ -154,8 +154,14 @@
     <Compile Include="ButtonForSaleScreen.xaml.cs">
       <DependentUpon>ButtonForSaleScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CardOptions.xaml.cs">
+      <DependentUpon>CardOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Card_Sample.xaml.cs">
       <DependentUpon>Card_Sample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerOptions1.xaml.cs">
+      <DependentUpon>CustomerOptions1.xaml</DependentUpon>
     </Compile>
     <Compile Include="ErrorMessageShow1.xaml.cs">
       <DependentUpon>ErrorMessageShow1.xaml</DependentUpon>
@@ -165,6 +171,12 @@
     </Compile>
     <Compile Include="NumericKeyboard1.xaml.cs">
       <DependentUpon>NumericKeyboard1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentReceived1.xaml.cs">
+      <DependentUpon>PaymentReceived1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pos_Popup_WPF.xaml.cs">
+      <DependentUpon>Pos_Popup_WPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductLookUp1.xaml.cs">
       <DependentUpon>ProductLookUp1.xaml</DependentUpon>
@@ -178,6 +190,9 @@
     <Compile Include="StringToVisibilityConverter .cs" />
     <Compile Include="SarchCustomer1.xaml.cs">
       <DependentUpon>SarchCustomer1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpsertCategory1.xaml.cs">
+      <DependentUpon>UpsertCategory1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserManager1.xaml.cs">
       <DependentUpon>UserManager1.xaml</DependentUpon>
@@ -196,7 +211,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CardOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Card_Sample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerOptions1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +254,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PaymentReceived1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pos_Popup_WPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductLookUp1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -256,6 +287,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpsertCategory1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -374,6 +413,20 @@
   <ItemGroup>
     <Resource Include="Resources\InnerRing5.png" />
     <Resource Include="Resources\OuterRing5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\InformationAlert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StockAdjustment_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ClosedEye_Image1.png" />
+    <Resource Include="Resources\OpenEye_Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ClosedEye_Image.png" />
+    <Resource Include="Resources\OpenEye_Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets')" />

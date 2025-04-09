@@ -1,0 +1,210 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- this is the style for text which will be used for the right align -->
+    <Style x:Key="RightAlignedTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+    </Style>
+
+    <!-- this is the style for information popup round shape corner -->
+    <Style x:Key="RoundedPopupStyle" TargetType="Popup">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Placement" Value="Bottom"/>
+        <Setter Property="StaysOpen" Value="False"/>
+        <Setter Property="PopupAnimation" Value="Fade"/>
+    </Style>
+
+    <!-- this is the style for information popup border color -->
+    <Style x:Key="RoundedPopupBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="CornerRadius" Value="15"/>
+    </Style>
+
+    <!-- this is the style for information popup size -->
+    <Style x:Key="PopupTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+    </Style>
+
+    <!-- this is the style for the rich text box -->
+    <Style x:Key="RoundedRichTextBoxStyle" TargetType="RichTextBox">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RichTextBox">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                              VerticalScrollBarVisibility="Auto">
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- this is the style for the normal rich text box -->
+    <Style x:Key="NormalRoundedRichTextBoxStyle" TargetType="RichTextBox">
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Padding" Value="5, 3"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RichTextBox">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                              VerticalScrollBarVisibility="Auto">
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- this is the style for the check box -->
+    <Style x:Key="BigCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <!-- Checkbox Box -->
+                        <Border x:Name="CheckBoxBorder" Width="25" Height="25"
+                        BorderBrush="#666" BorderThickness="2"
+                        Background="White" CornerRadius="4">
+                            <Grid>
+                                <!-- Checkmark Path (Centered) -->
+                                <Path x:Name="CheckMark" Data="M 4,12 L 9,17 L 18,5"
+                              Stroke="Blue" StrokeThickness="2"
+                              StrokeEndLineCap="Round" StrokeStartLineCap="Round"
+                              Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- TextBlock for Content -->
+                        <TextBlock x:Name="CheckBoxText" 
+                                   Text="{TemplateBinding Content}" 
+                                   FontSize="20" Margin="10,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="Black"/>
+                    </StackPanel>
+
+                    <!-- Triggers -->
+                    <ControlTemplate.Triggers>
+                        <!-- Show Checkmark when Checked -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#0078D7"/>
+                            <Setter TargetName="CheckBoxText" Property="Foreground" Value="#0078D7"/>
+                        </Trigger>
+
+                        <!-- Hover Effect -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#0078D7"/>
+                            <Setter TargetName="CheckBoxText" Property="Foreground" Value="#0078D7"/>
+                        </Trigger>
+
+                        <!-- Pressed Effect -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="True"/>
+                                <Condition Property="IsChecked" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#005A9E"/>
+                            <Setter TargetName="CheckBoxText" Property="Foreground" Value="#005A9E"/>
+                        </MultiTrigger>
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- this is the style for the radio button -->
+    <Style x:Key="BigRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <!-- Outer Circle -->
+                        <Border x:Name="RadioBorder" Width="25" Height="25"
+                            BorderBrush="#666" BorderThickness="2"
+                            Background="White" CornerRadius="50">
+                            <Grid>
+                                <!-- Inner Filled Circle (Checked State) -->
+                                <Ellipse x:Name="InnerCircle" Width="15" Height="15"
+                                     Fill="Blue" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- TextBlock for Content -->
+                        <TextBlock x:Name="RadioText" 
+                               Text="{TemplateBinding Content}" 
+                               FontSize="20" Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="Black"/>
+                    </StackPanel>
+
+                    <!-- Triggers -->
+                    <ControlTemplate.Triggers>
+                        <!-- Show Inner Circle when Checked -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="InnerCircle" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="RadioBorder" Property="BorderBrush" Value="#0078D7"/>
+                            <Setter TargetName="RadioText" Property="Foreground" Value="#0078D7"/>
+                        </Trigger>
+
+                        <!-- Hover Effect -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RadioBorder" Property="BorderBrush" Value="#0078D7"/>
+                            <Setter TargetName="RadioText" Property="Foreground" Value="#0078D7"/>
+                        </Trigger>
+
+                        <!-- Pressed Effect -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="True"/>
+                                <Condition Property="IsChecked" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="RadioBorder" Property="BorderBrush" Value="#005A9E"/>
+                            <Setter TargetName="RadioText" Property="Foreground" Value="#005A9E"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+</ResourceDictionary>

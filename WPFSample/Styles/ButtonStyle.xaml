@@ -8,6 +8,10 @@
     <ImageBrush x:Key="NextButtonImageBrush" ImageSource="/Resources/next.png" />
     <ImageBrush x:Key="PrevButtonImageBrush" ImageSource="/Resources/previous.png" />
 
+    <ImageBrush x:Key="OpenEyeImageBrush" ImageSource="/Resources/OpenEye_Image.png" />
+    <ImageBrush x:Key="ClosedEyeImageBrush" ImageSource="/Resources/ClosedEye_Image.png" />
+    
+
 
     <Style x:Key="AllButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="50"/>
@@ -90,6 +94,58 @@
 
     </Style>
 
+    <Style x:Key="NumericButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="50" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Background" Value="MidnightBlue"/>
+
+        <Setter Property ="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                        CornerRadius="15"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder"
+                                Property="Background"
+                                Value="#111362"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+        
+    </Style>
+    
     <Style x:Key="LeftTextBlockStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -113,6 +169,24 @@
 
     <SolidColorBrush x:Key="LightBlueBackground" Color="#EFF2F8"/>
 
+    <LinearGradientBrush x:Key="SkyBlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#3098B0" Offset="0"/>
+        <GradientStop Color="#46CECA" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="SkyBlueGreenHoverBackground" Color="MediumTurquoise" />
+
+    <LinearGradientBrush x:Key="SkyBlueLightGreenGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#3F8C8E" Offset="0"/>
+        <GradientStop Color="#64CAA8" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="SkyBlueLightGreenHoverBackground" Color="MediumAquamarine" />
+
+    <LinearGradientBrush x:Key="LightSkyBlueGreenGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#257A5E" Offset="0"/>
+        <GradientStop Color="#3BB070" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="LightSkyBlueGreenHoverBackground" Color="MediumSeaGreen" />
+    
     <LinearGradientBrush x:Key="GreenGradientBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#275D28" Offset="0"/>
         <GradientStop Color="#3E862F" Offset="1"/>
@@ -148,6 +222,12 @@
         <GradientStop Color="#FFFFD8" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="YellowHoverBackground" Color="Yellow" />
+    
+    <LinearGradientBrush x:Key="ParrotGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#56BA6E" Offset="0"/>
+        <GradientStop Color="#77F27C" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ParrotHoverBackground" Color="LawnGreen" />
 
     <LinearGradientBrush x:Key="ManagerBlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#0052B4" Offset="0"/>
@@ -323,6 +403,21 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="SkyBlueButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource SkyBlueGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
+    </Style>
+
+    <Style x:Key="SkyBlueLightGreenButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource SkyBlueLightGreenGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
+    </Style>
+
+    <Style x:Key="LightSkyBlueGreenButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LightSkyBlueGreenGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
+    </Style>
+    
     <Style x:Key="GreenButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource GreenGradientBackground}" />
         <Setter Property="Tag" Value="{StaticResource GreenHoverBackground}" />
@@ -341,6 +436,12 @@
     <Style x:Key="YellowButtonStyle" BasedOn="{StaticResource BaseAllButtonStyle}" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource YellowGradientBackground}" />
         <Setter Property="Tag" Value="{StaticResource YellowHoverBackground}" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="ParrotButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ParrotGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource ParrotHoverBackground}" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
 
@@ -412,6 +513,37 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    
+    <!--this is the style used in login form pasword hide or show-->
+    <Style x:Key="LogInImageButtonStyle" TargetType="Button">
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Tag}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                     To="0.9" Duration="0:0:0.1" AutoReverse="True" FillBehavior="Stop"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 
     <!--this is the style for text which will be used for the names-->
     <Style x:Key="LeftAlignedTextBlock" TargetType="TextBlock">
@@ -421,6 +553,24 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="20,0,0,0"/>
 
+    </Style>
+
+    <!-- this is the style for text which will be used for the names to be left align with font 20 -->
+    <Style x:Key="LeftAlignedTextBlock20" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+    </Style>
+
+    <!-- this is the style for text which will be used for the right align with font 20 -->
+    <Style x:Key="RightAlignedTextBlock20" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="TextAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
     </Style>
 
     <!--this is the style for text box to have curve corners-->
@@ -779,6 +929,42 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!-- this is the style for information button having a transparent image -->
+    <Style x:Key="RoundedTransparentButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,12,10,12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="20">
+
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
 </ResourceDictionary>
