@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using WPFSample.Splash_screens;
 
 namespace WPFSample
 {
@@ -10,9 +11,33 @@ namespace WPFSample
     /// </summary>
     public partial class login1 : Window
     {
+        private Loading_screen1 waitForm;
+
         public login1()
         {
             InitializeComponent();
+
+            //// Show the wait form
+            //waitForm = new Loading_screen1();
+            //waitForm.Show();
+            //waitForm.FadeIn();  // Apply fade-in effect
+
+            //// Simulate work
+            //Task.Run(() =>
+            //{
+            //    Thread.Sleep(1000); // Simulating some work
+            //    Dispatcher.Invoke(() => waitForm.StartLoadingAnimation());  // Start the loading spinner
+
+            //    Thread.Sleep(3000); // Wait for 3 seconds to simulate work
+
+            //    Dispatcher.Invoke(() =>
+            //    {
+            //        waitForm.FadeOut();  // Fade out the splash screen after work is done
+            //        this.Show();  // Show the main window
+            //    });
+            //});
+
+            //this.Hide();  // Hide the main window until the work is done
         }
 
         private void Alphabetic_Keyboard_Click(object sender, MouseButtonEventArgs e)

@@ -149,3 +149,11 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\CustomerOptions1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\CustomerOptions1.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\PaymentReceived1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\PaymentReceived1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Splash screens\Loading_screen1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Splash screens\Loading_screen1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Attendence1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Attendence1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS2.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS2.baml

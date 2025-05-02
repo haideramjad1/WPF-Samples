@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/closedeye_image.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/openeye_image.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/untitled.svg")]
 
 

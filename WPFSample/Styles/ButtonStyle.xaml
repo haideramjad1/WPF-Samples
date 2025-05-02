@@ -166,6 +166,7 @@
 
     <SolidColorBrush x:Key="DefaultBackground" Color="#eee"/>
     <SolidColorBrush x:Key="DefaultHoverBackground" Color="LightGray" />
+    <SolidColorBrush x:Key="WhiteBackground" Color="White"/>
 
     <SolidColorBrush x:Key="LightBlueBackground" Color="#EFF2F8"/>
 
@@ -199,6 +200,12 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="RedHoverBackground" Color="Red" />
     
+    <LinearGradientBrush x:Key="MusteredGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <!--<GradientStop Color="#810304" Offset="0"/>-->
+        <GradientStop Color="#f4b41a" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="MusteredHoverBackground" Color="#f4b41a" />
+    
     <LinearGradientBrush x:Key="BlueGradientBackground" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#1476FB" Offset="0"/>
         <GradientStop Color="#1D8EFF" Offset="1"/>
@@ -215,6 +222,11 @@
         <GradientStop Color="#875000" Offset="0"/>
         <GradientStop Color="#E58000" Offset="1"/>
     </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Orange1GradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#E58000" Offset="0"/>
+        <GradientStop Color="#E58000" Offset="1"/>
+    </LinearGradientBrush>
     <SolidColorBrush x:Key="OrangeHoverBackground" Color="Orange" />
 
     <LinearGradientBrush x:Key="YellowGradientBackground" StartPoint="0,0" EndPoint="0,1">
@@ -224,8 +236,8 @@
     <SolidColorBrush x:Key="YellowHoverBackground" Color="Yellow" />
     
     <LinearGradientBrush x:Key="ParrotGradientBackground" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#56BA6E" Offset="0"/>
-        <GradientStop Color="#77F27C" Offset="1"/>
+        <!--<GradientStop Color="#56BA6E" Offset="0"/>-->
+        <GradientStop Color="#8BF75A" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ParrotHoverBackground" Color="LawnGreen" />
 
@@ -234,6 +246,12 @@
         <GradientStop Color="#0071D1" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ManagerBlueHoverBackground" Color="Blue" />
+    
+    <LinearGradientBrush x:Key="ManagerTeelGradientBackground" StartPoint="0,0" EndPoint="0,1">
+        <!--<GradientStop Color="#0052B4" Offset="0"/>-->
+        <GradientStop Color="#143d59" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ManagerTeelHoverBackground" Color="#143d59" />
 
     <Style x:Key="BaseKeyboardButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="Black" />
@@ -440,8 +458,8 @@
     </Style>
 
     <Style x:Key="ParrotButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource ParrotGradientBackground}" />
-        <Setter Property="Tag" Value="{StaticResource ParrotHoverBackground}" />
+        <Setter Property="Background" Value="{StaticResource ParrotHoverBackground}" />
+        <Setter Property="Tag" Value="{StaticResource ParrotGradientBackground}" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
 
@@ -461,6 +479,31 @@
         <Setter Property="Background" Value="{StaticResource ManagerBlueGradientBackground}" />
         <Setter Property="Tag" Value="{StaticResource BlueHoverBackground}" />
     </Style>
+    
+    <Style x:Key="ManagerTeelButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ManagerTeelGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource ManagerTeelHoverBackground}" />
+    </Style>
+    
+    <Style x:Key="ManagerLightBlueButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BlueGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource BlueHoverBackground}" />
+    </Style>
+    
+    <Style x:Key="ManagerGrayButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Tag" Value="LightGray" />
+    </Style>
+    
+    <Style x:Key="ManagerDarkGrayButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Tag" Value="LightGray" />
+    </Style>
+    
+    <Style x:Key="ManagerOrangeButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Orange1GradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource OrangeHoverBackground}" />
+    </Style>
 
     <Style x:Key="ManagerGreenButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource GreenGradientBackground}" />
@@ -470,6 +513,11 @@
     <Style x:Key="ManagerRedButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource RedGradientBackground}" />
         <Setter Property="Tag" Value="{StaticResource RedHoverBackground}" />
+    </Style>
+    
+    <Style x:Key="ManagerMusteredButtonStyle" BasedOn="{StaticResource UserMangerButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource MusteredGradientBackground}" />
+        <Setter Property="Tag" Value="{StaticResource MusteredHoverBackground}" />
     </Style>
 
     <Style x:Key="LeftTextKeyBoardStyle" TargetType="TextBlock">
@@ -965,6 +1013,126 @@
                 <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <!--<Style x:Key="RingButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        --><!-- Outer Ring (Static) --><!--
+                        <Image Source="/Resources/OuterRing_Image_wider.png"/>
+
+                        --><!-- Inner Image with proper binding --><!--
+                        <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}" 
+                           x:Name="InnerImage" 
+                           RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                   Storyboard.TargetProperty="ScaleX" 
+                                                   To="0.9" Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                   Storyboard.TargetProperty="ScaleY" 
+                                                   To="0.9" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                   Storyboard.TargetProperty="ScaleX" 
+                                                   To="1" Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                   Storyboard.TargetProperty="ScaleY" 
+                                                   To="1" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style x:Key="RingButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <!-- Static Outer Ring (No Transform) -->
+                        <Image Source="/Resources/OuterRing_Image_wider.png"/>
+
+                        <!-- Inner Content Group (Scales when pressed) -->
+                        <Grid x:Name="InnerGroup" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1"/>
+                            </Grid.RenderTransform>
+
+                            <!-- Inner Ring from Tag -->
+                            <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}" />
+
+                            <!-- ContentPresenter shows <Image> in Button -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Only animate InnerGroup (not the outer ring) -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                     Storyboard.TargetProperty="ScaleX" 
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                     Storyboard.TargetProperty="ScaleY" 
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                     Storyboard.TargetProperty="ScaleX" 
+                                                     To="1" Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" 
+                                                     Storyboard.TargetProperty="ScaleY" 
+                                                     To="1" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- this is the style for the buttons in refund form that are used to be dynamicaly created -->
+    <Style x:Key="RefundButtonStyle" BasedOn="{StaticResource BaseKeyboardButtonStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource WhiteBackground}" />
+        <Setter Property="Tag" Value="{StaticResource DefaultHoverBackground}" />
     </Style>
     
 </ResourceDictionary>

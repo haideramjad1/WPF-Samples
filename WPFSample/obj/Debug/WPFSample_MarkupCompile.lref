@@ -1,6 +1,7 @@
 ﻿
 FD:\software development\WPF-Samples\WPFSample\App.xaml;;
 FD:\software development\WPF-Samples\WPFSample\AddCoupon1.xaml;;
+FD:\software development\WPF-Samples\WPFSample\Attendence1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\ButtonForSaleScreen.xaml;;
 FD:\software development\WPF-Samples\WPFSample\CardOptions.xaml;;
 FD:\software development\WPF-Samples\WPFSample\Card_Sample.xaml;;
@@ -14,8 +15,11 @@ FD:\software development\WPF-Samples\WPFSample\PaymentReceived1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\Pos_Popup_WPF.xaml;;
 FD:\software development\WPF-Samples\WPFSample\ProductLookUp1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\RefundForm1.xaml;;
+FD:\software development\WPF-Samples\WPFSample\RetailPOS1.xaml;;
+FD:\software development\WPF-Samples\WPFSample\RetailPOS2.xaml;;
 FD:\software development\WPF-Samples\WPFSample\RetailQtyPopup1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\SarchCustomer1.xaml;;
+FD:\software development\WPF-Samples\WPFSample\Splash screens\Loading_screen1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\UpsertCategory1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\UserManager1.xaml;;
 FD:\software development\WPF-Samples\WPFSample\WPFUserControls\CustomCalendar1.xaml;;

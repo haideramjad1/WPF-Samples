@@ -9,6 +9,24 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="20,0,0,0"/>
     </Style>
+    
+    <!-- this is the style for text which will be used for the center align -->
+    <Style x:Key="CenterAlignedTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- this is the style for text which will be used for the center align header in sales screen -->
+    <Style x:Key="POSHeaderTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
 
     <!-- this is the style for information popup round shape corner -->
     <Style x:Key="RoundedPopupStyle" TargetType="Popup">
@@ -206,5 +224,82 @@
         </Setter>
     </Style>
 
-    
+    <!-- this is the style for password box to have curve corners -->
+    <Style x:Key="CommonPasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Height" Value="40" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10"
+                    Padding="10,0,0,0">
+                        <ScrollViewer Margin="0" 
+                      x:Name="PART_ContentHost" 
+                      VerticalScrollBarVisibility="Hidden" 
+                      HorizontalScrollBarVisibility="Hidden" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style TargetType="Slider" x:Key="WideThumbSliderStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid Margin="0">
+                        <Track x:Name="PART_Track"
+                           IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                           Orientation="{TemplateBinding Orientation}">
+                            <Track.Thumb>
+                                <Thumb Width="25"
+                                   Height="{Binding ThumbHeight}"
+                                   Background="Gray"/>
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Width="0" Height="0" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Width="0" Height="0" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style TargetType="Slider" x:Key="WideThumbSliderStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid Margin="0">
+                        <Track x:Name="PART_Track"
+                           IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                           Orientation="{TemplateBinding Orientation}">
+                            <Track.Thumb>
+                                <!-- Bind Thumb Height to ThumbHeight Property -->
+                                <Thumb Width="25" Height="{Binding ThumbHeight, RelativeSource={RelativeSource AncestorType=Window}}" Background="Gray" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Width="0" Height="0" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Width="0" Height="0" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

@@ -10,7 +10,7 @@
         WindowStyle="None"
         WindowState="Maximized">
 
-    <Grid>
+    <!--<Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
@@ -188,5 +188,156 @@
 
         </Grid>
 
+    </Grid>-->
+
+    <Grid>
+        <!-- Top Blue Header -->
+        <Border Background="#0A56C4" Height="70" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <DockPanel Grid.Column="0" Height="30" VerticalAlignment="Center" LastChildFill="True">
+                    <TextBlock Text="Terminal ID: " FontWeight="Bold" Foreground="White" Margin="10,0" FontSize="20"/>
+                    <TextBlock Text="02" Foreground="White" FontSize="20"/>
+                    <TextBlock Text="    Terminal Name: " FontWeight="Bold" Foreground="White" Margin="10,0" FontSize="20"/>
+                    <TextBlock Text="DESKTOP-BSKU693" Foreground="White" FontSize="20"/>
+                </DockPanel>
+                
+                <Button Grid.Column="1" Content="Clock In/Out" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource OrangeButtonStyle}" MinWidth="200" 
+                        Margin="0,-5,10,0" MinHeight="50"/>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Grid -->
+        <Grid Margin="10,75,10,60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="1.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left: Scanner Image -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="top" Margin="20,0,0,0">
+                        <!-- First Line -->
+
+                        <TextBlock Text="Buisness Name " FontWeight="Medium" Foreground="MidnightBlue" FontFamily="Times New Roman" Margin="10,10,0,0" FontSize="25"/>
+
+                        <!-- Second Line -->
+                        <TextBlock Text="Buisness Address" FontFamily="Times New Roman" FontWeight="Medium" Foreground="MidnightBlue" Margin="10,10,10,0" FontSize="25" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                </Grid>
+
+                <Image Grid.Row="1"  Source="/Resources/Vape_Shop.png" Margin="10" Stretch="Uniform" />
+
+            </Grid>
+            
+            <!-- Right: Login UI -->
+            <Grid Grid.Column="2" Margin="10" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button Grid.Column="0" Content="ID/Password" Style="{StaticResource OrangeButtonStyle}" FontSize="20" MinWidth="150"/>
+                    
+                    <Button Grid.Column="1" Content="Employee Card" Style="{StaticResource ParrotButtonStyle}" FontSize="20" MinWidth="170"/>
+                    
+                    <Button Grid.Column="2" Content="Pin" Style="{StaticResource YellowButtonStyle}" FontSize="20" MinWidth="60"/>
+                </Grid>
+
+                <!-- Swipe ID Entry -->
+                <StackPanel Margin="20,0" Grid.Row="1">
+                    <TextBlock Text="Enter Swipe ID:" FontWeight="Bold" Margin="5" FontSize="25"/>
+
+                    <TextBox x:Name="Name_TextEdit"
+                         Style="{StaticResource CommonTextBoxStyle}" Margin="10,0,10,0"
+                         TextChanged="ForPlaceHolder_TextChanged">
+                    </TextBox>
+
+                </StackPanel>
+
+                <!-- Keypad -->
+                <UniformGrid Grid.Row="2" Columns="3" Rows="4" Margin="20,10" HorizontalAlignment="Stretch">
+                    <Button Content="1" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="2" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="3" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="4" Style="{StaticResource NumericButtonStyle}"
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="5" Style="{StaticResource NumericButtonStyle}"
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="6" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="7" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="8" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="9" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="Reset" Style="{StaticResource RedButtonStyle}" FontSize="25" FontWeight="Bold" MinWidth="100" Margin="3"/>
+                    <Button Content="0" Style="{StaticResource NumericButtonStyle}" 
+                            Background="#08449A" Margin="3"/>
+                    <Button Content="Submit" Style="{StaticResource GreenButtonStyle}" FontSize="25" FontWeight="Bold" MinWidth="130" Margin="3"/>
+                </UniformGrid>
+
+                <!-- POS Genie Logo -->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                            
+                    <Image Grid.Column="0" Source="/Resources/2222crop 1.png" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                        <!-- First Line -->
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Blocks POS " FontWeight="Medium" Foreground="MidnightBlue" FontFamily="Times New Roman" Margin="10,10,10,0" FontSize="20"/>
+                        </StackPanel>
+
+                        <!-- Second Line -->
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Address " FontWeight="Medium" Foreground="MidnightBlue" FontFamily="Times New Roman" Margin="10,10,10,0" FontSize="20"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+            
+        </Grid>
+
+        <!-- Footer -->
+        <DockPanel Height="40" Background="#0A56C4" VerticalAlignment="Bottom" LastChildFill="True">
+            <TextBlock Text="Version: " FontWeight="Bold" Foreground="White" Margin="10,0" FontSize="20" VerticalAlignment="Center"/>
+            <TextBlock Text="02.06.01" Foreground="White" FontSize="20" VerticalAlignment="Center"/>
+        </DockPanel>
     </Grid>
+    
 </Window>

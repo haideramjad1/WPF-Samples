@@ -151,6 +151,9 @@
     <Compile Include="AddCoupon1.xaml.cs">
       <DependentUpon>AddCoupon1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Attendence1.xaml.cs">
+      <DependentUpon>Attendence1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ButtonForSaleScreen.xaml.cs">
       <DependentUpon>ButtonForSaleScreen.xaml</DependentUpon>
     </Compile>
@@ -184,8 +187,17 @@
     <Compile Include="RefundForm1.xaml.cs">
       <DependentUpon>RefundForm1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RetailPOS1.xaml.cs">
+      <DependentUpon>RetailPOS1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetailPOS2.xaml.cs">
+      <DependentUpon>RetailPOS2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RetailQtyPopup1.xaml.cs">
       <DependentUpon>RetailQtyPopup1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Splash screens\Loading_screen1.xaml.cs">
+      <DependentUpon>Loading_screen1.xaml</DependentUpon>
     </Compile>
     <Compile Include="StringToVisibilityConverter .cs" />
     <Compile Include="SarchCustomer1.xaml.cs">
@@ -204,6 +216,10 @@
       <DependentUpon>RefundGridUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCoupon1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Attendence1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,11 +286,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RetailPOS1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetailPOS2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RetailQtyPopup1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SarchCustomer1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Splash screens\Loading_screen1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -374,9 +402,6 @@
     <Resource Include="Resources\BackSpace_Image.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Shift_Image.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Shift_Image2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -421,12 +446,52 @@
     <Resource Include="Resources\StockAdjustment_Image.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ClosedEye_Image1.png" />
-    <Resource Include="Resources\OpenEye_Image1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\ClosedEye_Image.png" />
     <Resource Include="Resources\OpenEye_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Hookha_Shop.png" />
+    <Resource Include="Resources\Vape_Shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\InnerRing_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CashDrawer_InnerRing_Image.png" />
+    <Resource Include="Resources\LogOut_InnerRing_Image.png" />
+    <Resource Include="Resources\Setting_InnerRing_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OuterRing_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\scan_card_gif1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ClosedEye_Image_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shift_Down_Image.png" />
+    <Resource Include="Resources\Shift_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shift_Down_Image_Black.png" />
+    <Resource Include="Resources\Shift_Image_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shift_Down_Image_White.png" />
+    <Resource Include="Resources\Shift_Image_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OuterRing_Image_Wider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CashDrawer_Image.png" />
+    <Resource Include="Resources\LogOut_Image.png" />
+    <Resource Include="Resources\Setting_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Line_Separate_Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets')" />

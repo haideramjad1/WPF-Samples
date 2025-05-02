@@ -1,0 +1,823 @@
+﻿<Window x:Class="WPFSample.RetailPOS2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="RetailPOS2" Height="730" Width="1105"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True"
+        Background ="#EAE7E7"
+        Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding ScaleFactor}" ScaleY="{Binding ScaleFactor}" />
+        </Grid.LayoutTransform>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#143d59">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0" VerticalAlignment="Center" LastChildFill="True">
+                <TextBlock FontWeight="Medium" Foreground="White" Margin="10,0" FontSize="18">
+                <Run Text="Location"/>
+                <Run Text=":"/>
+                </TextBlock>
+
+                <TextBlock Text="desi-District Prosper" Foreground="White" FontSize="18"/>
+
+                <TextBlock FontWeight="Medium" Foreground="White" Margin="40,0,10,0" FontSize="18">
+                <Run Text="Version"/>
+                <Run Text=":"/>
+                </TextBlock>
+
+                <TextBlock Text="189.35" Foreground="White" FontSize="18"/>
+            </DockPanel>
+
+            <DockPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" LastChildFill="True" Margin="0,0,20,0">
+                <TextBlock FontWeight="Medium" Foreground="White" Margin="10,0" FontSize="18">
+                <Run Text="Terminal ID"/>
+                <Run Text=":"/>
+                </TextBlock>
+
+                <TextBlock Text="24023" Foreground="White" FontSize="18"/>
+
+                <TextBlock FontWeight="Medium" Foreground="White" Margin="40,0,10,0" FontSize="18">
+                <Run Text="Cashier ID"/>
+                <Run Text=":"/>
+                </TextBlock>
+
+                <TextBlock Text="6368" Foreground="White" FontSize="18"/>
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".8*" MaxWidth="180"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*" MaxWidth="220"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+
+                <!-- Left Menu -->
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Border CornerRadius="20" Background="White" Padding="0,5">
+                        <UniformGrid Columns="1" Margin="5">
+                            <Button Content="QTY CHG" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Price CHG" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Delete" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Clear" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Last Receipt" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Refund" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Void" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Discount" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="No Sale" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Content="Fetch" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                        </UniformGrid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <TextBlock Text="Loyality Points" FontWeight="Bold" Style="{StaticResource CenterAlignedTextBlock}"/>
+
+                        <TextBlock Text="9999" Style="{StaticResource CenterAlignedTextBlock}"/>
+
+                        <TextBlock Text="($9999.99)" Style="{StaticResource CenterAlignedTextBlock}"/>
+
+                        <TextBlock Text="Balance" FontWeight="Bold" Margin="0,5,0,0" Style="{StaticResource CenterAlignedTextBlock}"/>
+
+                        <TextBlock Text="9999.99" Style="{StaticResource CenterAlignedTextBlock}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- Center Display -->
+            <Grid Grid.Column="1" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="160"/>
+                </Grid.RowDefinitions>
+
+                <!-- Customer selection -->
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBox x:Name="Name_TextEdit"
+                             Style="{StaticResource CommonTextBoxStyle}" Height="50"
+                             TextChanged="ForPlaceHolder_TextChanged"
+                             TouchUp="Name_TextEdit_TouchUp">
+                        </TextBox>
+
+                        <TextBlock Name="NameTextBlock" 
+                               Text=" Select Customer" 
+                               Style="{StaticResource PlaceholderTextBlockStyle}">
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button Content="+" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontSize="40" Margin="0,0,0,3"/>
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Button Style="{ StaticResource ManagerMusteredButtonStyle}" FontSize="30" Margin="0,0,0,3">
+                            <Image Source="/Resources/Shift_Image_Black.png" Width="46" Height="53"/>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Column="5">
+                        <Button Style="{ StaticResource ManagerMusteredButtonStyle}" FontSize="30" Margin="0,0,0,3">
+                            <Image Source="/Resources/Shift_Down_Image_Black.png" Width="46" Height="53"/>
+                        </Button>
+                    </Grid>
+
+                    <!--<Grid Grid.Column="2">
+                    <Button x:Name="EyeButton"
+                            Style="{StaticResource LogInImageButtonStyle}"
+                            Tag="{StaticResource ClosedEyeImageBrush}"
+                            Height="40" Width="45"
+                            Click="EyeButton_Click">
+                    </Button>
+                </Grid>-->
+                </Grid>
+
+                <!-- Items List -->
+                <!--<ListView Grid.Row="1" Margin="5">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Item Name" Width="200"/>
+                        <GridViewColumn Header="QTY" Width="50"/>
+                        <GridViewColumn Header="UTR" Width="80"/>
+                        <GridViewColumn Header="Subtotal" Width="100"/>
+                        <GridViewColumn Header="ETNT" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+
+                <Grid x:Name="GridView_And_Total" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="32"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Grid.Row="0">
+
+                        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleRetail1}" 
+                          RowStyle="{StaticResource GridRowStyle}"
+                          CellStyle="{StaticResource GridCellStyle}"
+                          Name="dataGrid" 
+                          AutoGenerateColumns="False" 
+                          ItemsSource="{Binding Items}" 
+                          CanUserAddRows="False" 
+                          CanUserResizeColumns="False"
+                          CanUserReorderColumns="False"
+                          IsHitTestVisible="True" 
+                          SelectionMode="Single"
+                          IsTabStop="False"
+                          GridLinesVisibility="None"
+                          Background="White"
+                          BorderBrush="Transparent"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <DataGrid.Columns>
+
+                                <!-- Quantity Name -->
+                                <DataGridTemplateColumn Header="Name" Width="200*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <!--<local:RefundGridUserControl Text="{Binding Name}" />-->
+                                            <TextBlock Text="{Binding Name}" 
+                                               Padding="6,5,7,5"
+                                               TextWrapping="Wrap"
+                                               VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Quantity Column -->
+                                <DataGridTextColumn Header="QTY" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60*">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <!-- Unit Price Column -->
+                                <DataGridTextColumn Header="UTR" Binding="{Binding UnitPrice}" Width="60*"
+                        IsReadOnly="True">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <!-- Subtotal Column -->
+                                <DataGridTextColumn Header="Sub Tot" Binding="{Binding UnitPrice}" Width="60*"
+                        IsReadOnly="True">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <!-- ETNT Column -->
+                                <DataGridTextColumn Header="ETNT" Binding="{Binding UnitPrice}" Width="60*"
+                        IsReadOnly="True">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <!-- Delete Button -->
+                                <!--
+                        <DataGridTemplateColumn Header="DEL" Width="60*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="DeleteButton" Click="DeleteButton_Click"
+Width="30"
+                        Height="40"
+Background="Transparent"
+Template="{StaticResource GridDeleteImageButtonTemplate}"
+Tag="{StaticResource CloseButtonImageBrush}">
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+
+                    <!-- Total Section -->
+                    <!--<Border Background="#0A56C4" CornerRadius="10" Margin="4,5" Grid.Row="2">-->
+
+                    <Grid Grid.Row="1" Background="#143d59">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <UniformGrid Columns="3" Margin="5"  VerticalAlignment="Center">
+                                <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock Text="QTY :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tax :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock Text="Sub Total :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25"/>
+                                </StackPanel>
+                            </UniformGrid>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Background="#8BF75A">
+                            <StackPanel Grid.Row="2" Orientation="Vertical">
+                                <TextBlock Text="Grand Total" FontWeight="Bold" FontSize="24"  TextAlignment="Center" Foreground="Black"/>
+                                <TextBlock Text="9999.99" FontWeight="Bold" FontSize="32"   TextAlignment="Center" Foreground="Black"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3" Background="Black">
+
+                        <Grid>
+                            <UniformGrid Columns="3" Margin="5"  VerticalAlignment="Center">
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Disc :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="9999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="WIC :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="9999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="EBT :" Style="{StaticResource POSHeaderTextStyle}"/>
+                                    <TextBlock Text="9999.99" Style="{StaticResource POSHeaderTextStyle}" FontSize="25" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                            </UniformGrid>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <Grid x:Name="Products_Grid" Grid.Row="1" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <!--<Grid Grid.Row="0" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <UniformGrid x:Name="ButtonGrid" Columns="4" />
+                    </ScrollViewer>
+
+                </Grid>-->
+
+                    <Grid Grid.Row="0">
+
+                        <Border CornerRadius="15"
+                        Background="#F5F5F5">
+
+                            <Grid>
+                                <!--<ScrollViewer x:Name="ProductScrollViewer"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+                                <Grid x:Name="ButtonGrid" />
+                            </ScrollViewer>-->
+
+                                <ScrollViewer x:Name="ProductScrollViewer"
+          VerticalScrollBarVisibility="Auto"
+          HorizontalScrollBarVisibility="Disabled">
+                                    <WrapPanel x:Name="ButtonGrid"
+           Orientation="Horizontal"
+           ItemHeight="200"
+           ItemWidth="Auto"
+           />
+                                </ScrollViewer>
+
+                            </Grid>
+
+                        </Border>
+
+                    </Grid>
+
+                    <!--<Grid Grid.Row="0">
+                    <UniformGrid Columns="3" Rows="5" Margin="5">
+                        <Button Content="Product 1" Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 2" Style="{ StaticResource ManagerRedButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 3" Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 4" Style="{ StaticResource ManagerRedButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 5" Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 6" Style="{ StaticResource ManagerRedButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 7" Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="20" Click="Product_Click"/>
+                        <Button Content="Product 8" Style="{ StaticResource ManagerRedButtonStyle}" FontSize="20" Click="Product_Click"/>
+                    </UniformGrid>
+                </Grid>-->
+
+                    <Grid Grid.Row="1">
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="1">
+                                <Button Style="{ StaticResource ManagerTeelButtonStyle}" FontSize="30" Margin="0,-3,0,3"  Click="EyeButton_Click">
+                                    <Image Source="/Resources/ClosedEye_Image_White.png" Width="46" Height="53"/>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="3">
+                                <Button Style="{ StaticResource ManagerTeelButtonStyle}" FontSize="30" Margin="0,-3,0,3">
+                                    <Image Source="/Resources/Shift_Image.png" Width="46" Height="53"/>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="5">
+                                <Button Style="{ StaticResource ManagerTeelButtonStyle}" FontSize="30" Margin="0,-3,0,3">
+                                    <Image Source="/Resources/Shift_Down_Image.png" Width="46" Height="53"/>
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleRetail}" 
+                          AutoGenerateColumns="False" 
+                          HeadersVisibility="Column"
+                          CanUserAddRows="False"
+                          CanUserResizeColumns="False"
+                          CanUserReorderColumns="False"
+                          IsHitTestVisible="False"
+                          BorderThickness="0"
+                          Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Width="100*" />
+                                <DataGridTextColumn Header="QTY" Width="60*" />
+                                <DataGridTextColumn Header="UTR" Width="60*" />
+                                <DataGridTextColumn Header="Sub Total" Width="60*" />
+                                <DataGridTextColumn Header="ETNT" Width="60*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                    </Grid>
+
+                </Grid>
+
+                <!--</Border>-->
+
+                <!-- Button Section -->
+                <Grid  Grid.Row="5">
+
+                    <Grid Margin="-5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="0" Grid.Row="0" Content="All Transactions" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+                        
+                        <Button Grid.Column="1" Grid.Row="0" Content="Shift Start" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+                        
+                        <Button Grid.Column="2" Grid.Row="0" Content="Price Check" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+                        
+                        <Button Grid.Column="3" Grid.Row="0" Content="Last Receipt" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+
+                        <Button Grid.Column="0" Grid.Row="1" Content="Product Lookup" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+
+                        <Button Grid.Column="1" Grid.Row="1" Content="All Payment" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+
+                        <Button Grid.Column="2" Grid.Row="1" Content="Shift Start" Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black" Margin="4"/>
+                        
+                        <Button Grid.Column="3" Grid.Row="1" Content="Manager" 
+                            Style="{StaticResource ManagerMusteredButtonStyle}" Foreground="Black"  Margin="4"/>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+
+            <Grid Grid.Column="2" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Style="{StaticResource ManagerDarkGrayButtonStyle}" Grid.Row="0" Click="TopButton_Click">
+                    <Image Source="/Resources/Shift_Image_Black.png" Width="40" Height="50"/>
+                </Button>
+
+                <!--<ScrollViewer x:Name="CategoryScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding PagedCategoryButtons}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding}" 
+                                Style="{StaticResource ManagerBlueButtonStyle}"
+                                Click="CategoryButton_Click"
+                                    Loaded="Button_Loaded"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>-->
+
+                <Grid x:Name="CategoryColumn" Grid.Row="1" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="{Binding ScrollColumnWidth}" />
+                    </Grid.ColumnDefinitions>
+
+                    <ItemsControl Grid.Column="0" ItemsSource="{Binding PagedCategoryButtons}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding}"
+                                Style="{StaticResource ManagerTeelButtonStyle}"
+                                Click="CategoryButton_Click"
+                                Loaded="Button_Loaded"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Slider x:Name="PageScrollSlider"
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        Minimum="0"
+                        IsDirectionReversed="True"
+                        Maximum="{Binding TotalPages}"
+                        ValueChanged="PageScrollSlider_ValueChanged"
+                        VerticalAlignment="Stretch"
+                        Margin="5"
+                        TickFrequency="1"
+                        IsSnapToTickEnabled="False"
+                        Style="{StaticResource WideThumbSliderStyle}"/>
+
+                </Grid>
+
+
+                <Grid Grid.Row="2" Margin="0,-10,0,10">
+                    <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="BottomButton_Click">
+                        <Image Source="/Resources/Shift_Down_Image_Black.png" Width="40" Height="50"/>
+                    </Button>
+                </Grid>
+            </Grid>
+
+
+            <!-- Right Panel -->
+            <Grid Grid.Column="3" Margin="7,5,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="/Resources/2222crop 1.png" Height="Auto" Width="Auto" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+                            <Grid VerticalAlignment="Center">
+                                <TextBlock Text="Blocks POS " FontWeight="Bold" FontFamily="Tahoma" Margin="10,0,0,0" FontSize="22"/>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="0" Grid.Column="1" x:Name="TargetGrid">
+                        <Viewbox Stretch="Uniform" Margin="20">
+                            <Ellipse Width="{Binding ActualWidth, ElementName=TargetGrid}"
+           Height="{Binding ActualWidth, ElementName=TargetGrid}">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Resources/Hookha_Shop.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Viewbox>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="1" Margin="5,-5,0,0">
+                        <UniformGrid Columns="1">
+                            <Button x:Name="five" Content="$ 5" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+
+                            <Button x:Name="ten" Content="$ 10" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+
+                            <Button x:Name="twenty" Content="$ 20" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+
+                            <Button x:Name="fifty" Content="$ 50" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+
+                            <Button x:Name="hundred" Content="$ 100" Style="{ StaticResource ManagerMusteredButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+
+                            <Button Content="Round $"  Style="{ StaticResource ManagerRedButtonStyle}"/>
+                        </UniformGrid>
+                    </Grid>
+
+                    <Border CornerRadius="10" Grid.Row="1">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                <!--<GradientStop Color="#4F4B49" Offset="0"/>-->
+                                <GradientStop Color="#696664" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBox x:Name="Scane_TextEdit"
+                             Style="{StaticResource CommonTextBoxStyle}" Margin="20,5,20,0"
+                             TextChanged="ForPlaceHolder_TextChanged" Height="50">
+                                </TextBox>
+
+                                <TextBlock Name="ScaneTextBlock" 
+                               Text=" Scan / Enter Item" Margin="20,0"
+                               Style="{StaticResource PlaceholderTextBlockStyle}" FontSize="30">
+                                </TextBlock>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <!-- Keypad -->
+                                <UniformGrid Columns="3" Rows="5" Margin="15,0,15,15">
+                                    <Button Content="7" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="8" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="9" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="4" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="5" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="6" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="1" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="2" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="3" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="." Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="0" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="," Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="Back" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold"/>
+                                    <Button Content="00" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+                                    <Button Content="Clear" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold"/>
+                                </UniformGrid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+
+                <!-- Payment -->
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="0,10,0,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1.4*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border CornerRadius="15" Background="#143d59" Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <TextBlock Text="Pay By" FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Amount" FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Border CornerRadius="10" Background="White" Grid.Row="1">
+
+                        </Border>
+
+                        <Grid Grid.Row="2" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".5*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width=".5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border CornerRadius="20" Background="#f4b41a" Grid.Column="1" Margin="10,4">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="2.35" Style="{StaticResource POSHeaderTextStyle}" FontWeight="Bold" Foreground="Black"/>
+                                    <TextBlock Text="/lb" Style="{StaticResource POSHeaderTextStyle}" FontWeight="Bold" Foreground="Black"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <Grid  Grid.Row="3">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="top">
+                                <TextBlock Text="Remaining" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" FontSize="30" Padding="0"/>
+                                <TextBlock Text="0.00" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" Padding="0" FontSize="25"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Margin="0,5,0,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Column="0" Grid.Row="0" Content="Exact" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Grid.Column="0" Grid.Row="1" Content="Cash" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Grid.Column="1" Grid.Row="0" Content="Dr Card" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                            <Button Grid.Column="1" Grid.Row="1" Content="Cr Card" Style="{ StaticResource ManagerTeelButtonStyle}"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="1" Margin="0,5,5,0">
+                            <Border CornerRadius="15" >
+                                <Button Style="{ StaticResource ParrotButtonStyle}" FontSize="25">
+                                    <TextBlock Text="Other Payment"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                                </Button>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Grid.Row="3" Margin="0,0,5,0">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Button Style="{StaticResource RingButtonStyle}" Tag="/Resources/Setting_InnerRing_Image.png"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Button Style="{StaticResource RingButtonStyle}" Tag="/Resources/CashDrawer_InnerRing_Image.png"/>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Button Style="{StaticResource RingButtonStyle}" Tag="/Resources/LogOut_InnerRing_Image.png"/>
+                            </Grid>
+
+                        </Grid>
+
+                    </Grid>
+
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+    
+</Window>
