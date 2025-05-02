@@ -4,9 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace WPFSample
 {
@@ -87,15 +85,11 @@ namespace WPFSample
             "product 11", "product 12", "product 13", "product 14", "product 15",
             "product 16", "product 17", "product 18", "product 19", "product 20",
             "product 21", "product 22", "product 23", "product 24", "product 25",
-            "product 16", "product 17", "product 18", "product 19", "product 20",
-            "product 21", "product 22", "product 23", "product 24", "product 25",
+            "product 26", "product 27", "product 28", "product 29", "product 30",
+            "product 31", "product 32", "product 33", "product 34", "product 35",
         };
 
         public double ScaleFactor { get; set; }
-
-        private DispatcherTimer scrollTimer;
-        private bool isScrollingDown;
-
 
         public RetailPOS1()
         {
@@ -120,7 +114,8 @@ namespace WPFSample
                 "Non Grocery2", "Drinks2", "Snacks2", "LCDs2", "Bottle2",
                 "Grocery3", "Fish3", "Chicken3", "Vegetable3", "Lamb3",
                 "Meat3", "Produce3", "Dairy3", "Fruits3", "Breads3",
-                "Non Grocery3", "Drinks3", "Snacks3", "LCDs3", "Bottle3"
+                "Non Grocery3", "Drinks3", "Snacks3", "LCDs3", "Bottle3",
+                "Non Grocery4", "Drinks4", "Snacks4", "LCDs4", "Bottle4"
             };
 
             UpdatePagedButtons();
@@ -132,10 +127,6 @@ namespace WPFSample
             double width = SystemParameters.PrimaryScreenWidth;
             ScaleFactor = width <= 1024 ? 0.8 : 1.0;
             DataContext = this; // So XAML can bind to ScaleFactor
-
-            scrollTimer = new DispatcherTimer();
-            scrollTimer.Interval = TimeSpan.FromMilliseconds(150); // Adjust speed
-            scrollTimer.Tick += ScrollTimer_Tick;
         }
 
         private void EyeButton_Click(object sender, RoutedEventArgs e)
@@ -253,15 +244,12 @@ namespace WPFSample
 
         private void Product_Click(object sender, RoutedEventArgs e)
         {
-            //Items.Add(new Items
-            var newItem = new Items
+            Items.Add(new Items
             {
-                Name = $"New Item {currentItemIndex} text for testing purpose to show",
+                Name = $"New Item {currentItemIndex} long text for testing purpose to show what will happen to the long text if it is provided",
                 Quantity = currentQuantity,
                 UnitPrice = currentUnitPrice
-            };
-
-            Items.Add(newItem);
+            });
 
             // Increment values
             currentQuantity += 1;
@@ -270,9 +258,6 @@ namespace WPFSample
 
             GridView_And_Total.Visibility = Visibility.Visible;
             Products_Grid.Visibility = Visibility.Hidden;
-
-            dataGrid.SelectedItem = newItem;
-            dataGrid.ScrollIntoView(newItem);
         }
 
         private void UpdatePagedButtons()
@@ -292,15 +277,6 @@ namespace WPFSample
             OnPropertyChanged(nameof(ScrollColumnWidth));
 
         }
-
-        private void ScrollTimer_Tick(object sender, EventArgs e)
-        {
-            if (isScrollingDown)
-                BottomButton_Click(null, null);
-            else
-                TopButton_Click(null, null);
-        }
-
 
         private void TopButton_Click(object sender, RoutedEventArgs e)
         {
@@ -322,51 +298,19 @@ namespace WPFSample
             }
         }
 
-        private void TopButton_HoldStart(object sender, MouseButtonEventArgs e)
-        {
-            isScrollingDown = false;
-            TopButton_Click(null, null);
-            scrollTimer.Start();
-        }
-
-        private void BottomButton_HoldStart(object sender, MouseButtonEventArgs e)
-        {
-            isScrollingDown = true;
-            BottomButton_Click(null, null);
-            scrollTimer.Start();
-        }
-
-        private void Scroll_HoldStop(object sender, MouseEventArgs e)
-        {
-            scrollTimer.Stop();
-        }
-
-
 
         private void Button_Loaded(object sender, RoutedEventArgs e)
         {
-            //if (sender is Button btn)
-            //{
-            //    var content = btn.Content as string;
-            //    if (string.IsNullOrWhiteSpace(content))
-            //    {
-            //        btn.Visibility = Visibility.Collapsed; // Hides the button completely
-            //    }
-            //    else
-            //    {
-            //        btn.Visibility = Visibility.Visible;
-            //    }
-            //}
-
             if (sender is Button btn)
             {
-                if (btn.Content is string contentStr)
+                var content = btn.Content as string;
+                if (string.IsNullOrWhiteSpace(content))
                 {
-                    btn.Visibility = string.IsNullOrWhiteSpace(contentStr) ? Visibility.Collapsed : Visibility.Visible;
+                    btn.Visibility = Visibility.Collapsed; // Hides the button completely
                 }
                 else
                 {
-                    btn.Visibility = Visibility.Visible; // assume valid if not a string
+                    btn.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -383,5 +327,6 @@ namespace WPFSample
                 lastPageIndex = newPageIndex;
             }
         }
+
     }
 }

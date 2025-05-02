@@ -141,18 +141,31 @@
                     </Grid>
 
                     <Grid Grid.Column="1">
-                        <Button Content="+" Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="40" Margin="0,0,0,3"/>
+                        <Button Style="{ StaticResource ManagerBlueButtonStyle}" Margin="0,0,0,3">
+                            <TextBlock Text="+" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,3"/>
+
+                        </Button>
                     </Grid>
 
                     <Grid Grid.Column="3">
                         <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3">
-                            <Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>
+                            <!--<Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>-->
+
+                            <Viewbox Width="auto" Height="auto" Margin="5">
+                                <Path Fill="White" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
+                            </Viewbox>
+                            
                         </Button>
                     </Grid>
 
                     <Grid Grid.Column="5">
                         <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3">
-                            <Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>
+                            <!--<Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>-->
+
+                            <Viewbox Width="auto" Height="auto" Margin="5">
+                                <Path Fill="White" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
+                            </Viewbox>
+                            
                         </Button>
                     </Grid>
 
@@ -329,9 +342,9 @@
                 <Grid x:Name="Products_Grid" Grid.Row="1" Visibility="Hidden">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="40"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
@@ -357,7 +370,7 @@
                     </Grid>
 
                     <Grid Grid.Row="1">
-                        <Grid Margin="5">
+                        <Grid Margin="5,20,5,5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="60"/>
@@ -377,13 +390,23 @@
 
                             <Grid Grid.Column="3">
                                 <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3">
-                                    <Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>
+                                    <!--<Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>-->
+                                    
+                                    <Viewbox Width="auto" Height="auto" Margin="5">
+                                        <Path Fill="White" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
+                                    </Viewbox>
+                                    
                                 </Button>
                             </Grid>
 
                             <Grid Grid.Column="5">
                                 <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3">
-                                    <Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>
+                                    <!--<Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>-->
+
+                                    <Viewbox Width="auto" Height="auto" Margin="5">
+                                        <Path Fill="White" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
+                                    </Viewbox>
+                                    
                                 </Button>
                             </Grid>
 
@@ -460,15 +483,14 @@
 
                 <Grid Grid.Row="0" Margin="10,0,10,0">
                     
-                    <!--<Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="TopButton_Click">
-                        <Image Source="/Resources/Shift_Image_Black.png" Width="auto" Height="auto"/>
-                    </Button>-->
+                    <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="TopButton_Click">
+                        
+                        <!--<Image Source="/Resources/Shift_Image_Black.png" Width="auto" Height="auto"/>-->
 
-                    <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"
-                            PreviewMouseLeftButtonDown="TopButton_HoldStart"
-                            PreviewMouseLeftButtonUp="Scroll_HoldStop"
-                            MouseLeave="Scroll_HoldStop">
-                        <Image Source="/Resources/Shift_Image_Black.png" Width="auto" Height="auto"/>
+                        <Viewbox Width="auto" Height="auto" Margin="5">
+                            <Path Fill="Black" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
+                        </Viewbox>
+
                     </Button>
                     
                 </Grid>
@@ -539,15 +561,14 @@
                 </Grid>
 
                 <Grid Grid.Row="4" Margin="10,0,10,0">
-                    <!--<Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="BottomButton_Click">
-                        <Image Source="/Resources/Shift_Down_Image_Black.png" Width="auto" Height="auto"/>
-                    </Button>-->
+                    <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="BottomButton_Click">
 
-                    <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"
-                            PreviewMouseLeftButtonDown="BottomButton_HoldStart"
-                            PreviewMouseLeftButtonUp="Scroll_HoldStop"
-                            MouseLeave="Scroll_HoldStop">
-                        <Image Source="/Resources/Shift_Down_Image_Black.png" Width="auto" Height="auto"/>
+                        <!--<Image Source="/Resources/Shift_Down_Image_Black.png" Width="auto" Height="auto"/>-->
+
+                        <Viewbox Width="auto" Height="auto" Margin="5">
+                            <Path Fill="Black" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
+                        </Viewbox>
+                        
                     </Button>
                 </Grid>
             </Grid>
