@@ -148,8 +148,7 @@
                     </Grid>
 
                     <Grid Grid.Column="3">
-                        <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3">
-                            <!--<Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>-->
+                        <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3" Click="CartGridUp_Click">
 
                             <Viewbox Width="auto" Height="auto" Margin="5">
                                 <Path Fill="White" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
@@ -159,8 +158,7 @@
                     </Grid>
 
                     <Grid Grid.Column="5">
-                        <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3">
-                            <!--<Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>-->
+                        <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,0,0,3" Click="CartGridDown_Click">
 
                             <Viewbox Width="auto" Height="auto" Margin="5">
                                 <Path Fill="White" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
@@ -204,7 +202,6 @@
                                 <DataGridTemplateColumn Header="Name" Width="200*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <!--<local:RefundGridUserControl Text="{Binding Name}" />-->
                                             <TextBlock Text="{Binding Name}" 
                                                    Padding="6,5,7,5"
                                                    VerticalAlignment="Center"
@@ -357,10 +354,9 @@
                                 <ScrollViewer x:Name="ProductScrollViewer"
                                   VerticalScrollBarVisibility="Auto"
                                   HorizontalScrollBarVisibility="Disabled">
+
                                     <WrapPanel x:Name="ButtonGrid"
-                                   Orientation="Horizontal"
-                                   ItemHeight="125"
-                                   ItemWidth="Auto"/>
+                   Orientation="Horizontal" />
                                 </ScrollViewer>
 
                             </Grid>
@@ -384,14 +380,28 @@
 
                             <Grid Grid.Column="1">
                                 <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3"  Click="EyeButton_Click">
-                                    <Image Source="/Resources/ClosedEye_Image_White.png" Width="46" Height="53"/>
+
+                                    <Viewbox Stretch="Uniform" Margin="5">
+                                        <Canvas Width="24" Height="24">
+                                            <!-- Eye outline -->
+                                            <Path Stroke="White" StrokeThickness="2" Fill="Transparent"
+              Data="M1,12 C3,7 8,4 12,4 C16,4 21,7 23,12 C21,17 16,20 12,20 C8,20 3,17 1,12 Z"/>
+
+                                            <!-- Pupil -->
+                                            <Ellipse Width="8" Height="8" Fill="White" Canvas.Left="8" Canvas.Top="8" />
+
+                                            <!-- Slash line -->
+                                            <Path Stroke="White" StrokeThickness="2" Data="M3,3 L21,21"/>
+                                        </Canvas>
+                                    </Viewbox>
+
+
                                 </Button>
                             </Grid>
 
                             <Grid Grid.Column="3">
-                                <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3">
-                                    <!--<Image Source="/Resources/Shift_Image_White.png" Width="50" Height="50"/>-->
-                                    
+                                <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3" Click="ScrollUpButton_Click">
+
                                     <Viewbox Width="auto" Height="auto" Margin="5">
                                         <Path Fill="White" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
                                     </Viewbox>
@@ -400,8 +410,7 @@
                             </Grid>
 
                             <Grid Grid.Column="5">
-                                <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3">
-                                    <!--<Image Source="/Resources/Shift_Down_Image_White.png" Width="50" Height="50"/>-->
+                                <Button Style="{ StaticResource ManagerBlueButtonStyle}" FontSize="30" Margin="0,-3,0,3" Click="ScrollDownButton_Click">
 
                                     <Viewbox Width="auto" Height="auto" Margin="5">
                                         <Path Fill="White" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
@@ -482,88 +491,39 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" Margin="10,0,10,0">
-                    
+
                     <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="TopButton_Click">
-                        
-                        <!--<Image Source="/Resources/Shift_Image_Black.png" Width="auto" Height="auto"/>-->
 
                         <Viewbox Width="auto" Height="auto" Margin="5">
                             <Path Fill="Black" Stretch="Uniform" Data="M10,0 L0,10 L6,10 L6,20 L14,20 L14,10 L20,10 Z" />
                         </Viewbox>
 
                     </Button>
-                    
-                </Grid>
 
-                <!--<ScrollViewer x:Name="CategoryScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding PagedCategoryButtons}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="1"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding}" 
-                                    Style="{StaticResource ManagerBlueButtonStyle}"
-                                    Click="CategoryButton_Click"
-                                        Loaded="Button_Loaded"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>-->
+                </Grid>
 
                 <Grid Grid.Row="1">
-                    <!--<Image Source="/Resources/Line_Separate_Image.png" Width="auto" Height="auto"/>-->
                     <Border Height="1" Background="Black" Margin="5"/>
                 </Grid>
-                
+
                 <Grid x:Name="CategoryColumn" Grid.Row="2" Margin="0,0,0,20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="{Binding ScrollColumnWidth}" />
-                    </Grid.ColumnDefinitions>
 
-                    <ItemsControl Grid.Column="0" ItemsSource="{Binding PagedCategoryButtons}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="1"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding}"
-                                    Style="{StaticResource ManagerBlueButtonStyle}" Margin="5,5,0,5"
-                                    Click="CategoryButton_Click"
-                                    Loaded="Button_Loaded"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <ScrollViewer x:Name="CategoriesScrollViewer"
+                               VerticalScrollBarVisibility="Auto"
+                               HorizontalScrollBarVisibility="Disabled">
 
-                    <Slider x:Name="PageScrollSlider"
-                            Grid.Column="1"
-                            Orientation="Vertical"
-                            Minimum="0"
-                            IsDirectionReversed="True"
-                            Maximum="{Binding TotalPages}"
-                            ValueChanged="PageScrollSlider_ValueChanged"
-                            VerticalAlignment="Stretch"
-                            Margin="5"
-                            TickFrequency="1"
-                            IsSnapToTickEnabled="False"
-                            Style="{StaticResource WideThumbSliderStyle}"/>
+                        <WrapPanel x:Name="CategoryButtonGrid"
+                                   Orientation="Vertical" />
+                    </ScrollViewer>
 
                 </Grid>
 
                 <Grid Grid.Row="3" Margin="0,-20,0,0">
-                    <!--<Image Source="/Resources/Line_Separate_Image.png" Width="auto" Height="auto"/>-->
                     <Border Height="1" Background="Black" Margin="5"/>
                 </Grid>
 
                 <Grid Grid.Row="4" Margin="10,0,10,0">
                     <Button Style="{StaticResource ManagerDarkGrayButtonStyle}"  Click="BottomButton_Click">
-
-                        <!--<Image Source="/Resources/Shift_Down_Image_Black.png" Width="auto" Height="auto"/>-->
 
                         <Viewbox Width="auto" Height="auto" Margin="5">
                             <Path Fill="Black" Stretch="Uniform" Data="M10,20 L0,10 L6,10 L6,0 L14,0 L14,10 L20,10 Z" />
@@ -621,15 +581,40 @@
 
                     <Grid Grid.Column="1" Grid.Row="1" Margin="5,-5,0,0">
                         <UniformGrid Columns="1">
-                            <Button x:Name="five" Content="$ 5" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold"/>
+                            <Button x:Name="five"  Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold" Click="Money_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="$ " Margin="0,0,2,0"/>
+                                    <TextBlock Text="5"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Button x:Name="ten" Content="$ 10" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold"/>
+                            <Button x:Name="ten" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold" Click="Money_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="$ " Margin="0,0,2,0"/>
+                                    <TextBlock Text="10"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Button x:Name="twenty" Content="$ 20" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold"/>
+                            <Button x:Name="twenty" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold" Click="Money_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="$ " Margin="0,0,2,0"/>
+                                    <TextBlock Text="20"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Button x:Name="fifty" Content="$ 50" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold"/>
+                            <Button x:Name="fifty" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold" Click="Money_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="$ " Margin="0,0,2,0"/>
+                                    <TextBlock Text="50"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Button x:Name="hundred" Content="$ 100" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold"/>
+                            <Button x:Name="hundred" Style="{ StaticResource ManagerBlueButtonStyle}" FontWeight="Bold" Click="Money_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="$ " Margin="0,0,2,0"/>
+                                    <TextBlock Text="100"/>
+                                </StackPanel>
+                            </Button>
 
                             <Button Content="Round $"  Style="{ StaticResource ManagerOrangeButtonStyle}" Foreground="Black"/>
                         </UniformGrid>
@@ -644,12 +629,12 @@
 
                             <Grid Grid.Row="0">
                                 <TextBox x:Name="Scane_TextEdit"
-                                 Style="{StaticResource CommonTextBoxStyle}" Margin="20,5,20,0"
+                                 Style="{StaticResource CommonTextBoxStyle}" Margin="20,5,20,0" FontSize="30"
                                  TextChanged="ForPlaceHolder_TextChanged" Height="50">
                                 </TextBox>
 
                                 <TextBlock Name="ScaneTextBlock" 
-                                   Text=" Scan / Enter Item" Margin="20,0"
+                                   Text=" Scan / Enter Item" Margin="20,5,20,0"
                                    Style="{StaticResource PlaceholderTextBlockStyle}" FontSize="30">
                                 </TextBlock>
                             </Grid>
@@ -657,21 +642,21 @@
                             <Grid Grid.Row="1">
                                 <!-- Keypad -->
                                 <UniformGrid Columns="3" Rows="5" Margin="15,0,15,15">
-                                    <Button Content="7" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="8" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="9" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="4" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="5" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="6" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="1" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="2" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="3" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="." Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="0" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="," Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="Back" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold"/>
-                                    <Button Content="00" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30"/>
-                                    <Button Content="Clear" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold"/>
+                                    <Button Content="7" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="8" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="9" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="4" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="5" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="6" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="1" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="2" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="3" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="." Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="0" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="Clear" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" Click="Clear_Click"/>
+                                    <Button Content="X" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" Click="KeyboardButton_Click"/>
+                                    <Button Content="00" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="KeyboardButton_Click"/>
+                                    <Button Content="Enter" Style="{ StaticResource ManagerGrayButtonStyle}" Margin="3" Foreground="Black" FontWeight="Bold" FontSize="30" Click="Enter_Click"/>
                                 </UniformGrid>
                             </Grid>
                         </Grid>
@@ -714,6 +699,58 @@
 
                         <Border CornerRadius="10" Background="White" Grid.Row="1">
 
+                            <Grid Grid.Row="1" Margin="3">
+
+                                <DataGrid HeadersVisibility="None"
+                                    ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleRetail}" 
+                                    RowStyle="{StaticResource GridRowStyle}"
+                                    CellStyle="{StaticResource GridCellStyle}"
+                                    Name="payDataGrid" 
+                                    AutoGenerateColumns="False" 
+                                    ItemsSource="{Binding PayeeItems}" 
+                                    CanUserAddRows="False" 
+                                    CanUserResizeColumns="False"
+                                    CanUserReorderColumns="False"
+                                    IsHitTestVisible="True" 
+                                    SelectionMode="Single"
+                                    IsTabStop="False"
+                                    GridLinesVisibility="Vertical"
+                                    Background="#eeee"
+                                    BorderBrush="Transparent"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                                    <DataGrid.Columns>
+
+                                        <!-- Quantity Name -->
+                                        <DataGridTemplateColumn Header="PayBy" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PayeeName}" 
+                                   Padding="6,5,7,5"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="NoWrap"
+                                   TextTrimming="CharacterEllipsis"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <!-- Unit Price Column -->
+                                        <DataGridTextColumn Header="Amount" Binding="{Binding PayeePrice}" Width="*"
+                                IsReadOnly="True">
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+
+                            </Grid>
+
                         </Border>
 
                         <Grid Grid.Row="2" >
@@ -732,9 +769,9 @@
                         </Grid>
 
                         <Grid  Grid.Row="3">
-                            <StackPanel Orientation="Vertical" VerticalAlignment="top">
-                                <TextBlock Text="Remaining" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" FontSize="30" Padding="0"/>
-                                <TextBlock Text="0.00" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" Padding="0" FontSize="25"/>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <TextBlock Text="Remaining" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" FontSize="35" Padding="0"/>
+                                <TextBlock Text="0.00" Style="{StaticResource POSHeaderTextStyle}" Foreground="Black" FontWeight="Bold" Padding="0" FontSize="30"/>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -750,7 +787,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1.3*"/>
+                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             
                             <Grid.RowDefinitions>
@@ -759,9 +796,9 @@
                             </Grid.RowDefinitions>
                             
                             <Button Grid.Column="0" Grid.Row="0" Content="Exact" Style="{ StaticResource ManagerBlueButtonStyle}"/>
-                            <Button Grid.Column="0" Grid.Row="1" Content="Cash" Style="{ StaticResource ManagerBlueButtonStyle}"/>
-                            <Button Grid.Column="1" Grid.Row="0" Content="Dr Card" Style="{ StaticResource ManagerBlueButtonStyle}"/>
-                            <Button Grid.Column="1" Grid.Row="1" Content="Cr Card" Style="{ StaticResource ManagerBlueButtonStyle}"/>
+                            <Button Grid.Column="0" Grid.Row="1" Content="Cash" Style="{ StaticResource ManagerBlueButtonStyle}" Click="Payee_Click"/>
+                            <Button Grid.Column="1" Grid.Row="0" Content="Dr Card" Style="{ StaticResource ManagerBlueButtonStyle}" Click="Payee_Click"/>
+                            <Button Grid.Column="1" Grid.Row="1" Content="Cr Card" Style="{ StaticResource ManagerBlueButtonStyle}" Click="Payee_Click"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="1" Margin="5,5,5,0">
@@ -797,7 +834,7 @@
                             </Grid>
 
                             <Grid Grid.Column="2">
-                                <Button Style="{StaticResource RingButtonStyle}" Tag="/Resources/InnerRing_Image.png">
+                                <Button Style="{StaticResource RingButtonStyle}" Tag="/Resources/InnerRing_Image.png" Click="LogOut_Click">
                                     <Image Source="/Resources/LogOut_image.png" Width="auto" Height="auto" Margin="20"/>
                                 </Button>
                             </Grid>

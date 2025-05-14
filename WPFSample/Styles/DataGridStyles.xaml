@@ -9,7 +9,7 @@
     <Style x:Key="GridRowStyle" TargetType="DataGridRow">
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Margin" Value="0,3,0,0"/>
+        <Setter Property="Margin" Value="0,3,1,0"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="Width" Value="auto"/>

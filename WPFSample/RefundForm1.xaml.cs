@@ -55,10 +55,10 @@ namespace WPFSample
     // Data Model with Auto-Update for Subtotal
     public class Items : INotifyPropertyChanged
     {
-        private int _quantity;
+        private double _quantity;
 
         public string Name { get; set; }
-        public int Quantity
+        public double Quantity
         {
             get => _quantity;
             set
