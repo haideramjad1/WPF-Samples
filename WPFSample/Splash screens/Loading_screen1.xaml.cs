@@ -9,7 +9,7 @@ namespace WPFSample.Splash_screens
     /// </summary>
     public partial class Loading_screen1 : Window
     {
-        private Storyboard _spinnerStoryboard;
+        //private Storyboard _spinnerStoryboard;
 
         public Loading_screen1()
         {
@@ -76,7 +76,7 @@ namespace WPFSample.Splash_screens
 
         public void StartLoadingAnimation()
         {
-            _spinnerStoryboard?.Begin();
+            //_spinnerStoryboard?.Begin();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

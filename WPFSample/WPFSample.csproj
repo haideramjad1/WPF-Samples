@@ -151,6 +151,12 @@
     <Compile Include="AddCoupon1.xaml.cs">
       <DependentUpon>AddCoupon1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddMenuCategories1.xaml.cs">
+      <DependentUpon>AddMenuCategories1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssignCategories1.xaml.cs">
+      <DependentUpon>AssignCategories1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Attendence1.xaml.cs">
       <DependentUpon>Attendence1.xaml</DependentUpon>
     </Compile>
@@ -162,6 +168,9 @@
     </Compile>
     <Compile Include="Card_Sample.xaml.cs">
       <DependentUpon>Card_Sample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashEntry1.xaml.cs">
+      <DependentUpon>CashEntry1.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerOptions1.xaml.cs">
       <DependentUpon>CustomerOptions1.xaml</DependentUpon>
@@ -219,6 +228,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddMenuCategories1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssignCategories1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Attendence1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Card_Sample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashEntry1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +340,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TreeViewStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -492,6 +517,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Line_Separate_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Class\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.2.0\build\MaterialDesignThemes.targets')" />

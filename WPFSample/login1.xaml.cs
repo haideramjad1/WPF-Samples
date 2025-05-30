@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WPFSample.Splash_screens;
 
 namespace WPFSample
 {
@@ -11,7 +10,7 @@ namespace WPFSample
     /// </summary>
     public partial class login1 : Window
     {
-        private Loading_screen1 waitForm;
+        //private Loading_screen1 waitForm;
 
         public login1()
         {

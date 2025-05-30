@@ -157,3 +157,10 @@ D:\software development\WPF-Samples\WPFSample\obj\Debug\Attendence1.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\Attendence1.baml
 D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS2.g.cs
 D:\software development\WPF-Samples\WPFSample\obj\Debug\RetailPOS2.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CashEntry1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\CashEntry1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\AddMenuCategories1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\AddMenuCategories1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\AssignCategories1.g.cs
+D:\software development\WPF-Samples\WPFSample\obj\Debug\AssignCategories1.baml
+D:\software development\WPF-Samples\WPFSample\obj\Debug\Styles\TreeViewStyle.baml

@@ -20,7 +20,7 @@ namespace WPFSample
         private int currentItemIndex = 1;
 
         private const int PageSize = 12;
-        private int currentPage = 0;
+        //private int currentPage = 0;
 
         public ObservableCollection<string> CategoryButtons { get; set; }
         public ObservableCollection<string> PagedCategoryButtons { get; set; } = new ObservableCollection<string>();

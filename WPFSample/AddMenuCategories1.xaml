@@ -1,0 +1,258 @@
+﻿<Window x:Class="WPFSample.AddMenuCategories1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        mc:Ignorable="d"
+        Title="AddMenuCategories1" Height="407" Width="460"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Border>
+        <Grid>
+            <Border CornerRadius="10"
+                BorderThickness ="10" BorderBrush="LightGray"
+                Height="150" Background="#003187"
+                VerticalAlignment="Top">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="3"
+                  Grid.Row="0">
+                        <Button x:Name="Close_Button" 
+                            Margin="0,3,3,8"
+                            Template="{StaticResource ImageButtonTemplate}"
+                            Tag="{StaticResource CloseButtonImageBrush}"
+                            Click="Close_Button_Click">
+                        </Button>
+                    </Grid>
+
+                    <!--<Grid Grid.Column="0"
+                      Width="35"
+                      Margin="0,4,0,0"
+                      Grid.Row="0">
+                        <Image x:Name="FormPicture" 
+                       Source="pack://application:,,,/Resources/Customer_Image.png"/>
+                    </Grid>-->
+
+                    <Grid Grid.Column="1"
+                  Grid.Row="0">
+                        <Border CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="2" Direction="270" Opacity="0.5"/>
+                            </Border.Effect>
+
+                            <Grid >
+                                <TextBlock x:Name="FormTitle" 
+                                       Text="Add Menu Categories"
+                                       FontSize="30" 
+                                       Padding="5,0,0,0"
+                                       FontWeight="Medium"
+                                       Foreground="White"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+
+
+            <Border CornerRadius="30"
+            Margin="40,80,40,10" Background="White">
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" />
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="250*"/>
+                        <RowDefinition Height="90"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" x:Name="ParentCategoryRow">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="0*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="1">
+                            <TextBlock Text="Category Name :" Style="{StaticResource LeftAlignedTextBlock}" Height="31" Margin="10,0"/>
+                        </Grid>
+                        
+                        <Grid Grid.Row="1"
+                              Grid.Column="1" >
+                            <TextBox x:Name="MenuCategoryName_TextEdit"
+                                     Style="{StaticResource CommonTextBoxStyle}"
+                                     TextChanged="ForPlaceHolder_TextChanged"
+                                     MouseDoubleClick="Alphabetic_Keyboard_Click">
+                            </TextBox>
+
+                            <TextBlock Name="MenuCategoryTextBlock" 
+                                       Text=" Category Name" 
+                                       Style="{StaticResource PlaceholderTextBlockStyle}">
+                            </TextBlock>
+
+                            <Button x:Name="MessageInfo1"
+                                    Click="MessageInformation_Click"
+                                    Visibility="Visible"
+                                    Style="{StaticResource RoundedTransparentButtonStyle}"
+                                    Margin="0,10,15,10">
+                                <Image Source="pack://application:,,,/Resources/InformationAlert.png"/>
+                            </Button>
+
+                            <Popup x:Name="InfoPopup1" 
+                                   Style="{StaticResource RoundedPopupStyle}">
+                                <Border Style="{StaticResource RoundedPopupBorderStyle}">
+
+                                    <TextBlock x:Name="PopupTextBlock1" Text="Default Message"
+                                           Style="{StaticResource PopupTextBlockStyle}"/>
+                                </Border>
+                            </Popup>
+
+                        </Grid>
+
+                        <Grid Grid.Row="3"
+                              Grid.Column="1">
+                            <CheckBox x:Name="AddAsDepartment_CheckEdit" Content="Add As Department" 
+                                      Style="{StaticResource BigCheckBoxStyle}" Margin="10,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="4"
+                              Grid.Column="1">
+                            <CheckBox x:Name="AddAsParentCategory_CheckEdit" Content="Add As Parent Category" 
+                                        Checked="AddAsParentCategory_CheckEdit_Checked"
+                                        Unchecked="AddAsParentCategory_CheckEdit_Unchecked"
+                                        Style="{StaticResource BigCheckBoxStyle}" Margin="10,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="6"
+                              Grid.Column="1"  x:Name="ParentCategory" Visibility="Collapsed">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Parent Category :"
+                                    Style="{StaticResource LeftAlignedTextBlock}" Height="31" Margin="10,0">
+                                </TextBlock>
+                            </Grid>
+
+                            <Grid Grid.Row="1"
+                                  Grid.Column="1">
+                                
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}"
+                                          x:Name="ParentCategory_ComboEdit" 
+                                          Margin="10,0,10,0" 
+                                          VerticalAlignment="Center"
+                                          FontSize="25" 
+                                          FontFamily="Tahoma"
+                                          Height="40"
+                                          SelectionChanged="ParentCategory_ComboEdit_SelectionChanged"
+                                          ItemsSource="{Binding Reasons}"
+                                          Stylus.IsPressAndHoldEnabled="False">
+
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style TargetType="ComboBoxItem">
+                                            <Setter Property="Padding" Value="10,8,10,8" />
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>
+
+
+                                </ComboBox>
+
+                                <Button x:Name="MessageInfo2"
+                                        Click="MessageInformation_Click"
+                                        Visibility="Visible"
+                                        Style="{StaticResource RoundedTransparentButtonStyle}" Margin="0,10,50,10">
+                                    <Image Source="pack://application:,,,/Resources/InformationAlert.png"/>
+                                </Button>
+
+                                <Popup x:Name="InfoPopup2" 
+                                       Style="{StaticResource RoundedPopupStyle}">
+                                    <Border Style="{StaticResource RoundedPopupBorderStyle}">
+
+                                        <TextBlock x:Name="PopupTextBlock2" Text="Default Message"
+                                                   Style="{StaticResource PopupTextBlockStyle}"/>
+                                    </Border>
+                                </Popup>
+
+                                <TextBlock Name="LookupEditComboBoxTextBlock" 
+                                           Text=" SelectOption" 
+                                           Style="{StaticResource PlaceholderTextBlockStyle}"
+                                           HorizontalAlignment="Left"
+                                           Margin="10,0,0,0">
+                                </TextBlock>
+                            </Grid>
+
+                        </Grid>
+                        
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200*"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="1">
+                            <Button x:Name="Save_Btn" 
+                                    Content="Save"
+                                    Style="{StaticResource GreenButtonStyle}"
+                                    Click="Save_Btn_Click"
+                                    Margin="3,20,3,20">
+                            </Button>
+                        </Grid>
+
+                        <Grid  Grid.Column="2">
+                            <Button x:Name="Close_Btn" 
+                                    Content="Close"
+                                    Style="{StaticResource RedButtonStyle}"
+                                    Click="Close_Button_Click"
+                                    Margin="3,20,3,20">
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+        </Grid>
+    </Border>
+
+</Window>

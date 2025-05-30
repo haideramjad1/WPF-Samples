@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace WPFSample
@@ -84,21 +83,21 @@ namespace WPFSample
             }
         }
 
-        private async void card_radioButton_Checked(object sender, RoutedEventArgs e)
+        private/* async */void card_radioButton_Checked(object sender, RoutedEventArgs e)
         {
             Pin_Tabs.SelectedItem = Card_Tab;
-            await SetGifAsync();
+            //await SetGifAsync();
             TextBoxFocus();
         }
 
-        private async Task SetGifAsync()
-        {
+        //private async Task SetGifAsync()
+        //{
 
-            //var bitmap = new BitmapImage();
-            //bitmap.BeginInit();
-            //bitmap.UriSource = new Uri("/Resources/scan_card_gif1.gif");
-            //bitmap.EndInit();
-            //Scan_Image.Source = bitmap;
-        }
+        //    var bitmap = new BitmapImage();
+        //    bitmap.BeginInit();
+        //    bitmap.UriSource = new Uri("/Resources/scan_card_gif1.gif");
+        //    bitmap.EndInit();
+        //    Scan_Image.Source = bitmap;
+        //}
     }
 }
